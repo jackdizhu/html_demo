@@ -732,7 +732,6 @@
 	    'use strict';
 
 	    var demoCss = __webpack_require__(7);
-
 	    module.exports = demoCss;
 	})();
 

@@ -58,6 +58,10 @@
 	  // 移动dom
 	  var styleDom = document.querySelector('#style');
 	  document.querySelector('head').appendChild(styleDom);
+
+	  var textarea = document.createElement('textarea');
+	  document.getElementById('#textArea').appendChild(textarea);
+
 	  var T = setInterval(function () {
 	    if (css[Htcss.length]) {
 	      Htcss += css[Htcss.length];

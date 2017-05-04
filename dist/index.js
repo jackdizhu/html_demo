@@ -60,7 +60,7 @@
 	  document.querySelector('head').appendChild(styleDom);
 
 	  var textarea = document.createElement('textarea');
-	  document.getElementById('#textArea').appendChild(textarea);
+	  document.querySelector('#textArea').appendChild(textarea);
 
 	  var T = setInterval(function () {
 	    if (css[Htcss.length]) {

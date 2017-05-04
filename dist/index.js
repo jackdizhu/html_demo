@@ -79,7 +79,7 @@
 	        document.querySelector('.codeCss').scrollTop = 9999;
 	      };
 	    }
-	  }, 10);
+	  }, 100);
 	})();
 
 /***/ },

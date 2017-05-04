@@ -1,0 +1,29 @@
+@charset 'utf-8';
+
+*{
+  padding: 0;
+  margin: 0;
+  -webkit-box-sizing:border-box;
+     -moz-box-sizing:border-box;
+          box-sizing:border-box;
+}
+.codeCss{
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+code,
+pre{
+  display: block;
+  font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+  text-align: left;
+  white-space: pre;
+  word-spacing: normal;
+  word-break: normal;
+  word-wrap: normal;
+  line-height: 1.5;
+
+  -moz-tab-size: 4;
+  -o-tab-size: 4;
+  tab-size: 4;
+}

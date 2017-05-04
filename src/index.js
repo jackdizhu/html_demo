@@ -22,9 +22,18 @@
         document.querySelector('.codeCss').scrollTop = 9999;
       }else{
         clearInterval(T);
+        document.querySelector('textarea').value = Htcss;
+        document.querySelector('textarea').onkeyup = function () {
+            var Htcss = this.value;
+            document.querySelector('#code').innerHTML = Htcss;
+            document.querySelector('#style').innerHTML = Htcss;
+
+            Prism.highlightAll();
+            document.querySelector('.codeCss').scrollTop = 9999;
+        };
       }
 
-    },100);
+    },10);
 
 
 }());

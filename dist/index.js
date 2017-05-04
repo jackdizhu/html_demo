@@ -69,8 +69,17 @@
 	      document.querySelector('.codeCss').scrollTop = 9999;
 	    } else {
 	      clearInterval(T);
+	      document.querySelector('textarea').value = Htcss;
+	      document.querySelector('textarea').onkeyup = function () {
+	        var Htcss = this.value;
+	        document.querySelector('#code').innerHTML = Htcss;
+	        document.querySelector('#style').innerHTML = Htcss;
+
+	        Prism.highlightAll();
+	        document.querySelector('.codeCss').scrollTop = 9999;
+	      };
 	    }
-	  }, 100);
+	  }, 10);
 	})();
 
 /***/ },
@@ -108,7 +117,7 @@
 
 
 	// module
-	exports.push([module.id, "@charset 'utf-8';\n\n*{\n  padding: 0;\n  margin: 0;\n  -webkit-box-sizing:border-box;\n     -moz-box-sizing:border-box;\n          box-sizing:border-box;\n}\n.codeCss{\n  display: block;\n  width: 100%;\n  height: 100%;\n}\ncode,\npre{\n  display: block;\n  font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;\n  text-align: left;\n  white-space: pre;\n  word-spacing: normal;\n  word-break: normal;\n  word-wrap: normal;\n  line-height: 1.5;\n\n  -moz-tab-size: 4;\n  -o-tab-size: 4;\n  tab-size: 4;\n}\n", ""]);
+	exports.push([module.id, "@charset 'utf-8';.content,body,html{width:100%;height:100%;overflow:hidden}*{padding:0;margin:0;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box}code,pre{display:block;font-family:Consolas,Monaco,'Andale Mono','Ubuntu Mono',monospace;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;word-wrap:normal;line-height:1.5;-moz-tab-size:4;-o-tab-size:4;tab-size:4}.content{position:relative}.content>div{position:absolute;left:0;top:0}.content .textArea{width:40%;height:60%;margin-right:20px;padding:2px}.content .textArea textarea{width:100%;height:100%;resize:none;border:1px solid #eee;border-radius:4px;outline:0}.content .codeCss{display:block;width:100%;height:100%;background:#fff}", ""]);
 
 	// exports
 
@@ -715,16 +724,27 @@
 
 /***/ },
 /* 6 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	(function () {
+	    'use strict';
+
+	    var demoCss = __webpack_require__(7);
+
+	    module.exports = demoCss;
+	})();
+
+/***/ },
+/* 7 */
 /***/ function(module, exports) {
 
 	'use strict';
 
 	(function () {
 	  'use strict';
-
-	  var demoCss = '\n/*\n* \u524D\u7AEF\u7B80\u5386demo\n*/\n\n/* \u9996\u5148\u7ED9\u6240\u6709\u5143\u7D20\u52A0\u4E0A\u8FC7\u6E21\u6548\u679C */\n* {\n  -webkit-transition: all .3s;\n          transition: all .3s;\n}\n/* \u767D\u8272\u80CC\u666F\u592A\u5355\u8C03\u4E86\uFF0C\u6211\u4EEC\u6765\u70B9\u80CC\u666F */\n.codeCss {\n  color: #DEDEDE;\n  background: #002B36;\n}\n/* \u6587\u5B57\u79BB\u8FB9\u6846\u592A\u8FD1\u4E86 */\n.codeCss{\n  padding: .5em;\n  border: 1px solid;\n  overflow: auto;\n  width: 40%;\n  height: 60%;\n}\n/* \u4EE3\u7801\u9AD8\u4EAE */\n.token.selector{ color: #859900; }\n.token.property{ color: #BB8900; }\n.token.punctuation{ color: #FFFF00; }\n.token.function{ color: #2AA198; }\n.token.comment{ color: #676767; }\n\n.codeCss{\n  position: fixed;\n  left: 1em;\n  top: 0;\n  -webkit-transition: .5;\n          transition: .5;\n  -webkit-transform: rotateY(10deg) translateZ(-100px) ;\n          transform: rotateY(10deg) translateZ(-100px) ;\n}\n\n';
-
-	  module.exports = demoCss;
+	  var demoCss = '/*\n* \u524D\u7AEF\u7B80\u5386demo\n*/\n/* \u9996\u5148\u7ED9\u6240\u6709\u5143\u7D20\u52A0\u4E0A\u8FC7\u6E21\u6548\u679C */\n* {\n  -webkit-transition: all .3s;\n  transition: all .3s;\n}\n.content {\n  width: 100%;\n  height: 100%;\n  overflow: hidden;\n  position: relative;\n}\n.content > div {\n  position: absolute;\n  left: 0;\n  top: 0;\n}\n.content .codeCss {\n  color: #DEDEDE;\n  background: #002B36;\n  padding: .5em;\n  border: 1px solid;\n  overflow: auto;\n  width: 40%;\n  height: 60%;\n}\n.content .codeCss .token.selector {\n  color: #859900;\n}\n.content .codeCss .token.property {\n  color: #BB8900;\n}\n.content .codeCss .token.punctuation {\n  color: #FFFF00;\n}\n.content .codeCss .token.function {\n  color: #2AA198;\n}\n.content .codeCss .token.comment {\n  color: #676767;\n}\n.content .codeCss {\n  position: fixed;\n  left: 50%;\n  top: 0;\n}\n';module.exports = demoCss;
 	})();
 
 /***/ }

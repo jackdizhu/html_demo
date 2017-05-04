@@ -117,7 +117,7 @@
 
 
 	// module
-	exports.push([module.id, "@charset 'utf-8';.content,body,html{width:100%;height:100%;overflow:hidden}*{padding:0;margin:0;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box}code,pre{display:block;font-family:Consolas,Monaco,'Andale Mono','Ubuntu Mono',monospace;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;word-wrap:normal;line-height:1.5;-moz-tab-size:4;-o-tab-size:4;tab-size:4}.content{position:relative}.content>div{position:absolute;left:0;top:0}.content .textArea{width:40%;height:60%;margin-right:20px;padding:2px}.content .textArea textarea{width:100%;height:100%;resize:none;border:1px solid #eee;border-radius:4px;outline:0}.content .codeCss{display:block;width:100%;height:100%;background:#fff}", ""]);
+	exports.push([module.id, "@charset 'utf-8';.content,body,html{width:100%;height:100%;overflow:hidden}*{padding:0;margin:0;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box}code,pre{display:block;font-family:Consolas,Monaco,'Andale Mono','Ubuntu Mono',monospace;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;word-wrap:normal;line-height:1.5;-moz-tab-size:4;-o-tab-size:4;tab-size:4}.content{position:relative}.content>div{position:absolute;left:0;top:0}.content .textArea{width:40%;height:60%;margin-right:20px;padding:2px}.content .textArea textarea{width:100%;height:100%;resize:none;border:1px solid #eee;border-radius:4px;outline:0;display:none}.content .codeCss{display:block;width:100%;height:100%;background:#fff}", ""]);
 
 	// exports
 
@@ -743,7 +743,7 @@
 
 	(function () {
 	  'use strict';
-	  var demoCss = '/*\n* \u524D\u7AEF\u7B80\u5386demo\n*/\n/* \u9996\u5148\u7ED9\u6240\u6709\u5143\u7D20\u52A0\u4E0A\u8FC7\u6E21\u6548\u679C */\n* {\n  -webkit-transition: all .3s;\n  transition: all .3s;\n}\n.content {\n  width: 100%;\n  height: 100%;\n  overflow: hidden;\n  position: relative;\n}\n.content > div {\n  position: absolute;\n  left: 0;\n  top: 0;\n}\n.content .codeCss {\n  color: #DEDEDE;\n  background: #002B36;\n  padding: .5em;\n  border: 1px solid;\n  overflow: auto;\n  width: 40%;\n  height: 60%;\n}\n.content .codeCss .token.selector {\n  color: #859900;\n}\n.content .codeCss .token.property {\n  color: #BB8900;\n}\n.content .codeCss .token.punctuation {\n  color: #FFFF00;\n}\n.content .codeCss .token.function {\n  color: #2AA198;\n}\n.content .codeCss .token.comment {\n  color: #676767;\n}\n.content .codeCss {\n  position: fixed;\n  left: 50%;\n  top: 0;\n}\n';module.exports = demoCss;
+	  var demoCss = '/*\n* \u524D\u7AEF\u7B80\u5386demo\n*/\n/* \u9996\u5148\u7ED9\u6240\u6709\u5143\u7D20\u52A0\u4E0A\u8FC7\u6E21\u6548\u679C */\n* {\n  -webkit-transition: all .3s;\n  transition: all .3s;\n}\n.content {\n  width: 100%;\n  height: 100%;\n  overflow: hidden;\n  position: relative;\n}\n.content > div {\n  position: absolute;\n  left: 0;\n  top: 0;\n}\n.content .codeCss {\n  color: #DEDEDE;\n  background: #002B36;\n  padding: .5em;\n  border: 1px solid;\n  overflow: auto;\n  width: 40%;\n  height: 60%;\n}\n.content .codeCss .token.selector {\n  color: #859900;\n}\n.content .codeCss .token.property {\n  color: #BB8900;\n}\n.content .codeCss .token.punctuation {\n  color: #FFFF00;\n}\n.content .codeCss .token.function {\n  color: #2AA198;\n}\n.content .codeCss .token.comment {\n  color: #676767;\n}\n.content .codeCss {\n  position: fixed;\n  left: 50%;\n  top: 0;\n}\n.content .textArea textarea {\n  display: block;\n}\n';module.exports = demoCss;
 	})();
 
 /***/ }

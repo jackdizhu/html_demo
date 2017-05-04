@@ -46,4 +46,7 @@
   left: 50%;
   top: 0;
 }
+.content .textArea textarea {
+  display: block;
+}
 `;module.exports = demoCss;}());

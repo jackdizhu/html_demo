@@ -1,0 +1,117 @@
+@charset 'utf-8';
+
+.content{
+  @popup-returnReasonDivH: 8.5rem;
+  @popup-returnReasonDivW: 15.35rem;
+  @popup-returnReasonDivBR: .2rem;
+  @popup-returnReasonDtH: 2.5rem;
+  @popup-returnReasonDdPT: .4rem;
+
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        top: 2.2rem;
+        width: 100%;
+        height: auto;
+        background-color: #eee;
+        .imgBox{
+            position: absolute;
+            left: 0;
+            top: 0;
+            z-index: 3;
+            bottom: 5.5rem;
+            width: 100%;
+            height: auto;
+            background-color: #fff;
+            img{
+                max-width: 10rem;
+                max-height: 10rem;
+            }
+        }
+        .imgBox.hide{
+            display: none;
+        }
+        .toolBox{
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            height: 5.5rem;
+            background-color: #fff;
+            .inBox{
+                position: relative;
+                padding-top: .5rem;
+                >.rotateBtn{
+                    display: block;
+                    position: absolute;
+                    right: 0;
+                    bottom: 5rem;
+                    margin-right: 1rem;
+                    margin-bottom: 1rem;
+                    width: 80px;
+                    text-align: center;
+                    height: 40px;
+                    line-height: 40px;
+                    background: rgba(0, 0, 0, .25);
+                    color: #fff;
+                    border-radius: 5px;
+                    .iconfont {
+                        display: block;
+                        line-height: 40px;
+                        vertical-align: middle;
+                        font-size: .9rem;
+                        margin-top: -.1em;
+                    }
+                }
+                >div{
+                    height: 2rem;
+                    width: 100%;
+                    margin-bottom: .5rem;
+                    >label{
+                        position:relative;
+                        display: block;
+                        width: 60%;
+                        height: 100%;
+                        overflow: hidden;
+                        margin-left: auto;
+                        margin-right: auto;
+                        text-align: center;
+                        line-height: 2rem;
+                        span{
+                            position: absolute;
+                            left: 0;
+                            top: 0;
+                            width: 100%;
+                            height: 100%;
+                            display: block;
+                            font-size: .7rem;
+                            background-color: #000;
+                            color: #fff;
+                            border-radius: 5px;
+                        }
+                        .inFile{
+                            opacity: 0;
+                        }
+                    }
+                    >a{
+                        display: block;
+                        width: 60%;
+                        height: 100%;
+                        overflow: hidden;
+                        margin-left: auto;
+                        margin-right: auto;
+                        text-align: center;
+                        line-height: 2rem;
+                        font-size: .7rem;
+                        background-color: #000;
+                        color: #fff;
+                        border-radius: 5px;
+                    }
+                    >a.disable{
+                        opacity: .5;
+                        filter: alpha(opacity=50);
+                    }
+                }
+            }
+        }
+    }

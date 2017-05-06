@@ -1212,6 +1212,11 @@
                     if (minute <= 9) {minute = '0' + minute;}
                     if (second <= 9) {second = '0' + second;}
 
+                    day = '&lt;i&gt;'+day+'&lt;/i&gt;';
+                    hour = '&lt;i&gt;'+hour[0]+'&lt;/i&gt;&lt;i&gt;'+hour[1]+'&lt;/i&gt;';
+                    minute = '&lt;i&gt;'+minute[0]+'&lt;/i&gt;&lt;i&gt;'+minute[1]+'&lt;/i&gt;';
+                    second = '&lt;i&gt;'+second[0]+'&lt;/i&gt;&lt;i&gt;'+second[1]+'&lt;/i&gt;';
+
                     Ht = Ht.replace(/{dd}/,day);
                     Ht = Ht.replace(/{hh}/,hour);
                     Ht = Ht.replace(/{mm}/,minute);

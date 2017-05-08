@@ -1205,6 +1205,38 @@
         <h5><a name="javascript" id="javascript"></a><span>javascript</span></h5>
         <div class="clearfix">
             <pre>
+            // 页面设置 多个 window.onload 解决方案  &lt;body onload="fn_onload();"&gt;
+            (function () {
+              'use strict';
+                window._windowOnload = [];
+                window.fn_onload = function () {
+                  var _windowOnload = window._windowOnload;
+                  for (var i = 0; i < _windowOnload.length; i++) {
+                     if(typeof _windowOnload[i] == 'function'){
+                        setTimeout(_windowOnload[i](),0);
+                     }
+                  }
+                };
+                Object.defineProperty(window,"onload",{
+                    get: function () {
+                      console.log('get');
+                    },
+                    set: function (val) {
+                      if(typeof val == 'function'){
+                          _windowOnload.push(val);
+                      }
+                    },
+                    configurable : true
+                });
+
+                window.onload = function () {
+                  console.log('01');
+                };
+                window.onload = function () {
+                  console.log('02');
+                };
+
+            }());
             // 简单时间倒计时
             function fn_timerCountDown(Obj){
 

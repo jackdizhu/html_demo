@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1"/>
+    <meta name="renderer" content="webkit" />
+
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+    <meta name="format-detection" content="telephone=no" />
+    <meta http-equiv="Expires" content="-1"/>
+
+    <meta http-equiv="Cache-Control" content="no-cache"/>
+    <meta http-equiv="Pragma" content="no-cache"/>
+    <title>mysql_jackdizhu</title>
+    <link rel="shortcut icon" href="/favicon.ico"/>
+
+    <style type="text/css" id="style">
+      pre{
+        width: 100%;
+        white-space: pre-wrap;
+      }
+    </style>
+
+</head>
+<body>
+    <header>
+        jackdizhu mysql
+    </header>
+
+    <div class="content">
+
+        <h5><a name="RegExp" id="RegExp"></a><span>mysql</span></h5>
+        <div class="clearfix">
+            <pre>
+            // 用户名验证
+            /^[a-zA-Z][a-zA-Z0-9]{5,19}$/
+            //密码验证
+            /^[\@A-Za-z0-9\!\#\$\%\^\&\*\.\~]{6,20}$
+            // 手机号码
+            /^1[3-8]\d{9}$/
+            //短信验证码验证
+            /^[a-zA-Z0-9]{6}$/
+            //邮箱 验证
+            /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/
+
+            /\^|\.|\*|\?|\!|\/|\\|\$|\#|\&|\||,|\[|\]|\{|\}|\(|\)|\-|\+|\=|\`|\'|\"/g  特殊字符过滤
+            /[^\dA-Za-z\u4e00-\u9fa5]/ 非 昵称
+            /^1[3-8]+\d{9}$/ 手机号码
+            /^[0-9]{6}$/ 邮编
+            /^[\u4e00-\u9fa5]{2,4}$/ 姓名
+            /[^\dA-Za-z\u4e00-\u9fa5]/ 非 详细地址
+            /^(\d{15}$|^\d{18}$|^\d{17}(\d|X|x))$/ 身份证号
+            /^(\d{16}|\d{19})$/ 银行卡号
+            /^[a-zA-Z][a-zA-Z0-9_]{2,9}$/ 用户名
+            /^[\@A-Za-z0-9\!\#\$\%\^\&\*\.\~]{6,20}$/ 密码
+            /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/ 邮箱
+
+            常用的数字正则（严格匹配）
+            /^[1-9]\d*$/  匹配正整数
+            /^-[1-9]\d*$/ 匹配负整数
+            /^-?[1-9]\d*$/    匹配整数
+            /^[1-9]\d*|0$/    匹配非负整数（正整数 + 0）
+            /^-[1-9]\d*|0$/   匹配非正整数（负整数 + 0）
+            /^[1-9]\d*\.\d*|0\.\d*[1-9]\d*$/  匹配正浮点数
+            /^-([1-9]\d*\.\d*|0\.\d*[1-9]\d*)$/   匹配负浮点数
+            /^-?([1-9]\d*\.\d*|0\.\d*[1-9]\d*|0?\.0+|0)$/     匹配浮点数
+            /^[1-9]\d*\.\d*|0\.\d*[1-9]\d*|0?\.0+|0$/ 匹配非负浮点数（正浮点数 + 0）
+            /^(-([1-9]\d*\.\d*|0\.\d*[1-9]\d*))|0?\.0+|0$/    匹配非正浮点数（负浮点数 + 0）
+
+            常用字符串正则
+            /^[A-Za-z]+$/ 匹配由26个英文字母组成的字符串    或 /^[a-z]+$/i
+            /^[A-Z]+$/    匹配由26个英文字母的大写组成的字符串
+            /^[a-z]+$/    匹配由26个英文字母的小写组成的字符串
+            /^[A-Za-z0-9]+$/  匹配由数字和26个英文字母组成的字符串 注意\w包含下划线_
+            /^\w+$/   匹配由数字、26个英文字母或者下划线组成的字符串
+
+            匹配HTML标记的正则表达式
+            /^<([a-z]+)\s*\/?> (?:<\/\1>)?$/i
+
+            去首尾空白字符
+            /^\s*|\s*$/g
+
+            匹配Email地址的正则表达式
+            /^([\w-_]+(?:\.[\w-_]+)*)@((?:[a-z0-9]+(?:-[a-zA-Z0-9]+)*)+\.[a-z]{2,6})$/i
+
+            匹配帐号是否合法
+            /\w{4,16}/
+
+            匹配国内电话号码
+            网上流传的版本很好用：
+            /\d{3}-\d{8}|\d{4}-\d{7}/
+
+            匹配腾讯QQ号
+            /[1-9][0-9]{4,}/
+
+            匹配中国邮政编码
+            /[1-9]\d{5}(?!\d)/
+
+            匹配身份证
+            function validateIdCard(obj){
+               var aCity={11:"北京",12:"天津",13:"河北",14:"山西",15:"内蒙古",21:"辽宁",22:"吉林",23:"黑龙江",31:"上海",32:"江苏",33:"浙江",34:"安徽",35:"福建",36:"江西",37:"山东",41:"河南",42:"湖北",43:"湖南",44:"广东",45:"广西",46:"海南",50:"重庆",51:"四川",52:"贵州",53:"云南",54:"西藏",61:"陕西",62:"甘肃",63:"青海",64:"宁夏",65:"新疆",71:"台湾",81:"香港",82:"澳门",91:"国外"};
+                var iSum = 0;
+               //var info = "";
+               var strIDno = obj;
+               var idCardLength = strIDno.length;
+               if(!/^\d{17}(\d|x)$/i.test(strIDno)&&!/^\d{15}$/i.test(strIDno))
+                      return 1; //非法身份证号
+
+               if(aCity[parseInt(strIDno.substr(0,2))]==null)
+               return 2;// 非法地区
+
+                // 15位身份证转换为18位
+               if (idCardLength==15)
+               {
+                  sBirthday = "19" + strIDno.substr(6,2) + "-" + Number(strIDno.substr(8,2)) + "-" + Number(strIDno.substr(10,2));
+                var d = new Date(sBirthday.replace(/-/g,"/"))
+                var dd = d.getFullYear().toString() + "-" + (d.getMonth()+1) + "-" + d.getDate();
+                if(sBirthday != dd)
+                              return 3; //非法生日
+                            strIDno=strIDno.substring(0,6)+"19"+strIDno.substring(6,15);
+                            strIDno=strIDno+GetVerifyBit(strIDno);
+               }
+
+                     // 判断是否大于2078年，小于1900年
+                     var year =strIDno.substring(6,10);
+                     if (year&lt;1900 || year&gt;2078 )
+                         return 3;//非法生日
+
+                  //18位身份证处理
+
+                 //在后面的运算中x相当于数字10,所以转换成a
+                  strIDno = strIDno.replace(/x$/i,"a");
+
+                sBirthday=strIDno.substr(6,4)+"-"+Number(strIDno.substr(10,2))+"-"+Number(strIDno.substr(12,2));
+                var d = new Date(sBirthday.replace(/-/g,"/"))
+                if(sBirthday!=(d.getFullYear()+"-"+ (d.getMonth()+1) + "-" + d.getDate()))
+                              return 3; //非法生日
+                  // 身份证编码规范验证
+                for(var i = 17;i>=0;i --)
+                 iSum += (Math.pow(2,i) % 11) * parseInt(strIDno.charAt(17 - i),11);
+                if(iSum%11!=1)
+                              return 1;// 非法身份证号
+
+                 // 判断是否屏蔽身份证
+                  var words = new Array();
+                  words = new Array("11111119111111111","12121219121212121");
+
+                  for(var k=0;k&lt;words.length;k++){
+                      if (strIDno.indexOf(words[k])!=-1){
+                          return 1;
+                      }
+                  }
+
+               return 0;
+            }
+            参考资料：
+            http://baike.baidu.com/view/118340.htm#1
+
+            匹配IP地址
+            /^(?:(?:[01]?\d{1,2}|2[0-4]\d|25[0-5])\.){3}(?:[01]?\d{1,2}|2[0-4]\d|25[0-5])$/
+            </pre>
+        </div>
+
+    </div>
+
+    <script type="text/javascript" src="./dist/index.js"></script>
+</body>
+</html>

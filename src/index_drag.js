@@ -37,6 +37,8 @@
                     handler.css({'left': _x});
                     drag_bg.css({'width': _x});
                 }else if(_x > maxWidth){  //鼠标指针移动距离达到最大时清空事件
+                    handler.css({'left': maxWidth});
+                    drag_bg.css({'width': maxWidth});
                     dragOk();
                 }
             }

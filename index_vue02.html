@@ -54,9 +54,9 @@
                     <span>id: {{li.id}}</span>
                   </p>
                   <p>id: {{li.name}}</p>
-                  <ul v-for="childLi in li.childData">
+                  <ul v-for="childLi in li.childData" v-show=li.checked>
                     <li :class=childLi.isHover @mousemove.stop=_limouseenter(childLi) @mouseout.stop=_limouseleave(childLi)>
-                      <p @click=_checkThis(childLi,li)>
+                      <p @click=_checkThis(childLi,li,'child')>
                         <input type="checkbox" :checked=childLi.checked />
                         <span>id: {{childLi.id}}</span>
                       </p>
@@ -150,39 +150,41 @@
           },
           methods: {
             // 选中当前元素
-            _checkThis: function (childLi,li) {
+            _checkThis: function (childLi,li,ischild) {
               var is = childLi.checked;
               if(is){
                 childLi.checked = false;
-                this._checkAll(li);
+                // if(ischild == 'child'){
+                //   this._checkAll(li);
+                // }
               }else{
                 childLi.checked = true;
-                this._unselect(childLi.id,li);
+                this._unselect(childLi.id,li,ischild);
               }
             },
             // 判断是否选中所有
-            _checkAll: function (li) {
-              var child = li.childData;
-              var id = li.id;
-              var arr = [];
-              var checkedl = 0;
-              var _listArr = this.$data.listArr;
-              for (var i = 0; i < _listArr.length; i++) {
-                if(_listArr[i].id == id){
-                  arr = _listArr[i].childData;
-                }
-              }
-              for (var j = 0; j < arr.length; j++) {
-                if(child[arr[j]].checked == true){
-                  checkedl++;
-                }
-              }
-              if(checkedl == arr.length){
-                li.checked = true;
-              }else{
-                li.checked = false;
-              }
-            },
+            // _checkAll: function (li) {
+            //   var child = li.childData;
+            //   var id = li.id;
+            //   var arr = [];
+            //   var checkedl = 0;
+            //   var _listArr = this.$data.listArr;
+            //   for (var i = 0; i < _listArr.length; i++) {
+            //     if(_listArr[i].id == id){
+            //       arr = _listArr[i].childData;
+            //     }
+            //   }
+            //   for (var j = 0; j < arr.length; j++) {
+            //     if(child[arr[j]].checked == true){
+            //       checkedl++;
+            //     }
+            //   }
+            //   if(checkedl == arr.length){
+            //     li.checked = true;
+            //   }else{
+            //     li.checked = false;
+            //   }
+            // },
             // mousemover 鼠标移入样式
             _limouseenter: function (li) {
               li.isHover = 'hover';
@@ -192,7 +194,7 @@
               li.isHover = '';
             },
             // 选中 某个 是 取消对应的 选项
-            _unselect: function (id,li) {
+            _unselect: function (id,li,ischild) {
                 var key,_un = this.$data.unselect;
                 if(id == _un[0].id){
                     key = _un[1].id;
@@ -202,7 +204,9 @@
                 if(key){
                   this.$data.list[key].checked = false;
                 }
-                this._checkAll(li);
+                // if(ischild == 'child'){
+                //   this._checkAll(li);
+                // }
             }
           }
         });

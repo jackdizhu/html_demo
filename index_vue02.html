@@ -149,6 +149,7 @@
             return data;
           },
           methods: {
+            // 选中当前元素
             _checkThis: function (childLi,li) {
               var is = childLi.checked;
               if(is){
@@ -159,6 +160,7 @@
                 this._unselect(childLi.id,li);
               }
             },
+            // 判断是否选中所有
             _checkAll: function (li) {
               var child = li.childData;
               var id = li.id;
@@ -180,15 +182,16 @@
               }else{
                 li.checked = false;
               }
-              console.log(li);
-              // console.log(this.$data);
             },
+            // mousemover 鼠标移入样式
             _limouseenter: function (li) {
               li.isHover = 'hover';
             },
+            // mouseout 鼠标移出样式
             _limouseleave: function (li) {
               li.isHover = '';
             },
+            // 选中 某个 是 取消对应的 选项
             _unselect: function (id,li) {
                 var key,_un = this.$data.unselect;
                 if(id == _un[0].id){

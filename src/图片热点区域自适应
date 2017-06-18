@@ -1,0 +1,30 @@
+// 设置 图片热点区域
+    function set_area(mapD,Multiple) {
+       var _arrS = '';
+       var _arr = [];
+       for (var i = 0; i < mapD.length; i++) {
+           _arr = [];
+           _arrS = $(mapD[i]).attr('coords');
+           _arr = _arrS.split(',');
+           for (var j = 0; j < _arr.length; j++) {
+               _arr[j] = _arr[j] * Multiple;
+           }
+           _arrS = _arr.join(',');
+           $(mapD[i]).attr('coords',_arrS);
+       }
+   }
+   function set_map() {
+        var img = $('.mapImg');
+        var Dimg,mapD,imgW,imgW01,Multiple;
+        for (var i = 0; i < img.length; i++) {
+            Dimg = $(img[i]);
+            mapD = $(Dimg.attr('usemap')).find('area');
+            imgW = $('#img01')[0].naturalWidth || 1980;
+            imgW01 = $('#img01')[0].innerWidth || 990;
+            Multiple = imgW01 / imgW;
+            set_area(mapD,Multiple);
+        }
+   }
+
+   window.onload = set_map;
+   

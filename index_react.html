@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1"/>
+    <meta name="renderer" content="webkit" />
+
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+    <meta name="format-detection" content="telephone=no" />
+    <meta http-equiv="Expires" content="-1"/>
+
+    <meta http-equiv="Cache-Control" content="no-cache"/>
+    <meta http-equiv="Pragma" content="no-cache"/>
+    <title>前端笔记_jackdizhu</title>
+    <link rel="shortcut icon" href="/favicon.ico"/>
+
+    <style type="text/css" id="style">
+      pre{
+        width: 100%;
+        white-space: pre-wrap;
+      }
+    </style>
+
+</head>
+<body>
+    <header>
+        jackdizhu React
+    </header>
+    <div class="content">
+        
+        <h5><a name="react" id="react"></a><span>react</span></h5>
+        <div class="clearfix">
+            <pre>
+            &lt;div id="react"&gt;
+            &lt;/div&gt;
+
+            &lt;script type="text/babel"&gt;
+
+                (function () {
+                  'use strict';
+
+                  var _msg = React.createClass({
+                    getInitialState: function (){
+                      return {show: true};
+                    },
+                    _click: function (){
+                      var dom = this.refs.msgP;
+                      var show;
+                      if(this.state.show == true){
+                        show = false;
+                      }else{
+                        show = true;
+                      }
+                      this.setState({
+                        show: show
+                      });
+                      console.log(dom);
+                    },
+                    render: function() {
+                      var style={fontSize:16};
+                      var show = this.state.show ? 'show' : 'hide';
+                      var className = 'asdf '+this.props.name;
+                      return &lt;p ref="msgP" style={{fontSize:16}} data-aa="sadkf" htmlFor={this.props.name} className={'asdf '+this.props.name+' '+this.props.class} onClick={this._click}&gt;( p -&gt; {this.props.name} -&gt; {show} )&lt;/p&gt;;
+                    }
+                  });
+
+                  var data = ['name','name1','name2'];
+
+                  function _click(){
+                    console.log('_click');
+                  }
+
+                  ReactDOM.render(
+                    &lt;div&gt;
+                      &lt;_msg name="msgnnn" opactiy=".6" class='p01 p02'/&gt;
+                      {
+                        data.map(key =&gt; {
+                          return &lt;span onClick={_click}&gt;{key}&lt;/span&gt;
+                        })
+                      }
+                    &lt;/div&gt;,
+                    document.getElementById('react')
+                  );
+
+                }());
+
+            &lt;/script&gt;
+            </pre>
+        </div>
+
+    </div>
+
+    <script type="text/javascript" src="./dist/index.js"></script>
+</body>
+</html>

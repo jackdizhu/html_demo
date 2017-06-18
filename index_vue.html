@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1"/>
+    <meta name="renderer" content="webkit" />
+
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+    <meta name="format-detection" content="telephone=no" />
+    <meta http-equiv="Expires" content="-1"/>
+
+    <meta http-equiv="Cache-Control" content="no-cache"/>
+    <meta http-equiv="Pragma" content="no-cache"/>
+    <title>前端笔记_jackdizhu</title>
+    <link rel="shortcut icon" href="/favicon.ico"/>
+
+    <style type="text/css" id="style">
+      pre{
+        width: 100%;
+        white-space: pre-wrap;
+      }
+    </style>
+
+</head>
+<body>
+    <header>
+        jackdizhu Vue
+    </header>
+    <div class="content">
+
+        <h5><a name="vue" id="vue"></a><span>vue</span></h5>
+        <div class="clearfix">
+            <pre>
+            &lt;div id="vue"&gt;
+                &lt;span v-for="item in items"&gt;
+                  {{ item.name }}
+                &lt;/span&gt;
+                &lt;span v-show="show2" @click="showHide"&gt;
+                  ( span v-show 02 ....) --&gt; component01
+                &lt;/span&gt;
+                &lt;component01 message="hello" :_show="show"&gt;&lt;/component01&gt;
+            &lt;/div&gt;
+
+            &lt;script&gt;
+            (function () {
+              'use strict';
+
+              Vue.component('component01', {
+                props: ['message','_show'],
+                template: '&lt;div v-show="_show"&gt;A custom component {{message}}! -&gt; {{_show}}&lt;/div&gt;'
+              });
+              var app = new Vue({
+                el: '#vue',
+                data: {
+                  show: true,
+                  show2: true,
+                  items: [
+                    {name: 'aaa'},
+                    {name: 'bbb'},
+                  ],
+                  message: 'ssssssss'
+                },
+                methods: {
+                  showHide: function (){
+                    var is = this.show == true;
+                    if(is){
+                      this.show = false;
+                    }else{
+                      this.show = true;
+                    }
+                  }
+                },
+              });
+
+            }());
+            &lt;/script&gt;
+            </pre>
+        </div>
+
+    </div>
+
+    <script type="text/javascript" src="./dist/index.js"></script>
+</body>
+</html>

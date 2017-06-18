@@ -1204,6 +1204,14 @@
         <h5><a name="javascript" id="javascript"></a><span>javascript</span></h5>
         <div class="clearfix">
             <pre>
+            // keyup 时间数据 按下 900 毫秒 异步请求
+            setTimeout(function () {
+                var _t = new Date().getTime();
+                var _keyT =  _t - keyT;
+                if(keyT && (_keyT > 850)){
+                    _post();
+                }
+            },900);
             // 页面设置 多个 window.onload 解决方案  &lt;body onload="fn_onload();"&gt;
             (function () {
               'use strict';

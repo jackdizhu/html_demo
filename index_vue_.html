@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1"/>
+    <meta name="renderer" content="webkit" />
+
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+    <meta name="format-detection" content="telephone=no" />
+    <meta http-equiv="Expires" content="-1"/>
+
+    <meta http-equiv="Cache-Control" content="no-cache"/>
+    <meta http-equiv="Pragma" content="no-cache"/>
+    <title>前端笔记_jackdizhu</title>
+    <link rel="shortcut icon" href="/favicon.ico"/>
+
+    <style type="text/css" id="style">
+      body{
+        -moz-user-select: none;
+        -webkit-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+      }
+      pre{
+        width: 100%;
+        white-space: pre-wrap;
+      }
+      ul,li{
+        margin: 0;
+      }
+      li{
+        cursor: pointer;
+      }
+      li.hover{
+        background-color: #eee;
+      }
+    </style>
+    <script type="text/javascript" src="./cdn/vue.js"></script>
+
+</head>
+<body>
+    <header>
+        jackdizhu Vue_React
+    </header>
+    <div class="content">
+
+        <div id="vue">
+            <ul>
+              <li v-for="li in list" :class=li.isHover @mousemove.stop=_limouseenter(li) @mouseout.stop=_limouseleave(li)>
+                  <p @click=_checkThis(li)>
+                    <input type="checkbox" :checked=li.checked />
+                    <span>id: {{li.id}}</span>
+                  </p>
+                  <p>id: {{li.name}}</p>
+                  <ul v-for="childLi in li.childData">
+                    <li :class=childLi.isHover @mousemove.stop=_limouseenter(childLi) @mouseout.stop=_limouseleave(childLi)>
+                      <p @click=_checkThis(childLi,li)>
+                        <input type="checkbox" :checked=childLi.checked />
+                        <span>id: {{childLi.id}}</span>
+                      </p>
+                      <p>id: {{childLi.name}}</p>
+                    </li>
+                  </ul>
+              </li>
+            </ul>
+        </div>
+
+    </div>
+
+    <script type="text/javascript">
+        var _vue = new Vue({
+          el: '#vue',
+          data: function () {
+            var data = {
+              // 列表数据
+              list: {
+                id1: {
+                  checked: false,
+                  isHover: '',
+                  id: 'id1',
+                  name: 'name01 (选中id1 不能选中 id2)',
+                  childData: {
+                    id0101: {
+                      checked: false,
+                      isHover: '',
+                      id: 'id0101',
+                      name: 'name0101',
+                    },
+                  }
+                },
+                id2: {
+                  checked: false,
+                  isHover: '',
+                  id: 'id2',
+                  name: 'name02 (选中id2 不能选中 id1)',
+                  childData: {
+                    id0201: {
+                      checked: false,
+                      isHover: '',
+                      id: 'id0201',
+                      name: 'name0201',
+                    },
+                    id0202: {
+                      checked: false,
+                      isHover: '',
+                      id: 'id0202',
+                      name: 'name0202',
+                    },
+                  }
+                },
+                id3: {
+                  checked: false,
+                  isHover: '',
+                  id: 'id3',
+                  name: 'name03',
+                  childData: {
+                    id0301: {
+                      checked: false,
+                      isHover: '',
+                      id: 'id0301',
+                      name: 'name0301',
+                    },
+                  }
+                }
+
+              },
+              // 所有数据 id 数组
+              listArr: [
+                {id: 'id1',childData:['id0101'],checkAll: false},
+                {id: 'id2',childData:['id0201','id0202'],checkAll: false},
+                {id: 'id3',childData:['id0301'],checkAll: false},
+              ],
+              // 当前选中项
+              select: [
+                {id: 'id1',childData:['id1'],checkAll: false},
+                {id: 'id3',childData:['id1'],checkAll: false},
+              ],
+              // 两个 只能选一个
+              unselect: [
+                {id: 'id1',childData:['id1'],checkAll: false},
+                {id: 'id2',childData:['id1'],checkAll: false},
+              ],
+            };
+            for (var i = 0; i < data.select.length; i++) {
+                data.list[data.select[i].id].checked = true;
+            }
+            return data;
+          },
+          methods: {
+            _checkThis: function (childLi,li) {
+              var is = childLi.checked;
+              if(is){
+                childLi.checked = false;
+                this._checkAll(li);
+              }else{
+                childLi.checked = true;
+                this._unselect(childLi.id,li);
+              }
+            },
+            _checkAll: function (li) {
+              var child = li.childData;
+              var id = li.id;
+              var arr = [];
+              var checkedl = 0;
+              var _listArr = this.$data.listArr;
+              for (var i = 0; i < _listArr.length; i++) {
+                if(_listArr[i].id == id){
+                  arr = _listArr[i].childData;
+                }
+              }
+              for (var j = 0; j < arr.length; j++) {
+                if(child[arr[j]].checked == true){
+                  checkedl++;
+                }
+              }
+              if(checkedl == arr.length){
+                li.checked == true;
+              }else{
+                li.checked == false;
+              }
+              console.log(li);
+              // console.log(this.$data);
+            },
+            _limouseenter: function (li) {
+              li.isHover = 'hover';
+            },
+            _limouseleave: function (li) {
+              li.isHover = '';
+            },
+            _unselect: function (id,li) {
+                var key,_un = this.$data.unselect;
+                if(id == _un[0].id){
+                    key = _un[1].id;
+                }else if(id == _un[1].id){
+                    key = _un[0].id;
+                }
+                if(key){
+                  this.$data.list[key].checked = false;
+                }
+                this._checkAll(li);
+            }
+          }
+        });
+    </script>
+</body>
+</html>

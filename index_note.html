@@ -563,7 +563,20 @@
                 content:'';
                 vertical-align:top;
             }
-            // displayFlex 兼容样式
+            // items 左右居中上下底部显示
+            .displayFlex_cenBot{
+                display: -webkit-box;
+                display: -webkit-flex;
+                display: flex;
+                -webkit-box-pack: center;
+                -webkit-justify-content: center;
+                justify-content: center;
+
+                -webkit-box-align: end;
+                -webkit-align-items: flex-end;
+                align-items: flex-end;
+            }
+            // items 左右居中上下居中显示
             .displayFlex{
                 display: -webkit-box;
                 display: -webkit-flex;

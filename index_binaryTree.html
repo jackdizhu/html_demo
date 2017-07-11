@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1"/>
+    <meta name="renderer" content="webkit" />
+
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+    <meta name="format-detection" content="telephone=no" />
+    <meta http-equiv="Expires" content="-1"/>
+
+    <meta http-equiv="Cache-Control" content="no-cache"/>
+    <meta http-equiv="Pragma" content="no-cache"/>
+    <title>前端笔记_jackdizhu</title>
+    <link rel="shortcut icon" href="/favicon.ico"/>
+
+    <style type="text/css" id="style">
+      pre{
+        width: 100%;
+        white-space: pre-wrap;
+      }
+    </style>
+    <style type="text/css">
+        dl{
+            background-color: #eee;
+        }
+        dt{
+            background-color: #ddd;
+        }
+        dd{
+            background-color: #ccc;
+        }
+    </style>
+
+</head>
+<body>
+    <header>
+        jackdizhu 前端笔记
+    </header>
+    
+    <div class="content">
+        <div id="app"></div>
+        <div id="app2"></div>
+    </div>
+    
+    <script>
+        var O = {
+            name: 'root',
+            l: {
+                name: 'rl',
+                l: {
+                    name: 'rll'
+                },
+                r: {
+                    name: 'rlr'
+                }
+            },
+            r: {
+                name: 'rr',
+                l: {
+                    name: 'rl',
+                    l: {
+                        name: 'rll'
+                    },
+                    r: {
+                        name: 'rlr'
+                    }
+                }
+            }
+        };
+
+
+        function fn_o(Obj) {
+            var _this = {};
+            _this.name = Obj.name;
+            if(Obj.l){
+                _this.l = fn_o(Obj.l);
+            }
+            if(Obj.r){
+                _this.r = fn_o(Obj.r);
+            }
+            return _this;
+        }
+
+        function fn_o2(Obj) {
+            var _this = '';
+            _this += '<dl><dt>' + Obj.name + '</dt>';
+            if(Obj.l){
+                _this += '<dd>' + fn_o2(Obj.l) + '</dd>';
+            }
+            if(Obj.r){
+                _this += '<dd>' + fn_o2(Obj.r) + '</dd>';
+            }
+            _this += '</dl>';
+            return _this;
+        }
+
+        var x = fn_o(O);
+        var x2 = fn_o2(O);
+
+        document.querySelector('#app').innerHTML = JSON.stringify(x);
+        document.querySelector('#app2').innerHTML = x2;
+
+    </script>
+</body>
+</html>

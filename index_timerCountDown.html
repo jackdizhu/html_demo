@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1"/>
+    <meta name="renderer" content="webkit" />
+
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+    <meta name="format-detection" content="telephone=no" />
+    <meta http-equiv="Expires" content="-1"/>
+
+    <meta http-equiv="Cache-Control" content="no-cache"/>
+    <meta http-equiv="Pragma" content="no-cache"/>
+    <title>H5 Picker _jackdizhu</title>
+    <link rel="shortcut icon" href="/favicon.ico"/>
+
+    <style type="text/css" id="style">
+    </style>
+
+</head>
+<body>
+    <style type="text/css">
+    @-webkit-keyframes q-process{from{background-position:-100%}to{background-position:0}}
+    @keyframes q-process{from{background-position:-100%}to{background-position:0}}
+    .progress {
+        border: 1px solid #ffd02f;
+        border-radius: .10666667rem;
+        background-color: #fffcb8;
+        width: auto;
+        margin-right: 0;
+        height: .72533333rem;
+        margin-top: .02133333rem;
+        text-align: center;
+        position: relative;
+    }
+    .progress .progress-bg {
+        background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABYAAAAWBAMAAAA2mnEIAAAAG1BMVEX/1ED/wAD/zy//zCb/0jb/wwn/xhH/yRz/yRo98q8PAAAAcklEQVQY02NgYBIEAnEGMDAEsQ3ATHYQswkinAhkCjNAAEhYAcxyBbFDwEwmQSBbDGoGiN0AZnIIAtnCcDMYYBoFgWyYRhAbphFuhgZIuADMZBZEWF6IsJxNEG45SyBCoyJ2jY1ApiiSRhOIMEijEMQMAB0CDdue4rYpAAAAAElFTkSuQmCC);
+        height: 100%;
+        width: 0;
+        position: absolute;
+        z-index: 0;
+        top: 0;
+        left: 0;
+        -webkit-animation: q-process 2s linear infinite;
+        animation: q-process 2s linear infinite;
+    }
+    .progress span {
+        font-size: .512rem;
+        line-height: .68266667rem;
+        vertical-align: center;
+        color: #fff;
+        text-shadow: 1px 1px 1px rgba(0,0,0,.5);
+        z-index: 9;
+        position: absolute;
+        left: 50%;
+        -webkit-transform: translateX(-50%);
+        transform: translateX(-50%);
+    }
+    * {
+        box-sizing: border-box;
+    }
+</style>
+
+
+<div class="progress">
+  <span class="spanrob">已抢<b>90%</b></span>
+  <div class="progress-bg" style="width: 90%;"></div>
+</div>
+<p class="countdown" id="seckillADHt2"><span>02</span>:<span>18</span>:<span>50</span>:<span>05</span></p>
+<p class="countdown" id="seckillADHt"><span>02</span>:<span>18</span>:<span>50</span></p>
+
+<script>
+
+    // 简单时间倒计时
+    function fn_timerCountDown2(Obj){
+
+        function showTime(Obj) {
+            var T = Obj.T;
+            var dom = Obj.dom;
+            var Ht = Obj.Ht;
+            Obj.mmss = Obj.mmss >= 0 ? Obj.mmss : 9;
+
+            var day=0,
+                hour=0,
+                minute=0,
+                second=0;
+
+            day = Math.floor(T / (60 * 60 * 24)) + '';
+            hour = Math.floor(T / (60 * 60)) - (day * 24) + '';
+            minute = Math.floor(T / 60) - (day * 24 * 60) - (hour * 60) + '';
+            second = Math.floor(T) - (day * 24 * 60 * 60) - (hour * 60 * 60) - (minute * 60) + '';
+
+            if (hour <= 9) {hour = '0' + hour;}
+            if (minute <= 9) {minute = '0' + minute;}
+            if (second <= 9) {second = '0' + second;}
+
+            Obj.mmss--;
+            var mmss = '0' + (Obj.mmss + 1);
+
+            day = '<i>'+day+'</i>';
+            hour = '<i>'+hour[0]+'</i><i>'+hour[1]+'</i>';
+            minute = '<i>'+minute[0]+'</i><i>'+minute[1]+'</i>';
+            second = '<i>'+second[0]+'</i><i>'+second[1]+'</i>';
+
+            Ht = Ht.replace(/{dd}/,day);
+            Ht = Ht.replace(/{hh}/,hour);
+            Ht = Ht.replace(/{mm}/,minute);
+            Ht = Ht.replace(/{ss}/,second);
+            Ht = Ht.replace(/{mmss}/,mmss);
+            document.getElementById(dom).innerHTML = Ht;
+
+        }
+        var T = Obj.T;
+        var dom = Obj.dom;
+        var time=window.setInterval(function(){
+            var day=0,
+                hour=0,
+                minute=0,
+                second=0;
+            if(T > 0){
+                if(Obj.mmss == 0){
+                    T--;
+                    Obj.T = T;
+                }
+                    showTime(Obj);
+            }else{
+                clearInterval(time);
+                return false;
+            }
+        }, 100);
+    }
+    function fn_timerCountDown(Obj){
+
+        function showTime(Obj) {
+            var T = Obj.T;
+            var dom = Obj.dom;
+            var Ht = Obj.Ht;
+
+            var day=0,
+                hour=0,
+                minute=0,
+                second=0;
+
+            day = Math.floor(T / (60 * 60 * 24)) + '';
+            hour = Math.floor(T / (60 * 60)) - (day * 24) + '';
+            minute = Math.floor(T / 60) - (day * 24 * 60) - (hour * 60) + '';
+            second = Math.floor(T) - (day * 24 * 60 * 60) - (hour * 60 * 60) - (minute * 60) + '';
+
+            if (hour <= 9) {hour = '0' + hour;}
+            if (minute <= 9) {minute = '0' + minute;}
+            if (second <= 9) {second = '0' + second;}
+
+            day = '<i>'+day+'</i>';
+            hour = '<i>'+hour[0]+'</i><i>'+hour[1]+'</i>';
+            minute = '<i>'+minute[0]+'</i><i>'+minute[1]+'</i>';
+            second = '<i>'+second[0]+'</i><i>'+second[1]+'</i>';
+
+            Ht = Ht.replace(/{dd}/,day);
+            Ht = Ht.replace(/{hh}/,hour);
+            Ht = Ht.replace(/{mm}/,minute);
+            Ht = Ht.replace(/{ss}/,second);
+            document.getElementById(dom).innerHTML = Ht;
+
+        }
+        var T = Obj.T;
+        var dom = Obj.dom;
+        var time=window.setInterval(function(){
+            var day=0,
+                hour=0,
+                minute=0,
+                second=0;
+            if(T > 0){
+                    T--;
+                    Obj.T = T;
+                    showTime(Obj);
+            }else{
+                clearInterval(time);
+                return false;
+            }
+        }, 1000);
+    }
+    fn_timerCountDown2({
+        T: 666666,
+        dom: 'seckillADHt2',
+        Ht: '<span class="hh">{hh}</span>:<span class="mm">{mm}</span>:<span class="ss">{ss}</span>:<span>{mmss}</span>'
+    });
+    fn_timerCountDown({
+        T: 666666,
+        dom: 'seckillADHt',
+        Ht: '<span class="hh">{hh}</span>:<span class="mm">{mm}</span>:<span class="ss">{ss}</span>'
+    });
+
+</script>
+
+
+    <script type="text/javascript" src="./dist/index_picker.js"></script>
+</body>
+</html>

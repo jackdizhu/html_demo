@@ -21,7 +21,83 @@
 
 </head>
 <body>
+    <script type="text/javascript" src="./dist/index.js"></script>
+    <script type="text/javascript" src="./cdn/jquery.min.js"></script>
+    <script>
+        /**
+         * 设置光标位置
+         */
+        function setCursorPos(obj_dom, index){
 
+            if(navigator.userAgent.indexOf("MSIE") > -1){
+                var range = document.selection.createRange();
+                var textRange = obj_dom.createTextRange();
+                textRange.moveStart('character',index);
+                textRange.collapse();
+                textRange.select();
+            }else{
+                obj_dom.setSelectionRange(n,n);
+            }
+        }
+
+        /**
+         * 获取光标位置
+         */
+        function getCursorPos(obj_dom){
+             if(navigator.userAgent.indexOf("MSIE") > -1) { // IE
+                var range = document.selection.createRange();
+                range.text = '';
+                range.setEndPoint('StartToStart',obj_dom.createTextRange());
+                return range.text.length;
+            } else {
+                return obj_dom.selectionStart;
+            }
+        }
+        /**
+         * 获取光标 位置 选中文本
+         */
+        function getCursorIndex(obj_dom) {
+          var nullvalue = -1;
+          var selectStart; //选中开始位置
+          var selectEnd; //选中结束位置
+          var position; //焦点位置
+          var selectText; //选中内容
+          if (obj_dom.setSelectionRange) { //非IE浏览器
+            selectStart = obj_dom.selectionStart;
+            selectEnd = obj_dom.selectionEnd;
+            if (selectStart == selectEnd) {
+              position = obj_dom.selectionStart;
+              selectStart = nullvalue;
+              selectEnd = nullvalue;
+            } else {
+              position = nullvalue;
+            }
+            selectText = obj_dom.value.substring(selectStart, selectEnd);
+          } else { //IE
+            var range = document.selection.createRange();
+            selectText = range.text;
+            range.moveStart("character", -obj_dom.value.length);
+            position = range.text.length;
+            selectStart = position - (selectText.length);
+            selectEnd = selectStart + (selectText.length);
+            if (selectStart != selectEnd) {
+              position = nullvalue;
+            } else {
+              selectStart = nullvalue;
+              selectEnd = nullvalue;
+            }
+          }
+          var _ = {
+            position: position,
+            selectStart: selectStart,
+            selectEnd: selectEnd,
+            selectText: selectText
+          }
+          console.log(_);
+          return _;
+        }
+
+    </script>
     <header>
         jackdizhu 主页
     </header>
@@ -29,88 +105,11 @@
 
         <h5><span>input 获取光标位置</span></h5>
         <div class="clearfix">
-            
+            <input type="text" id="txt" value="撒开订货会卡死你啥都看见" onclick="getCursorIndex(this);">点击文本框内容触发事件<br/>
         </div>
         
     </div>
 
-    <script type="text/javascript" src="./dist/index.js"></script>
-    <script type="text/javascript" src="./cdn/jquery.min.js"></script>
-    <script>
-/**
- * 设置光标位置
- */
-function setCursorPos(obj_dom, index){
-
-    if(navigator.userAgent.indexOf("MSIE") > -1){
-        var range = document.selection.createRange();
-        var textRange = obj_dom.createTextRange();
-        textRange.moveStart('character',index);
-        textRange.collapse();
-        textRange.select();
-    }else{
-        obj_dom.setSelectionRange(n,n);
-    }
-}
-
-/**
- * 获取光标位置
- */
-function getCursorPos(obj_dom){
-     if(navigator.userAgent.indexOf("MSIE") > -1) { // IE
-        var range = document.selection.createRange();
-        range.text = '';
-        range.setEndPoint('StartToStart',obj_dom.createTextRange());
-        return range.text.length;
-    } else {
-        return obj_dom.selectionStart;
-    }
-}
-/**
- * 获取光标 位置 选中文本
- */
-function getCursorIndex(obj_dom) {
-  var nullvalue = -1;
-  var selectStart; //选中开始位置
-  var selectEnd; //选中结束位置
-  var position; //焦点位置
-  var selectText; //选中内容
-  if (obj_dom.setSelectionRange) { //非IE浏览器
-    selectStart = obj_dom.selectionStart;
-    selectEnd = obj_dom.selectionEnd;
-    if (selectStart == selectEnd) {
-      position = obj_dom.selectionStart;
-      selectStart = nullvalue;
-      selectEnd = nullvalue;
-    } else {
-      position = nullvalue;
-    }
-    selectText = obj_dom.value.substring(selectStart, selectEnd);
-  } else { //IE
-    var range = document.selection.createRange();
-    selectText = range.text;
-    range.moveStart("character", -obj_dom.value.length);
-    position = range.text.length;
-    selectStart = position - (selectText.length);
-    selectEnd = selectStart + (selectText.length);
-    if (selectStart != selectEnd) {
-      position = nullvalue;
-    } else {
-      selectStart = nullvalue;
-      selectEnd = nullvalue;
-    }
-  }
-  var _ = {
-    position: position,
-    selectStart: selectStart,
-    selectEnd: selectEnd,
-    selectText: selectText
-  }
-  console.log(_);
-  return _;
-}
-
-</script>
-<input type="text" id="txt" value="撒开订货会卡死你啥都看见" onclick="getCursorIndex(this);">点击文本框内容触发事件<br/>
+    
 </body>
 </html>

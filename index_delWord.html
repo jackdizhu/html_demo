@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1"/>
+    <meta name="renderer" content="webkit" />
+
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+    <meta name="format-detection" content="telephone=no" />
+    <meta http-equiv="Expires" content="-1"/>
+
+    <meta http-equiv="Cache-Control" content="no-cache"/>
+    <meta http-equiv="Pragma" content="no-cache"/>
+    <title>jackdizhu 主页</title>
+    <link rel="shortcut icon" href="/favicon.ico"/>
+
+    <style type="text/css" id="style">
+    </style>
+
+</head>
+<body>
+
+<header>
+        jackdizhu 主页
+    </header>
+    <div class="content">
+
+        <h5><span>input 一次删除整个单词</span></h5>
+        <div class="clearfix">
+            <textarea name="" id="demo" cols="30" rows="10"></textarea>
+        </div>
+        
+    </div>
+
+    <script type="text/javascript" src="./dist/index.js"></script>
+    <script type="text/javascript" src="./cdn/jquery.min.js"></script>
+    <script type="text/javascript">
+        var getCursortPosition = function(ctrl) {
+        var CaretPos = 0;
+        // IE Support
+        if (document.selection) {
+          ctrl.focus();
+          var Sel = document.selection.createRange();
+          Sel.moveStart('character', -ctrl.value.length);
+          CaretPos = Sel.text.length;
+        }
+        // Firefox support
+        else if (ctrl.selectionStart || +ctrl.selectionStart === 0) {
+          CaretPos = ctrl.selectionStart;
+        }
+        return (CaretPos);
+      };
+
+      var selectSomeText = function(element, begin, end) {
+        if (element.setSelectionRange) {
+          element.setSelectionRange(begin, end);
+        } else if (element.createTextRange) {
+          var range = element.createTextRange();
+          range.moveStart("character", begin);
+          range.moveEnd("character", end);
+          range.select();
+        }
+      };
+
+      var delWholeWord = function(text, field, pos) {
+        var startIndex = pos;
+        if (field.charAt(pos - 1) !== ' ') {
+          for (var i = pos - 2; i >= 0; i--) {
+            if (field.charAt(i) === ' ' || i === 0) {
+              startIndex = i;
+              break;
+            }
+          }
+          selectSomeText(text, startIndex, pos)
+        }
+
+      };
+      $('#demo').keydown(function(event) {
+        if (event.keyCode !== 8) {
+          return;
+        }
+        var bodyText = $(this)[0];
+        var bodyField = $(this).val();
+        var pos = getCursortPosition(bodyText);
+        delWholeWord(bodyText, bodyField, pos);
+      });
+    </script>
+</body>
+</html>

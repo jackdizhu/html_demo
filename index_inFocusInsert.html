@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1"/>
+    <meta name="renderer" content="webkit" />
+
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+    <meta name="format-detection" content="telephone=no" />
+    <meta http-equiv="Expires" content="-1"/>
+
+    <meta http-equiv="Cache-Control" content="no-cache"/>
+    <meta http-equiv="Pragma" content="no-cache"/>
+    <title>jackdizhu 主页</title>
+    <link rel="shortcut icon" href="/favicon.ico"/>
+
+    <style type="text/css" id="style">
+    </style>
+
+</head>
+<body>
+
+    <header>
+        jackdizhu 主页
+    </header>
+    <div class="content">
+
+        <h5><span>input 光标位置插入内容</span></h5>
+        <div class="clearfix">
+            <ul>
+                <li>
+                    <input />
+                    <div>
+                    </div>
+                </li>
+            </ul>
+            <input id="hid" type="text" value="" style="display: none" />
+            <span id="numd" style="border: 1px solid red; clear: both; display: inline-block; font: 800em;">
+                <input type="text" id="Nm" name="Nm" value="" />
+                <div style="display: none; border: 1px solid #A2B4C6; width: 150px; height: 400px;"
+                    id="keybored">
+                    <input type="button" class="readbtns" value="1" />
+                    <input type="button" class="readbtns" value="2" />
+                    <input type="button" class="readbtns" value="3" />
+                    <input type="button" class="readbtns" value="4" />
+                    <input type="button" class="readbtns" value="5" />
+                    <input type="button" class="readbtns" value="6" />
+                    <input type="button" class="readbtns" value="7" />
+                    <input type="button" class="readbtns" value="8" />
+                    <input type="button" class="readbtns" value="9" />
+                </div>
+            </span>
+        </div>
+        
+    </div>
+
+    <script type="text/javascript" src="./dist/index.js"></script>
+    <script type="text/javascript">
+        (function ($) {
+            var _ = {
+                insertAtCaret: function (myValue) {
+                    var $t = $(this)[0];
+                    if (document.selection) {
+                        this.focus();
+                        sel = document.selection.createRange();
+                        sel.text = myValue;
+                        this.focus();
+                    } else
+                        if ($t.selectionStart || $t.selectionStart == '0') {
+                            var startPos = $t.selectionStart;
+                            var endPos = $t.selectionEnd;
+                            var scrollTop = $t.scrollTop;
+                            $t.value = $t.value.substring(0, startPos) + myValue + $t.value.substring(endPos, $t.value.length);
+                            this.focus();
+                            $t.selectionStart = startPos + myValue.length;
+                            $t.selectionEnd = startPos + myValue.length;
+                            $t.scrollTop = scrollTop;
+                        } else {
+                            this.value += myValue;
+                            this.focus();
+                        }
+                }
+            };
+
+            $.fn.insertAtCaret = _.insertAtCaret;
+        })(jQuery);
+
+        $(document).ready(function () {
+            $("#numd").bind("mouseleave", function () {
+                document.getElementById('keybored').style.display = 'none';
+                document.getElementById('Nm').blur();
+            });
+
+            $("#Nm").focus(function () {
+                document.getElementById('keybored').style.display = '';
+            });
+            $(".readbtns").click(function () {
+                $("#Nm").insertAtCaret($(this).val());
+
+            });
+        });
+
+    </script>
+</body>
+</html>

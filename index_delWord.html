@@ -65,17 +65,14 @@
       };
 
       var delWholeWord = function(text, field, pos) {
-        var startIndex = pos;
-        if (field.charAt(pos - 1) !== ' ') {
-          for (var i = pos - 2; i >= 0; i--) {
-            if (field.charAt(i) === ' ' || i === 0) {
-              startIndex = i;
-              break;
+          var startIndex = pos;
+            // 匹配正则 删除多个字符
+            var is = field.match(/([a-zA-Z]+)$/);
+            // console.log(is);
+            if(is){
+              startIndex = is.index;
             }
-          }
-          selectSomeText(text, startIndex, pos)
-        }
-
+            selectSomeText(text, startIndex, pos)
       };
       $('#demo').keydown(function(event) {
         if (event.keyCode !== 8) {

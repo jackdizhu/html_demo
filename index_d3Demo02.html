@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1"/>
+    <meta name="renderer" content="webkit" />
+
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+    <meta name="format-detection" content="telephone=no" />
+    <meta http-equiv="Expires" content="-1"/>
+
+    <meta http-equiv="Cache-Control" content="no-cache"/>
+    <meta http-equiv="Pragma" content="no-cache"/>
+    <title>jackdizhu 主页</title>
+    <link rel="shortcut icon" href="/favicon.ico"/>
+
+    <style type="text/css" id="style">
+    </style>
+
+</head>
+<body>
+
+<header>
+        jackdizhu 主页
+    </header>
+    <div class="content">
+
+        <h5><span>d3 简单应用 画矩形</span></h5>
+        <div class="clearfix">
+            <div id="app"></div>
+        </div>
+        
+    </div>
+
+    <script type="text/javascript" src="./dist/index.js"></script>
+    <script src="//d3js.org/d3.v3.min.js" charset="utf-8"></script>
+     <script type="text/javascript">
+        var w = 200;
+        var h = 200;
+
+        var pie = d3.layout.pie();
+        var dataset = [ 30 , 10 , 43 , 55 , 13 ]; // 生成 dataset.length 个矩形
+        var piedata = pie(dataset);
+
+        var outerRadius = 100; //外半径
+        var innerRadius = 0; //内半径，为0则中间没有空白
+
+
+        var svg = d3.select("#app") // 选择页面中id=app
+            .append("svg")//生成svg标签
+            .attr("width", w)//设定svg宽度
+            .attr("height", h);//设定svg高度
+
+        var arc = d3.svg.arc()  //弧生成器
+            .innerRadius(innerRadius)   //设置内半径
+            .outerRadius(outerRadius);  //设置外半径
+
+        var arcs = svg.selectAll("g")
+            .data(piedata)
+            .enter()
+            .append("g")
+            .attr("transform","translate("+ (w/2) +","+ (w/2) +")");
+
+        var color = d3.scale.category10();   //有十种颜色的颜色比例尺
+        arcs.append("path")
+            .attr("fill",function(d,i){
+                return color(i);
+            })
+            .attr("d",function(d){
+                return arc(d);   //调用弧生成器，得到路径值
+            });
+        arcs.append("text")
+            .attr("transform",function(d){
+                return "translate(" + arc.centroid(d) + ")";
+            })
+            .attr("text-anchor","middle")
+            .text(function(d){
+                return d.data;
+            });
+     </script>
+</body>
+</html>

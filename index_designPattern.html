@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1"/>
+    <meta name="renderer" content="webkit" />
+
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+    <meta name="format-detection" content="telephone=no" />
+    <meta http-equiv="Expires" content="-1"/>
+
+    <meta http-equiv="Cache-Control" content="no-cache"/>
+    <meta http-equiv="Pragma" content="no-cache"/>
+    <title>jackdizhu 主页</title>
+    <link rel="shortcut icon" href="/favicon.ico"/>
+
+    <style type="text/css" id="style">
+    </style>
+
+</head>
+<body>
+
+<header>
+        jackdizhu 主页
+    </header>
+    <div class="content">
+
+        <h5><span>input 一次删除整个单词</span></h5>
+        <div class="clearfix">
+            <pre>
+                // ----工厂模式--------------------------------------------
+                var Car = (function () {
+                    var Car = function (model, year, miles) {
+                        this.model = model;
+                        this.year = year;
+                        this.miles = miles;
+                    };
+                    return function (model, year, miles) {
+                        return new Car(model, year, miles);
+                    };
+                })();
+
+                var tom = new Car("Tom", 2009, 20000);
+                var dudu = new Car("Dudu", 2010, 5000);
+                // ----观察者模式(订阅)----------------------------
+                var __ = {};  // 定义发布者
+                (function (q) {
+                  var list = [], //回调函数 数组
+                    subUid = -1; //回调函数 对应 id ++ 从0 开始
+                  // 发布消息,遍历订阅者
+                  q.target = function (type, content) {
+                    // type 为订阅类型，content为订阅内容
+                    // 如果没有订阅，直接返回
+                    if (!list[type]) {
+                      return false;
+                    }
+                    setTimeout(function () {
+                      var ons = list[type],
+                        len = ons ? ons.length : 0;
+
+                      while (len--) {
+                        // 将内容注入到订阅者那里
+                        ons[len].func(type, content);
+                      }
+                    }, 0);
+                    return true;
+                  };
+                  //订阅方法，由订阅者来执行
+                  q.on = function (type, func) {
+                    // 如果之前没有订阅过
+                    if (!list[type]) {
+                      list[type] = [];
+                    }
+                    // _id 订阅者的id
+                    var _id = (++subUid).toString();
+                    // push 到订阅数组
+                    list[type].push({
+                      _id: _id,
+                      func: func
+                    });
+                    return _id;
+                  };
+                  // 取消 订阅方法
+                  q.unon = function (_id) {
+                    for (var m in list) {
+                      if (list[m]) {
+                        for (var i = 0, j = list[m].length; i < j; i++) {
+                          if (list[m][i]._id === _id) {
+                            list[m].splice(i, 1);
+                            return _id;
+                          }
+                        }
+                      }
+                    }
+                    return false;
+                  };
+                } (__));
+
+                // 将订阅赋值给一个变量，以便 取消
+                var girlA = __.on('tap', function (type, content) {
+                  console.log('girlA on '+type + ": ----：" + content);
+                });
+                var girlB = __.on('tap', function (type, content) {
+                  console.log('girlB on '+type + ": ----：" + content);
+                });
+                // 发布消息
+                __.target('tap', '通知--1');
+                // 输出：
+                //girlA 取消 订阅
+                setTimeout(function () {
+                  __.unon(girlA);
+                }, 0);
+                // 发布消息
+                __.target('tap', "通知--2");
+            </pre>
+        </div>
+        
+    </div>
+
+    <script type="text/javascript" src="./dist/index.js"></script>
+    <script type="text/javascript" src="./cdn/jquery.min.js"></script>
+</body>
+</html>

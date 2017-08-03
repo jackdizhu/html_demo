@@ -1,0 +1,121 @@
+s (69 sloc)  2.68 KB
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1"/>
+    <meta name="renderer" content="webkit" />
+
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+    <meta name="format-detection" content="telephone=no" />
+    <meta http-equiv="Expires" content="-1"/>
+
+    <meta http-equiv="Cache-Control" content="no-cache"/>
+    <meta http-equiv="Pragma" content="no-cache"/>
+    <title>jackdizhu 主页</title>
+    <link rel="shortcut icon" href="/favicon.ico"/>
+
+    <style type="text/css" id="style">
+        svg g{
+          cursor: pointer;
+        }
+    </style>
+
+</head>
+<body>
+
+<header>
+        jackdizhu 主页
+    </header>
+    <div class="content">
+
+        <h5><span>d3 简单应用 力导向图 加 鼠标拖动交互</span></h5>
+        <div class="clearfix">
+            <div id="app"></div>
+        </div>
+        
+    </div>
+
+    <script type="text/javascript" src="./dist/index.js"></script>
+    <script src="//d3js.org/d3.v3.min.js" charset="utf-8"></script>
+     <script type="text/javascript">
+        var w = 500;
+        var h = 500;
+
+        var nodes = [{name: "桂林"},{name: "广州"},{name: "厦门"},{name: "杭州"},{name: "上海"},{name: "青岛"},{name: "天津"}];
+        var edges = [{source: 0,target: 1},{source: 0,target: 2},{source: 0,target: 3},{source: 1, target: 4},{source: 1,
+          target: 5},{source: 1,target: 6}];
+
+        var outerRadius = 100; //外半径
+        var innerRadius = 0; //内半径，为0则中间没有空白
+
+
+        var svg = d3.select("#app") // 选择页面中id=app
+            .append("svg")//生成svg标签
+            .attr("width", w)//设定svg宽度
+            .attr("height", h);//设定svg高度
+
+        var force = d3.layout.force()
+            .nodes(nodes) //指定节点数组
+            .links(edges) //指定连线数组
+            .size([w,h]) //指定作用域范围
+            .linkDistance(120) //指定连线长度
+            .charge([-100]); //相互之间的作用力
+
+        force.start();    //开始作用
+
+        //添加连线
+        var svg_edges = svg.selectAll("line")
+           .data(edges)
+           .enter()
+           .append("line")
+           .style("stroke","#ccc")
+           .style("stroke-width",1);
+
+        var color = d3.scale.category20();
+
+        //添加节点
+        var svg_nodes = svg.selectAll("circle")
+           .data(nodes)
+           .enter()
+           .append("circle")
+           .attr("r",function (d,i) {
+             return d.weight*5; // 根据权重 设置大小
+           })
+           .style("fill",function(d,i){
+               return color(i); // 根据索引设置颜色
+            })
+           .call(force.drag);  //使得节点能够拖动
+
+        //添加描述节点的文字
+        var svg_texts = svg.selectAll("text")
+           .data(nodes)
+           .enter()
+           .append("text")
+           .style("fill", "black")
+           .attr("dx", 20)
+           .attr("dy", 8)
+           .text(function(d){
+              return d.name;
+            });
+
+        force.on("tick", function(){ //对于每一个时间间隔
+            //更新连线坐标
+            svg_edges.attr("x1",function(d){ return d.source.x;})
+                .attr("y1",function(d){ return d.source.y;})
+                .attr("x2",function(d){ return d.target.x;})
+                .attr("y2",function(d){ return d.target.y;});
+
+            //更新节点坐标
+            svg_nodes.attr("cx",function(d){ return d.x;})
+                .attr("cy",function(d){ return d.y;});
+
+            //更新文字坐标
+            svg_texts.attr("x", function(d){ return d.x;})
+               .attr("y", function(d){ return d.y;});
+        });
+     </script>
+</body>
+</html>

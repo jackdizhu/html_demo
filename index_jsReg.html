@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1"/>
+    <meta name="renderer" content="webkit" />
+
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+    <meta name="format-detection" content="telephone=no" />
+    <meta http-equiv="Expires" content="-1"/>
+
+    <meta http-equiv="Cache-Control" content="no-cache"/>
+    <meta http-equiv="Pragma" content="no-cache"/>
+    <title>jackdizhu 主页</title>
+    <link rel="shortcut icon" href="/favicon.ico"/>
+
+    <style type="text/css" id="style">
+    </style>
+
+</head>
+<body>
+
+<header>
+        jackdizhu 主页
+    </header>
+    <div class="content">
+
+        <h5><span>js 正则</span></h5>
+        <div class="clearfix">
+            <pre>
+                // js 传入字符串 返回 两位小数的 字符串
+                function priceSerialization(str) {
+                    var str = str.replace(/(^\s)|(\s$)/g,'');
+                    var _strA = str.match(/^[$|￥]([0-9]+)([.]([0-9]{2}))?$/);
+                    if(_strA && _strA[2]){
+                      return _strA[1]+_strA[2];
+                    }else if(_strA && !_strA[2]){
+                      return _strA[1]+'.00';
+                    }else{
+                      return '0.00';
+                    }
+                }
+
+                var _t = [' $22.14 ',' ￥2214 ',' $22 ',' $2 3 '];
+
+                for (var i = 0; i < _t.length; i++) {
+                  console.log(priceSerialization(_t[i]));
+                }
+                // ['22.14','2214.00','22.00','0.00']
+            </pre>
+        </div>
+        
+    </div>
+
+    <script type="text/javascript" src="./dist/index.js"></script>
+     <script type="text/javascript">
+        
+     </script>
+</body>
+</html>

@@ -5,4 +5,8 @@
             id:['content_right']
         }
     };
+    var _this = document.querySelector('#_chome_ext');
+    var _this = document.querySelector('#_chome_ext');
+    var str = JSON.stringty(window._chome_ext);
+    _this.setAttribute('data-ext',str);
 })();

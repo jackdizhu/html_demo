@@ -87,7 +87,7 @@
                 }
                 // ['22.14','2,214.00','214.00','22,254,846,314.00','846,314.00','22.00','0.00']
                 
-                // -----------------String 对象扩展写法--------------------------------------------
+                // -----------------JS原生 对象扩展写法--------------------------------------------
                 // 去左右空格
                 String.prototype._trim = function () {
                     var _this = this.replace(/(^\s)|(\s$)/g,'');
@@ -138,12 +138,40 @@
                     }
                     return _this;
                 }
-                
                 var _t = [' $22.14 ',' ￥2214 ',' ￥214 ',' ￥22254846314 ',' ￥846314 ',' $22 ',' $2 3 '];
                 for (var i = 0; i < _t.length; i++) {
                   console.log(_t[i]._trim()._priceDecimal2()._priceSerialization());
                 }
                 // ['22.14','2,214.00','214.00','22,254,846,314.00','846,314.00','22.00','0.00']
+                
+                // 数字高位补零 [01]
+                Number.prototype._lenWithZero = function(oCount) {
+                    var strText = this.toString();
+                    while (strText.length < oCount) {
+                        strText = '0' + strText;
+                    }
+                    return strText;
+                };
+                var n = 9;
+                console.log(n._lenWithZero(2));
+                // 09
+
+                // 时间对象 转 ['2017年07月05日11时59分12秒|星期六']
+                Date.prototype._getCNDate = function() {
+                    var _DayS = '一二三四五六日';
+                    var oDateText = '';
+                    oDateText += this.getFullYear().LenWithZero(4) + '年';
+                    oDateText += this.getMonth().LenWithZero(2) + '月';
+                    oDateText += this.getDate().LenWithZero(2) + '日';
+                    oDateText += this.getHours().LenWithZero(2) + '时';
+                    oDateText += this.getMinutes().LenWithZero(2) + '分';
+                    oDateText += this.getSeconds().LenWithZero(2) + '秒';
+                    oDateText += '|' + '星期' + _DayS.substr(this.getDay() - 1, 1);
+                    return oDateText;
+                };
+                var d = new Date();
+                console.log(d._getCNDate());
+                // 2017年07月05日11时59分12秒|星期六
                 
             </pre>
         </div>

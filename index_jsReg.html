@@ -161,7 +161,7 @@
                     var _DayS = '一二三四五六日';
                     var oDateText = '';
                     oDateText += this.getFullYear()._lenWithZero(4) + '年';
-                    oDateText += this.getMonth()._lenWithZero(2) + '月';
+                    oDateText += (this.getMonth() + 1)._lenWithZero(2) + '月';
                     oDateText += this.getDate()._lenWithZero(2) + '日';
                     oDateText += this.getHours()._lenWithZero(2) + '时';
                     oDateText += this.getMinutes()._lenWithZero(2) + '分';

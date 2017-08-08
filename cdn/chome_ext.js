@@ -7,6 +7,10 @@
         liewen:{
             R: 'liewen.cc',
             id:['#cs_right_bottom']
+        },
+        bxwx9:{
+            R: 'bxwx9.org',
+            id:['#_cs_bf_item']
         }
     };
     var _this = document.querySelector('#_chome_ext');

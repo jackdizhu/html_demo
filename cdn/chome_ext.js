@@ -10,7 +10,7 @@
         },
         bxwx9:{
             R: 'bxwx9.org',
-            id:['#_cs_bf_item']
+            id:['#_cs_bf_item','#cs_kd_form']
         }
     };
     var _this = document.querySelector('#_chome_ext');

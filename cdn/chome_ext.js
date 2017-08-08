@@ -21,16 +21,18 @@
     function edit_windowOpen() {
         var _arg = arguments;
         window.open = function () {
-            console.log('window.open');
+            console.log('window.open 1');
         }
     }
     edit_windowOpen();
     // 改写onkeydow 方法
-    function edit_keyDow() {
-        document.onkeydow = function () {
+    function edit_keyDown() {
+        document.onkeydown = function (event) {
+            event.stopPropagation();
+            event.preventDefault();
             var _arg = arguments;
-            console.log('onkeydow');
+            console.log('onkeydown 1');
         }
     }
-    edit_keyDow();
+    edit_keyDown();
 })();

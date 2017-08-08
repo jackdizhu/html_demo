@@ -24,7 +24,6 @@
             console.log('window.open 1');
         }
     }
-    edit_windowOpen();
     // 改写onkeydow 方法
     function edit_keyDown() {
         document.onkeydown = function (event) {
@@ -34,5 +33,9 @@
             console.log('onkeydown 1');
         }
     }
-    edit_keyDown();
+    
+    setTimeout(function () {
+        edit_windowOpen();
+        edit_keyDown();
+    },800);
 })();

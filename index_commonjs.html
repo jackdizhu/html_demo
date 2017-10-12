@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1"/>
+    <meta name="renderer" content="webkit" />
+
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+    <meta name="format-detection" content="telephone=no" />
+    <meta http-equiv="Expires" content="-1"/>
+
+    <meta http-equiv="Cache-Control" content="no-cache"/>
+    <meta http-equiv="Pragma" content="no-cache"/>
+    <title>jackdizhu 主页</title>
+    <link rel="shortcut icon" href="/favicon.ico"/>
+
+    <style type="text/css" id="style">
+    </style>
+
+</head>
+<body>
+
+<header>
+        jackdizhu 主页
+    </header>
+    <div class="content">
+        <h5><span>AMD CMD 区别</span></h5>
+        <p><span>sea.js(CMD) 模块定义</span></p>
+        <div class="clearfix">
+            <pre>
+                define(function(require, exports, module) {
+
+                    console.log('sea_test2');
+
+                    //type2
+                    var a = {};
+                    a.doSomething = function(){
+                        console.log("sea_test2 doSomething");
+                    };
+                    
+                    // 或者通过 module.exports 提供整个接口
+                    module.exports = a;
+                });
+
+                define(function(require, exports, module) {
+                    // 通过 require 引入依赖
+                    require('./sea_test2.js');
+
+                    // type1
+                    // 通过 exports 对外提供接口
+                    // exports.doSomething2 = function(){
+                    //     console.log("do2");
+                    // };
+
+                    //type2
+                    var a = {};
+                    a.doSomething = function(){
+                        console.log("sea_test1 doSomething");
+                    };
+
+                    // 同时出现 后面覆盖前面
+                    // 或者通过 module.exports 提供整个接口
+                    module.exports = a;
+                });
+
+                <!--<script type="text/javascript" src="./cdn/sea.js"></script>
+                <script type="text/javascript">
+                seajs.use(['./src/js/sea_test1.js'],function(test1){
+                    test1.doSomething();
+                })
+                </script>-->
+            </pre>
+        </div>
+        <p><span>require.js(AMD) 模块定义</span></p>
+        <div class="clearfix">
+            <pre>
+                define(function() {
+
+                    //type2
+                    var a = {};
+                    a.doSomething = function(){
+                        console.log("require_test2 doSomething");
+                    };
+
+                    // 通过 return 提供整个接口
+                    return a;
+                });
+
+                define(['./require_test2.js'],function(test2) {
+
+                    test2.doSomething();
+
+                    //type2
+                    var a = {};
+                    a.doSomething = function(){
+                        console.log("require_test1 doSomething");
+                    };
+
+                    // 通过 return 提供整个接口
+                    return a;
+                });
+
+                <!--<script type="text/javascript" src="./cdn/require.js"></script>
+                <script type="text/javascript">
+                require(['./src/js/require_test1'], function (test1){
+                    test1.doSomething();
+                });
+                </script>-->
+            </pre>
+            <p><span>依赖文件定义位置 方法不一样 接口抛出方式不一样<br/>RequireJS 是没有明显的 bug，SeaJS 是明显没有 bug</span></p>
+        </div>
+    </div>
+
+    <script type="text/javascript" src="./cdn/sea.js"></script>
+    <script type="text/javascript">
+    seajs.use(['./src/js/sea_test1.js'],function(test1){
+        test1.doSomething();
+    })
+    </script>
+
+    <!--<script type="text/javascript" src="./cdn/require.js"></script>
+    <script type="text/javascript">
+    require(['./src/js/require_test1'], function (test1){
+        test1.doSomething();
+    });
+    </script>-->
+    
+</body>
+</html>

@@ -6,11 +6,15 @@ cd E:\jackdizhu\mongodb
 start mongndb.bat
 cd E:\jackdizhu\web\easy-mock
 start easy-mock.bat
-// bat 删除文件 文件夹 /Q 不提示删除
+// bat 删除文件 文件夹 /Q 不提示删除 (up)
 cd E:\jackdizhu\web
 del /F /S /Q E:\jackdizhu\web\html_demo
 rd /S /Q E:\jackdizhu\web\html_demo
 ren html_demo.rar html_demo.crx
-// bat 重命名文件
+cd E:\jackdizhu
+ren mock.bat mock.ini
+// bat 重命名文件 (down)
 cd E:\jackdizhu\web
 ren html_demo.crx html_demo.rar
+cd E:\jackdizhu
+ren mock.ini mock.bat

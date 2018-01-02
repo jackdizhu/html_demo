@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+  <title>HTML5实现点击水波扩散效果</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      outline: none;
+    }
+
+    body {
+      font-family: 'Open Sans';
+      font-size: 100%;
+      font-weight: 300;
+      line-height: 1.5em;
+      text-align: center;
+    }
+
+    h1 {
+      color: #666666;
+      font-size: 2rem;
+      line-height: 1.5em;
+      margin: 2em 0 2em 0;
+    }
+
+    .box {
+      margin: 1rem;
+      width: 18.75rem;
+    }
+
+    .box img {
+      width: 100%;
+    }
+
+    .btn {
+      border: none;
+      color: white;
+      overflow: hidden;
+      margin: 1rem;
+      padding: 0;
+      text-transform: uppercase;
+      width: 150px;
+      height: 40px;
+    }
+
+    .btn.color-1 {
+      background-color: #426fc5;
+    }
+
+    .btn.color-2 {
+      background-color: #00897b;
+    }
+
+    .btn.color-3 {
+      background-color: #f6774f;
+    }
+
+    .btn.color-4 {
+      background-color: #e94043;
+    }
+
+    .btn-border.color-1 {
+      background-color: transparent;
+      border: 2px solid #426fc5;
+      color: #426fc5;
+    }
+
+    .btn-border.color-2 {
+      background-color: transparent;
+      border: 2px solid #00897b;
+      color: #00897b;
+    }
+
+    .btn-border.color-3 {
+      background-color: transparent;
+      border: 2px solid #f6774f;
+      color: #f6774f;
+    }
+
+    .btn-border.color-4 {
+      background-color: transparent;
+      border: 2px solid #e94043;
+      color: #e94043;
+    }
+
+    .btn-round {
+      border-radius: 10em;
+    }
+
+    .material-design {
+      position: relative;
+    }
+
+    .material-design canvas {
+      opacity: 0.25;
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+
+    .container {
+      align-content: center;
+      align-items: flex-start;
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin: 0 auto;
+      max-width: 46rem;
+    }
+  </style>
+
+  <!-- css 自动加 浏览器前缀 -->
+  <!-- <script src="./dist/prefixfree.min.js"></script> -->
+
+</head>
+
+<body>
+
+  <h1>Material Design Buttons ( 按钮点击 涟漪 波纹扩散效果 )</h1>
+  <section class="container">
+    <button class="btn color-1 material-design" data-color="#2f5398">Press me!
+      <canvas style="width: 100%; height: 100%;" width="150" height="40"></canvas>
+    </button>
+    <button class="btn color-2 material-design" data-color="#004740">Press me!
+      <canvas style="width: 100%; height: 100%;" width="150" height="40"></canvas>
+    </button>
+    <button class="btn color-3 material-design" data-color="#f34711">Press me!
+      <canvas style="width: 100%; height: 100%;" width="150" height="40"></canvas>
+    </button>
+    <button class="btn color-4 material-design" data-color="#d2181c">Press me!
+      <canvas style="width: 100%; height: 100%;" width="150" height="40"></canvas>
+    </button>
+
+    <button class="btn btn-round color-1 material-design" data-color="#ffffff">Senden
+      <canvas style="width: 100%; height: 100%;" width="150" height="40"></canvas>
+    </button>
+    <button class="btn btn-round color-2 material-design" data-color="#ffffff">Senden
+      <canvas style="width: 100%; height: 100%;" width="150" height="40"></canvas>
+    </button>
+    <button class="btn btn-round color-3 material-design" data-color="#ffffff">Senden
+      <canvas style="width: 100%; height: 100%;" width="150" height="40"></canvas>
+    </button>
+    <button class="btn btn-round color-4 material-design" data-color="#ffffff">Senden
+      <canvas style="width: 100%; height: 100%;" width="150" height="40"></canvas>
+    </button>
+
+    <button class="btn btn-border color-1 material-design" data-color="#2f5398">Senden
+      <canvas style="width: 100%; height: 100%;" width="146" height="36"></canvas>
+    </button>
+    <button class="btn btn-border color-2 material-design" data-color="#004740">Senden
+      <canvas style="width: 100%; height: 100%;" width="146" height="36"></canvas>
+    </button>
+    <button class="btn btn-border color-3 material-design" data-color="#f34711">Senden
+      <canvas style="width: 100%; height: 100%;" width="146" height="36"></canvas>
+    </button>
+    <button class="btn btn-border color-4 material-design" data-color="#d2181c">Senden
+      <canvas style="width: 100%; height: 100%;" width="146" height="36"></canvas>
+    </button>
+
+    <button class="btn btn-border btn-round color-1 material-design" data-color="#426FC5">Senden
+      <canvas style="width: 100%; height: 100%;" width="146" height="36"></canvas>
+    </button>
+    <button class="btn btn-border btn-round color-2 material-design" data-color="#00897b">Senden
+      <canvas style="width: 100%; height: 100%;" width="146" height="36"></canvas>
+    </button>
+    <button class="btn btn-border btn-round color-3 material-design" data-color="#f6774f">Senden
+      <canvas style="width: 100%; height: 100%;" width="146" height="36"></canvas>
+    </button>
+    <button class="btn btn-border btn-round color-4 material-design" data-color="#e94043">Senden
+      <canvas style="width: 100%; height: 100%;" width="146" height="36"></canvas>
+    </button>
+
+  </section>
+
+  <script src="./dist/rippleEffect.js"></script>
+
+</body>
+
+</html>

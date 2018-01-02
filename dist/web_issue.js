@@ -12,9 +12,11 @@ _dom.scrollIntoViewIfNeeded();
 //     temp = null;
 //     return output;
 // }
-<textarea style="display: none;" id="pre_tpl_1" to="pre_1">
+<noscript style="display: none;" id="pre_tpl_1" to="pre_1">
   <div><div>test</div></div>
-</textarea>
+  <textarea>aaaaaaa</textarea>
+  <script sype="text/javascript">console.log('aaaaaa')</script>
+</noscript>
 
 function show_html_code(el) {
   var _el = el
@@ -23,9 +25,9 @@ function show_html_code(el) {
   document.getElementById(_to) && (document.getElementById(_to).innerHTML = tpl)
 }
 (function () {
-  var _textarea = document.querySelectorAll('textarea')
-  for (let i = 0; i < _textarea.length; i++) {
-      var _el = _textarea[i]
+  var _noscript = document.querySelectorAll('noscript')
+  for (let i = 0; i < _noscript.length; i++) {
+      var _el = _noscript[i]
       console.dir(_el)
       show_html_code(_el)
   }

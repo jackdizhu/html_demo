@@ -33,1628 +33,1654 @@
 
         <h5><a name="RegExp" id="RegExp"></a><span>常用正则</span></h5>
         <div class="clearfix">
-            <pre>
+            <pre id="pre_1">
 
-                短期提高经营业绩、中期提高营销能力、长期打造核心竞争力
 
-                function({
-                _req,
-                Mock
-                }) {
-                return 'tName' + (_req.query.page || 1)
-                }
-                // 配置mock 服务器
-                let mockUrl = ''
-                switch (window.location.host) {
-                case 'localhost:8088':
-                    mockUrl = 'http://127.0.0.1:7300/mock/5a2de729f959662bc4226e1b'
-                    break
-                default:
-                    break
-                }
-                // 打开 QQ
-                window.open('tencent://message/?uin=371126232&Site=www.test.com&Menu=yes')
-                console.log(mockUrl)
-                // set和Array.from
-
-                // 生成随机数 0-9
-                parseInt(Math.random()*10)
-                // promise 封装异步回调
-                let _Promise = new Promise((res, rej) => {})
-                // es6 Array.find()
-                [{name: 'n1', value: 'v1'}, {name: 'n2', value: 'v2'}, {name: 'n3', value: 'v3'}].find((value, index, arr) => {
-                return value.value === 'v3'
-                })
-                // es6 Array.findIndex()
-                [{name: 'n1', value: 'v1'}, {name: 'n2', value: 'v2'}, {name: 'n3', value: 'v3'}].findIndex((value, index, arr) => {
-                return value.value === 'v3'
-                })
-                // es6 Object.keys() 用于获取对象自身所有的可枚举的属性值
-                Object.keys({name: 'n1', id: 'i1', value: 'v1'})
-                // es6 Object.assign方法用于对象的合并 arg[1] 覆盖 arg[0]
-                Object.assign({a: 'a1', name: 'na'}, {name: 'n1', id: 'i1', value: 'v1'})
-                // ES5 IE9+ 锁定对象 不能添加新的属性,不能删除已有属性,不能修改已有属性
-                Object.freeze(data)
-                // ES5 IE9+ 对象密封 不能添加新的属性,不能删除已有属性,可以修改已有属性
-                Object.seal(data)
-                // es6 对象 数组 复制问题
-                let {...newObj} = obj // es6 对象 复制
-                let [...newArr] = arr // es6 数组 复制
-                // es6 Array.prototype.filter() 返回 age > 18 的数组
-                [{name: "张含韵", "age": "18"}, {name: "江一燕", "age": "19"}, {name: "李小璐", "age": "20"}]
-                .filter(item => item.age > 18)
-                // es6 Array.prototype.map() 返回 email 组成的 新数组
-                [{name: "张含韵", "email": "zhang@email.com"}, {name: "江一燕", "email": "jiang@email.com"}, {name: "李小璐", "email": "li@email.com"}]
-                .map(function (item) { return item.email })
-                // 获取node 命令 参数
-                _arg = process.argv[2]
-
-                this.$store.commit(this.$types.UPDATE_CURRENT_STUDENT_STATE, 1)
-                // <p style="word-wrap:break-word;width:400px">{{data}}</p>
-                // Mongodb
-                mongod --dbpath D:\Mongodb\data
-
-                // vue
-                // 路由拦截 未登录不能访问
-                router.beforeEach((to, from, next) => {
-                // 如果将要去到的路由为/login，则清空用户session
-                if (to.path === '/home') {
-                    sessionStorage.removeItem('user')
-                }
-                let _arr = ['/home', '/teachingModel', '/curriculumSystem', '/classProcess', '/aboutUs']
-                let _to = _arr.find((value, index, arr) => { return value === to.path })
-                // 获取session中的用户信息
-                let user = JSON.parse(sessionStorage.getItem('user'))
-                if (!user && !_to) {
-                    next({path: '/home'})
-                } else {
-                    next()
-                }
-                })
-                // 强制刷新
-                this.$forceUpdate()
-                computed // 计算属性 ...mapState()
-                methods // click 事件等
-                created //组件创建 异步获取数据
-                // img 默认图片
-                item.img ? imgURI + item.img : defaultData.teacherImg
-                // 数据过滤
-                filters: {
-                filterData () {
-
-                }
-                }
-                // 数据修改后执行对应方法
-                watch: {
-                data: 'handleDataFun'
-                }
-
-                // es6 深拷贝 数组包含对象 拷贝有问题
-                // 简单对象 深拷贝
-                const deepClone = (obj) => {
-                var proto = Object.getPrototypeOf(obj);
-                return Object.assign({}, Object.create(proto), obj);
-                }
-                // 简单数组 深拷贝
-                export const deepCopy = function (arr) {
-                return arr.map((e) => {
-                    if (typeof e === 'object') {
-                    return Object.assign({}, e)
-                    } else {
-                    return e
-                    }
-                })
-                }
-                // 复杂对象深拷贝
-                const deepClone = (initObj) => {
-                var obj = {}
-                for (var i in initObj) {
-                // 避免相互引用对象导致死循环，如initObj.a = initObj的情况
-                    var prop = initObj[i];
-                    if(prop === obj) {
-                    continue;
-                    }
-                    if (typeof prop === 'object') {
-                    obj[i] = (prop.constructor === Array) ? [] : Object.create(prop);
-                    } else {
-                    obj[i] = prop;
-                    }
-                }
-                return obj;
-                }
-                // 数据过滤
-                getDataType2 () {
-                return this.dataArr.filter(item => item.type === '2')
-                }
-
-                css 常用class
-                flex items-center content-center justify-center
-                //横向 对齐方式
-                justify-start justify-end justify-center justify-between justify-around
-                //纵向 对齐方式
-                items-start items-end items-center items-stretch items-baseline
-                //多行内容 上下对齐方式
-                content-start content-end content-center content-stretch content-between content-around
-                // col- 栅格布局 中 小 极
-                col-xl-4 col-lg-4 col-md-4 col-sm-6 col-xs-12
-
-                .ellipsis-3-lines {
-                    -webkit-line-clamp: 3;
-                }
-                .ellipsis-2-lines, .ellipsis-3-lines {
-                    overflow: hidden;
-                    display: -webkit-box;
-                    -webkit-box-orient: vertical;
-                }
-
-                .flex {
-                    display: -webkit-box;
-                    display: -ms-flexbox;
-                    display: flex;
-                    -ms-flex-wrap: wrap;
-                    flex-wrap: wrap;
-                }
-
-                .justify-around {
-                    -ms-flex-pack: distribute;
-                    justify-content: space-around;
-                }
-                .justify-between {
-                    -webkit-box-pack: justify;
-                    -ms-flex-pack: justify;
-                    justify-content: space-between;
-                }
-                .justify-center {
-                    -webkit-box-pack: center;
-                    -ms-flex-pack: center;
-                    justify-content: center;
-                }
-                .justify-end {
-                    -webkit-box-pack: end;
-                    -ms-flex-pack: end;
-                    justify-content: flex-end;
-                }
-                .justify-start {
-                    -webkit-box-pack: start;
-                    -ms-flex-pack: start;
-                    justify-content: flex-start;
-                }
-
-                .items-stretch {
-                    -webkit-box-align: stretch;
-                    -ms-flex-align: stretch;
-                    align-items: stretch;
-                }
-                .items-baseline {
-                    -webkit-box-align: baseline;
-                    -ms-flex-align: baseline;
-                    align-items: baseline;
-                }
-                .items-center, .flex-center {
-                    -webkit-box-align: center;
-                    -ms-flex-align: center;
-                    align-items: center;
-                }
-                .items-end {
-                    -webkit-box-align: end;
-                    -ms-flex-align: end;
-                    align-items: flex-end;
-                }
-                .items-start {
-                    -webkit-box-align: start;
-                    -ms-flex-align: start;
-                    align-items: flex-start;
-                }
-
-                .content-around {
-                    -ms-flex-line-pack: distribute;
-                    align-content: space-around;
-                }
-                .content-between {
-                    -ms-flex-line-pack: justify;
-                    align-content: space-between;
-                }
-                .content-center {
-                    -ms-flex-line-pack: center;
-                    align-content: center;
-                }
-                .content-end {
-                    -ms-flex-line-pack: end;
-                    align-content: flex-end;
-                }
-                .content-start {
-                    -ms-flex-line-pack: start;
-                    align-content: flex-start;
-                }
-
-                // js
-                // 深拷贝
-                function deepCopy(o) {
-                if (o instanceof Array) {
-                    var n = [];
-                    for (var i = 0; i < o.length; ++i) {
-                    n[i] = deepCopy(o[i]);
-                    }
-                    return n;
-                } else if (o instanceof Function) {
-                    var n = new Function("return " + o.toString())();
-                    return n
-                } else if (o instanceof Object) {
-                    var n = {}
-                    for (var i in o) {
-                    n[i] = deepCopy(o[i]);
-                    }
-                    return n;
-                } else {
-                    return o;
-                }
-                }
-
-                /*
-
-                <template>
-                </template>
-
-                <script>
-                import {
-                    QList
-                } from 'quasar'
-
-                export default {
-                    components: {
-                    QList
-                    },
-                    data () {
-                    return {}
-                    },
-                    computed: {},
-                    methods: {},
-                    created: function () {
-                    },
-                    mounted () {
-                    this.$nextTick(() => {
-                    })
-                    },
-                    beforeDestroy () {
-                    }
-                }
-                </script>
-
-                <style lang="less" scoped>
-                </style>
-
-                */
-
-                /*
-
-                nodemon
-                nodemon build/script.dev.js
-                // quasar vue UI框架
-
-                1. 避免直接使用< router-link >,推荐通过 QSideLink.
-                    <q-side-link to="/twitter">
-                    <q-icon name="rss feed" />
-                    </q-side-link>
-                2. 使用slot 属性的DOM 元素必须是< q-layout >的直接子元素
-                    <q-layout>
-                    <div slot="footer">
-                        ...Your Content...
-                    </div>
-                    </q-layout>
-                3. 根据使用的主题, 导航 slot将被放置在不同的地方。一般 导航 slot 将在头和在页面视图(but part of header)。 iOS的主题, 导航 slot 将被添加在页面视图和页脚前(but part of footer)。
-
-                4. QToolbar 工具栏
-                    <q-layout ref="layout">
-                    <q-toolbar slot="header" color="secondary">
-                        <!-- toggles QLayout left side -->
-                        <q-btn
-                        flat
-                        @click="$refs.layout.toggleLeft()"
-                        >
-                        <q-icon name="menu" />
-                        </q-btn>
-                        <q-toolbar-title>
-                        Title
-                        </q-toolbar-title>
-                        <q-btn flat>
-                        <q-icon name="mail" />
-                        </q-btn>
-                        <q-btn flat>
-                        <q-icon name="alarm" />
-                        </q-btn>
-                    </q-toolbar>
-                    </q-layout>
-
-                5. QTabs 选项卡
-                    <q-tabs>
-                    <!-- Tabs - notice slot="title" -->
-                    <q-tab default count="5" slot="title" name="tab-1" icon="message" />
-                    <q-tab disable slot="title" name="tab-2" icon="fingerprint" />
-                    <q-tab alert slot="title" name="tab-3" icon="account_box" />
-                    <q-tab slot="title" name="tab-4" icon="accessibility" />
-                    <q-tab slot="title" name="tab-5" icon="build" />
-                    <!-- Targets -->
-                    <q-tab-pane name="tab-1">Tab One</q-tab-pane>
-                    <q-tab-pane name="tab-2">Tab Two</q-tab-pane>
-                    <q-tab-pane name="tab-3">Tab Three</q-tab-pane>
-                    <q-tab-pane name="tab-4">Tab Four</q-tab-pane>
-                    <q-tab-pane name="tab-5">Tab Five</q-tab-pane>
-                    </q-tabs>
-                6. QTab 选项卡
-                    <q-select
-                    type="radio"
-                    v-model="tabsModel"
-                    :options="tabsOptions">
-                    </q-select>
-                    <q-tabs v-model="tabsModel">
-                    <q-tab name="xtab-1" icon="message" slot="title" />
-                    <q-tab name="xtab-2" icon="account_box" slot="title" />
-                    <q-tab name="xtab-3" icon="mail" slot="title" />
-                        <q-tab-pane name="xtab-1">Tab One</q-tab-pane>
-                        <q-tab-pane name="xtab-2">Tab Two</q-tab-pane>
-                        <q-tab-pane name="xtab-3">Tab Three</q-tab-pane>
-                    </q-tabs>
-                7. QTabPane 选项卡窗格组件(选项卡的内容相对较小或简单)
-                    <q-select
-                    type="radio"
-                    v-model="tabsModel"
-                    :options="tabsOptions">
-                    </q-select>
-                    <q-tabs v-model="tabsModel">
-                    <q-tab name="xtab-1" icon="message" slot="title" />
-                    <q-tab name="xtab-2" icon="account_box" slot="title" />
-                    <q-tab name="xtab-3" icon="mail" slot="title" />
-                        <q-tab-pane name="xtab-1">Tab One</q-tab-pane>
-                        <q-tab-pane name="xtab-2">Tab Two</q-tab-pane>
-                        <q-tab-pane name="xtab-3">Tab Three</q-tab-pane>
-                    </q-tabs>
-                8. QRouteTab 标签路由器组件(选项卡绑定路由跳转)
-                    <!-- Tabs -->
-                    <q-tabs>
-                    <q-route-tab
-                        icon="mail"
-                        to="/mails"
-                        exact
-                        slot="title"/>
-                    <q-route-tab
-                        icon="alarm"
-                        to="/alarms"
-                        exact
-                        slot="title"/>
-                    </q-tabs>
-                9. 选项卡布局
-                    <q-layout>
-                    <q-tabs slot="navigation">
-                        <q-route-tab
-                        icon="mail"
-                        to="/mails"
-                        exact
-                        slot="title"
-                        />
-                        <q-route-tab
-                        icon="alarm"
-                        to="/alarms"
-                        exact
-                        slot="title"
-                        />
-                    </q-tabs>
-                    </q-layout>
-                10. 颜色配置
-                    <q-tabs color="orange">...</q-tabs>
-                    <q-tabs color="orange-1">...</q-tabs>
-                    <q-tabs color="orange-10">...</q-tabs>
-                    <q-tab slot="title" color="orange-1" />
-                    <q-tab slot="title" color="orange-10" />
-                11. 对齐
-                    <q-tabs align="justify">...</q-tabs>
-                    <q-tabs align="center">...</q-tabs>
-                    <q-tabs align="right">...</q-tabs>
-                12. 下拉刷新
-                    <q-pull-to-refresh :handler="refresher">
-                    <!-- Content, whatever you like -->
-                    <p v-for="item in items">
-                        Lorem ipsum dolor sit amet...
-                    </p>
-                    </q-pull-to-refresh>
-                13. QSideLink 左右侧边栏可以像链接一样使用返回按钮(QSideLink只在“左”或“右” QLayout slot)
-                    <q-side-link to="/some/route">Go to Route</q-side-link>
-                    <q-side-link tag="a" to="/some/route">Go to Route</q-side-link>
-                    <q-side-link item to="/some/other/route" exact>
-                    <q-item-main>
-                        <q-item-tile label>
-                        Go to some other Route
-                        </q-item-tile>
-                    </q-item-main>
-                    </q-side-link>
-                14. Handling Back Button处理后退按钮
-                    <!-- Login button -->
-                    <q-btn @click="$router.push('/list')">Login</q-btn>
-                    <!-- Logout button -->
-                    <q-btn @click="$router.push('/login')">Logout</q-btn>
-                    指令“v-go-back”
-                    <q-btn class="primary" v-go-back=" '/' ">Logout</q-btn>
-                    调用window.history.back(),而不是 $router.push(“/”) 。
-                15. Context Menu右键单击(或长时间点击触摸设备能力)
-                    <q-context-menu ref="context">
-                    <q-list link separator style="min-width: 150px; max-height: 300px;">
-                        <q-item @click="showToast(), $refs.context.close()">
-                        <q-item-main label="Label" sublabel="Value" />
-                        </q-item>
-                        <q-item @click="showOtherToast(), $refs.context.close()">
-                        <q-item-main label="Other Label" sublabel="Other Value" />
-                        </q-item>
-                    </q-list>
-                    </q-context-menu>
-                16. Breadcrumbs 面包屑
-                    <ul class="breadcrumb">
-                    <li>
-                        <a>
-                        <q-icon name="home" />
-                        </a>
-                    </li>
-                    <li>
-                        <a>
-                        <q-icon name="mail" /> Quasar
-                        </a>
-                    </li>
-                    <li>
-                        <a>
-                        <q-icon name="cloud" /> Breadcrumb
-                        </a>
-                    </li>
-                    </ul>
-                17. Pagination 分页
-                    <q-pagination v-model="page" :max="17" />
-                18. Scroll Observable 滚动的(当页面溢出容器 .scroll 应用CSS类)
-                    <template>
-                    <q-scroll-observable @scroll="userHasScrolled" />
-                    </template>
-                    <script>
-                    export default {
-                    methods: {
-                        userHasScrolled (scroll) {
-                        console.log(scroll)
-                        // {
-                        //   position: 56, // pixels from top
-                        //   direction: 'down', // 'down' or 'up'
-                        //   directionChanged: false, // has direction changed since this handler was called?
-                        //   inflexionPosition: 56 // last scroll position where user changed scroll direction
-                        // }
-                        }
-                    }
-                    }
-                    </script>
-                19. Directive "v-scroll"  指令“v-scroll”
-                    <template>
-                    <div v-scroll="scrolled">...</div>
-                    </template>
-                    <script>
-                    export default {
-                    methods: {
-                        scrolled (position) {
-                        // when this method is invoked then it means user
-                        // has scrolled the page to `position`
-                        //
-                        // `position` is an Integer designating the current
-                        // scroll position in pixels.
-                        }
-                    }
-                    }
-                    </script>
-                20. Infinite Scroll  无限滚动(必须是当前高度大于一个屏幕高度才能生效)
-                    <q-infinite-scroll :handler="loadMore">
-                    <!-- Content, in this case some <p> tags -->
-                    <p v-for="item in items" class="caption">
-                        Lorem ipsum dolor sit amet...
-                    </p>
-                    <!-- slot="message" for DOM element to display (in this example
-                        a dots spinner) when loading additional content -->
-                    <q-spinner-dots slot="message" :size="40"></q-spinner-dots>
-                    </q-infinite-scroll>
-                21. Scroll Area 滚动区域(自定义了滚动条样式)
-                    <q-scroll-area style="width: 400px; height: 100px;">
-                    <div v-for="n in 10">
-                        Lorem ipsum dolor sit amet, consectetur adipisicing
-                        elit, sed do eiusmod tempor incididunt ut labore et
-                        dolore magna aliqua.
-                    </div>
-                    </q-scroll-area>
-                22. Scroll Fire (当页面往上滚动时 在页面顶部显示的提示信息) 性能问题 最小50ms触发一次
-                    <template>
-                    <div v-scroll-fire="bounceImage">...</div>
-                    </template>
-                    <script>
-                    export default {
-                    methods: {
-                        bounceImage (element) {
-                        // in this example, when the `<div>` comes into view,
-                        // we bounce it for 2 seconds
-                        // we add helper `nimate-bounce` Quasar CSS class
-                        element.classList.add('animate-bounce')
-                        setTimeout(() => {
-                            // we make sure the node is still in DOM
-                            // (user hasn't navigated away from the Vue component
-                            // rendering our `<div>`)
-                            // so we don't generate an error
-                            if (document.body.contains(element)) {
-                            // then remove the helper class to
-                            // stop bouncing
-                            element.classList.remove('animate-bounce')
-                            }
-                        }, 2000)
-                        }
-                    }
-                    }
-                    </script>
-                23. Back to Top 回到顶部
-                    <q-btn
-                    v-back-to-top
-                    round
-                    color="teal-5"
-                    class="fixed-bottom-right"
-                    style="margin: 0 15px 15px 0">
-                    <q-icon name="keyboard_arrow_up" />
-                    </q-btn>
-                    <q-btn
-                    v-back-to-top.animate="{offset: 500, duration: 200}"
-                    round
-                    color="primary"
-                    class="fixed-bottom-right animate-pop"
-                    style="margin: 0 15px 15px 0">
-                    <q-icon name="keyboard_arrow_up" />
-                    </q-btn>
-                    <q-fixed-position corner="top-right" :offset="[18, 18]">
-                    <q-btn
-                        v-back-to-top
-                        round
-                        color="primary"
-                        @click="alert"
-                        icon="keyboard_arrow_up"/>
-                    </q-fixed-position>
-                24. Scrolling Utils 滚动条工具类
-                    // 获取设置 滚动条位置
-                    import { scroll } from 'quasar'
-                    const { getScrollPosition, setScrollPosition } = scroll
-                    // Get scroll position of a element or page. Use it in conjunction with `getScrollTarget()`
-                    (Number pixels) getScrollPosition(scrollTargetDomElement)
-                    // Setting scroll position of an element or page:
-                    setScrollPosition (scrollTargetElement, offset[, duration])
-                    // 获取滚动条高度
-                    import { scroll } from 'quasar'
-                    const { getScrollHeight } = scroll
-                    // get scrolling container inner height
-                    (Number) getScrollHeight(scrollTargetDomElement)
-                    console.log( getScrollHeight(el) )
-                    // 824 (it's in pixels always)
-                    // 获取滚动条宽度
-                    import { scroll } from 'quasar'
-                    const { getScrollbarWidth } = scroll
-                    console.log(getScrollbarWidth()) // 16 (it's in pixels)
-                25. Button 按钮
-                    // 普通图文按钮
-                    <q-btn icon="create">New item</q-btn>
-                    // 图标按钮
-                    <q-btn>
-                    <q-icon name="map" />
-                    </q-btn>
-                    // 圆形按钮 (一般只有一个图标)
-                    <q-btn round color="secondary" icon="card_giftcard" />
-                    <!-- Next is perfectly equivalent -->
-                    <q-btn round color="secondary">
-                    <q-icon name="card_giftcard" />
-                    </q-btn>
-                26. Field 字段组件
-                    <q-field
-                    icon="cloud"
-                    label="Your Gmail"
-                    helper="Helper"
-                    :error="mailHasError"
-                    error-label="We need a valid email"
-                    :count="10">
-                    <q-input suffix="@gmail.com" v-model="model" />
-                    </q-field>
-                27. Input (Textfield)
-                    <!-- Single Line Input -->
-                    <q-input v-model="text" />
-                    <q-input v-model="text" stack-label="Stack Label" />
-                    <q-input v-model="text" float-label="Float Label" placeholder="Gigi" />
-                    <!-- Multiple Line Input -->
-                    <q-input
-                    v-model="area"
-                    type="textarea"
-                    float-label="Textarea"
-                    :max-height="100"
-                    :min-rows="7"/>
-                28. Chips Input 标签输入框
-                    <q-chips-input v-model="model" />
-                    <!-- Disabled -->
-                    <q-chips-input v-model="model" disable />
-                    <!-- With floating label -->
-                    <q-chips-input v-model="model" float-label="Floating Label" />
-                    <!-- With custom placeholder -->
-                    <q-chips-input v-model="model" placeholder="Type some names" />
-                    <!-- On error state -->
-                    <q-chips-input v-model="model" error />
-                29. Autocomplete 自动完成  自动完成组件绑定到父文本框(如。 QInput QSearch)
-                    <q-input color="amber" v-model="terms" placeholder="Type 'fre'">
-                    <q-autocomplete
-                        @search="search"
-                        :min-characters="3"
-                        @selected="selected"
-                    />
-                    </q-input>
-                    <!-- Binds to parent QSearch -->
-                    <q-search v-model="terms" placeholder="Start typing a country name">
-                    <q-autocomplete @search="search" @selected="selected" />
-                    </q-search>
-                    <!-- Adds a separator between results -->
-                    <q-search v-model="terms">
-                    <q-autocomplete
-                        separator
-                        @search="search"
-                        @selected="selected"
-                    />
-                    </q-search>
-                30. Search (Textfield) 搜索(文本框)
-                    <q-search v-model="search" />
-                31. Slider 滑块
-                    <q-slider v-model="selectedValue" :min="1" :max="7" />
-                    <q-slider
-                    v-model="selectedValue"
-                    :min="0"
-                    :max="10"
-                    :step="2"
-                    label
-                    snap/>
-                    <q-slider
-                    v-model="selectedValue"
-                    :min="0"
-                    :max="10"
-                    square/>
-                32. Slider Range 滑块 范围
-                    <template>
-                    <q-range
-                        v-model="rangeValues"
-                        :min="0"
-                        :max="10"
-                        :step="1"
-                    />
-                    </template>
-                    <script>
-                    export default {
-                    data () {
-                        return {
-                        // our model here
-                        rangeValues: {
-                            min: 2,
-                            max: 4
-                        }
-                        }
-                    }
-                    }
-                    </script>
-                33. Radio 单选
-                    <!-- Three choices for the user -->
-                    <q-radio v-model="option" val="opt1" label="Option 1" />
-                    <q-radio v-model="option" val="opt2" label="Option 2" />
-                    <q-radio v-model="option" val="opt3" label="Option 3" />
-                34. Checkbox 多选
-                    <!-- No label: -->
-                    <q-checkbox v-model="checked" />
-                    <!-- With a label -->
-                    <q-checkbox v-model="checked" label="Checkbox Label" />
-                    <!-- Disabled: -->
-                    <q-checkbox v-model="checked" disable />
-
-                    <q-checkbox v-model="selection" val="one" label="One" />
-                    <br><br>
-                    <q-checkbox v-model="selection" val="two" label="Two" />
-                    <br><br>
-                    <q-checkbox v-model="selection" val="three" label="Three" />
-                35. Toggle 开关
-                    <q-toggle v-model="checked" label="Toggle Label" />
-                    <!-- With no label -->
-                    <q-toggle v-model="checked" />
-                    <!-- With a specific color -->
-                    <q-toggle v-model="checked" color="teal-8" />
-                    <!-- With icon -->
-                    <q-toggle v-model="checked" icon="alarm" label="Toggle Label" />
-                    <!-- Disabled state -->
-                    <q-toggle v-model="checked" disable label="Toggle Label" />
-                36. Option Group 选项组
-                    // checkboxes
-                    <template>
-                    <q-option-group
-                        color="secondary"
-                        type="checkbox"
-                        v-model="group"
-                        :options="[
-                        { label: 'Option 1', value: 'op1' },
-                        { label: 'Option 2', value: 'op2' },
-                        { label: 'Option 3', value: 'op3' }
-                        ]"
-                    />
-                    </template>
-                    <script>
-                    export default {
-                    data () {
-                        return {
-                        // `v-model` binded to `group`,
-                        // which must be an array for checkboxes and toggles
-                        group: ['opt1']
-                        }
-                    }
-                    }
-                    </script>
-                    //radios
-                    <template>
-                    <q-option-group
-                        color="secondary"
-                        type="radio"
-                        v-model="group"
-                        :options="[
-                        { label: 'Option 1', value: 'op1' },
-                        { label: 'Option 2', value: 'op2' },
-                        { label: 'Option 3', value: 'op3' }
-                        ]"
-                    />
-                    </template>
-                    <script>
-                    export default {
-                    data () {
-                        return {
-                        // `v-model` binded to `group`,
-                        // which must be a String when using radios
-                        group: 'opt1'
-                        }
-                    }
-                    }
-                    </script>
-                36. Datetime 时间日期
-                    <!-- Only Date -->
-                    <q-datetime v-model="model" type="date" />
-                    <!-- Only Time -->
-                    <q-datetime v-model="model" type="time" />
-                    <!-- Date & Time -->
-                    <q-datetime v-model="model" type="datetime" />
-                37. Inline Datetime  日历时间显示
-                    <q-inline-datetime v-model="model" type="date" />
-                    <!-- Only Time -->
-                    <q-inline-datetime v-model="model" type="time" />
-                    <!-- Date & Time -->
-                    <q-inline-datetime v-model="model" type="datetime" />
-                    <!-- Date - Monday as first day of week -->
-                    <q-inline-datetime v-model="model" monday-first type="date" />
-                    <!-- Disabled State -->
-                    <q-inline-datetime disable v-model="model" type="datetime" />
-                    <!-- Readonly State -->
-                    <q-inline-datetime readonly v-model="model" type="datetime" />
-                    <!-- Min & Max -->
-                    <q-inline-datetime type="datetime" v-model="minMaxModel" :min="min" :max="max" />
-                    <!-- Specific color -->
-                    <q-inline-datetime color="secondary" v-model="model" type="datetime" />
-                    <!-- Time 24hr Format -->
-                    <q-inline-datetime v-model="model" type="time" format24h />
-                38. Datetime Range 时间范围选择
-                    <!-- Date Range -->
-                    <q-datetime-range
-                    type="date"
-                    v-model="range"
-                    :min="min"
-                    :max="max"
-                    />
-                    <!-- Time Range -->
-                    <q-datetime-range
-                    type="time"
-                    v-model="range"
-                    :min="min"
-                    :max="max"
-                    />
-                    <!-- Datetime Range -->
-                    <q-datetime-range
-                    type="datetime"
-                    v-model="range"
-                    :min="min"
-                    :max="max"
-                    />
-                39. Select
-                    <template>
-                    <div>
-                        <!-- Single Selection using Radios -->
-                        <q-select
-                        v-model="select"
-                        float-label="Is Quasar Awesome?"
-                        radio
-                        :options="selectOptions"
-                        />
-                        <!-- Single Selection as a simple List -->
-                        <q-select
-                        v-model="select"
-                        :options="selectOptions"
-                        />
-                        <!-- Multiple Selection using Checkboxes by default -->
-                        <q-select
-                        multiple
-                        v-model="multipleSelect"
-                        :options="selectOptions"
-                        />
-                        <!-- Multiple Selection using Toggles -->
-                        <q-select
-                        multiple
-                        toggle
-                        v-model="multipleSelect"
-                        :options="selectOptions"
-                        @change="inputChange"
-                        />
-                    </div>
-                    </template>
-                    <script>
-                    export default {
-                    data () {
-                        return {
-                        selectOptions: [
-                            {
-                            label: 'Google',
-                            value: 'goog'
-                            },
-                            {
-                            label: 'Facebook',
-                            value: 'fb'
-                            }
-                        ]
-                        }
-                    }
-                    }
-                    </script>
-                40. Dialog Select 弹出选择框
-                    <template>
-                    <div>
-                        <!-- With Radios -->
-                        <q-dialog-select
-                        v-model="select"
-                        :options="selectOptions"
-                        ok-label="Pick"
-                        cancel-label="Neah"
-                        title="Radios"
-                        />
-                        <!-- With Checkboxes -->
-                        <q-dialog-select
-                        multiple
-                        v-model="multipleSelect"
-                        :options="selectOptions"
-                        ok-label="Pick"
-                        cancel-label="Neah"
-                        title="Checkboxes"
-                        />
-                        <!-- With Toggles -->
-                        <q-dialog-select
-                        multiple toggle
-                        v-model="multipleSelect"
-                        :options="selectOptions"
-                        ok-label="Pick"
-                        cancel-label="Neah"
-                        title="Toggles"
-                        />
-                    </div>
-                    </template>
-                    <script>
-                    export default {
-                    data () {
-                        return {
-                        selectOptions: [
-                            {
-                            label: 'Google',
-                            value: 'goog'
-                            },
-                            {
-                            label: 'Facebook',
-                            value: 'fb'
-                            }
-                        ]
-                        }
-                    }
-                    }
-                    </script>
-                41. Rating 评级
-                    <q-rating v-model="ratingModel" :max="3" />
-                    <!-- Disabled State -->
-                    <q-rating
-                    disable
-                    v-model="ratingModel"
-                    :max="3"
-                    />
-                42. Knob 以圈的形式显示分数百分比(按钮)
-                    <q-knob
-                    v-model="model"
-                    :min="min"
-                    :max="max"
-                    ></q-knob>
-                    <!-- With custom placeholder -->
-                    <q-knob
-                    v-model="model"
-                    :min="min"
-                    :max="max"
-                    :placeholder="'$ ' + model"
-                    ></q-knob>
-                    <!-- Disabled state -->
-                    <q-knob
-                    disable
-                    v-model="model"
-                    :min="min"
-                    :max="max"
-                    ></q-knob>
-                42. Uploader 文件上传
-                    <q-uploader :url="url" />
-                43. Action Sheet  手机端底部弹出的按钮组
-                    import { ActionSheet } from 'quasar'
-                    ActionSheet.create({
-                    title: 'Article Actions',
-                    // specify ONLY IF you want gallery mode:
-                    gallery: true,
-                    actions: [
-                        {
-                        label: 'Delete',
-                        // Choose one of the following two:
-                        icon: 'delete', // specify ONLY IF using icon
-                        avatar: 'assets/some-avatar.png', // specify ONLY IF using avatar
-                        handler: function() {
-                            console.log('Deleted Article')
-                        }
-                        },
-                        ...
-                    ],
-                    // optional:
-                    dismiss: {
-                        // label is used only for iOS theme
-                        label: 'Cancel',
-                        // tell what to do when Action Sheet
-                        // is dismised (doesn't trigger when
-                        // any of the actions above are clicked/tapped)
-                        handler: function() {
-                        // console.log('Cancelled...')
-                        }
-                    }
-                    })
-                44. Alert
-                    import { Alert } from 'quasar'
-                    Alert.create({html: 'Warning, warning, Will Robinson!'})
-                45. Toast  手机端底部弹出的信息提示框
-                    import { Toast } from 'quasar'
-                    Toast.create(String or Object)
-                46. Dialog 弹出框 (对话框 选择框)
-                    import { Dialog } from 'quasar'
-                    Dialog.create(configObj) (Object with `close` method)
-                47. Modal 模态弹出框 (弹出一个全屏的内容页)
-                    <q-modal ref="basicModal">
-                    <h4>Basic Modal</h4>
-                    <q-btn color="primary" @click="$refs.basicModal.close()">Close</q-btn>
-                    </q-modal>
-                48. Popover  弹出一组按钮组等
-                    <q-btn ref="target">
-                    Email
-                    <!-- Direct child of target -->
-                    <q-popover ref="popover">
-                        <!--
-                        The DOM element(s) that make up the popup,
-                        in this case a list:
-                        -->
-                        <q-list separator link>
-                        <q-item @click="doSomething(), $refs.popover.close()">
-                            ...
-                        </q-item>
-                        </q-list>
-                    </q-popover>
-                    </q-btn>
-                49. Tooltip tip 弹出一个小的提示信息(一句话)
-                    <q-btn>
-                    Email
-                    <!-- Direct child of target -->
-                    <q-tooltip>
-                        <!--
-                        The DOM element(s) that make up the tooltip,
-                        in this case a simple text:
-                        -->
-                        Some text as content of Tooltip
-                    </q-tooltip>
-                    </q-btn>
-                // ------------------------布局板块 ----------------------------------
-                49. Cards 卡片
-                    <q-card>
-                    <q-card-title>
-                        Card Title
-                    </q-card-title>
-                    <q-card-separator />
-                    <q-card-main>
-                        Card Content
-                    </q-card-main>
-                    </q-card>
-
-                    <q-card inline style="width: 500px">
-                    <q-card-media>
-                        <img src="~assets/donuts.png">
-                    </q-card-media>
-                    <q-card-title>
-                        Cafe Basilico
-                        <q-rating slot="subtitle" v-model="stars" :max="5" />
-                        <div slot="right" class="row items-center">
-                        <q-icon name="place" /> 250 ft
-                        </div>
-                    </q-card-title>
-                    <q-card-main>
-                        <p>$・Italian, Cafe</p>
-                        <p class="text-faded">Small plates, salads & sandwiches in an intimate setting.</p>
-                    </q-card-main>
-                    <q-card-separator />
-                    <q-card-actions>
-                        <q-btn flat round small><q-icon name="event" /></q-btn>
-                        <q-btn flat>5:30PM</q-btn>
-                        <q-btn flat>7:30PM</q-btn>
-                        <q-btn flat>9:00PM</q-btn>
-                        <q-btn flat color="primary">Reserve</q-btn>
-                    </q-card-actions>
-                    </q-card>
-                50. Collapsible (+ Accordion) 可折叠(+手风琴)
-                    <q-list>
-                    <q-collapsible icon="explore" label="First">
-                        <div>
-                        Content
-                        </div>
-                    </q-collapsible>
-                    <q-collapsible icon="perm_identity" label="Second">
-                        <div>
-                        Content
-                        </div>
-                    </q-collapsible>
-                    <q-collapsible icon="shopping_cart" label="Third">
-                        <div>
-                        Content
-                        </div>
-                    </q-collapsible>
-                    </q-list>
-
-                    <q-list>
-                    <q-collapsible group="somegroup" icon="explore" label="First">
-                        <div>
-                        Content
-                        </div>
-                    </q-collapsible>
-                    <q-collapsible group="somegroup" icon="perm_identity" label="Second">
-                        <div>
-                        Content
-                        </div>
-                    </q-collapsible>
-                    <q-collapsible group="somegroup" icon="shopping_cart" label="Third">
-                        <div>
-                        Content
-                        </div>
-                    </q-collapsible>
-                    </q-list>
-                51. Data Table  数据表
-                    <q-data-table
-                    :data="table"
-                    :config="config"
-                    :columns="columns"
-                    @refresh="refresh"
-                    >
-                    <!-- Custom renderer for "message" column -->
-                    <template slot="col-message" scope="cell">
-                        <span class="light-paragraph">{{cell.data}}</span>
-                    </template>
-                    <!-- Custom renderer for "source" column -->
-                    <template slot="col-source" scope="cell">
-                        <span v-if="cell.data === 'Audit'" class="label text-white bg-primary">
-                        Audit
-                        <q-tooltip>Some data</q-tooltip>
-                        </span>
-                        <span v-else class="label text-white bg-negative">{{cell.data}}</span>
-                    </template>
-                    <!-- Custom renderer for "action" column with button for custom action -->
-                    <template slot='col-action' scope='cell'>
-                        <q-btn color="primary" @click='doSomethingMethod(cell.row.id)'>View</q-btn>
-                    </template>
-                    <!-- Custom renderer when user selected one or more rows -->
-                    <template slot="selection" scope="selection">
-                        <q-btn color="primary" @click="changeMessage(selection)">
-                        <i>edit</i>
-                        </q-btn>
-                        <q-btn color="primary" @click="deleteRow(selection)">
-                        <i>delete</i>
-                        </q-btn>
-                    </template>
-                    </q-data-table>
-                52. HTML Tables 表格
-                    <table class="q-table">
-                    <thead>
-                        <tr>
-                        <th class="text-left">Name</th>
-                        <th class="text-right">Price</th>
-                        <th class="text-right">In Stock</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                        <td class="text-left">Item #1</td>
-                        <td class="text-right">$10.11</td>
-                        <td class="text-right">101</td>
-                        </tr>
-                        <tr>
-                        <td class="text-left">Item #2</td>
-                        <td class="text-right">$8.88</td>
-                        <td class="text-right">34</td>
-                        </tr>
-                        <tr>
-                        <td class="text-left">Item #3</td>
-                        <td class="text-right">$0.15</td>
-                        <td class="text-right">1670</td>
-                        </tr>
-                    </tbody>
-                    </table>
-
-                    <table class="q-table responsive">
-                    <thead>
-                        <tr>
-                        <th>Name</th>
-                        <th>Price</th>
-                        <th>In Stock</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                        <td data-th="Name">Item #1</td>
-                        <td data-th="Price">$10.11</td>
-                        <td data-th="In Stock">101</td>
-                        </tr>
-                        <tr>
-                        <td data-th="Name">Item #2</td>
-                        <td data-th="Price">$8.88</td>
-                        <td class="text-right">34</td>
-                        </tr>
-                        <tr>
-                        <td data-th="Name">Item #3</td>
-                        <td data-th="Price">$0.15</td>
-                        <td data-th="In Stock">1670</td>
-                        </tr>
-                    </tbody>
-                    </table>
-                53. Lists and List Items 列表 列表项
-                    <q-list highlight>
-                    <q-list-header>Recent chats</q-list-header>
-                    <q-item>
-                        <q-item-side avatar="/statics/boy-avatar.png" />
-                        <q-item-main>
-                        <q-item-tile label>John Doe</q-item-tile>
-                        <q-item-tile sublabel>Quasar enthusiast</q-item-tile>
-                        </q-item-main>
-                        <q-item-side right>
-                        <q-item-tile icon="chat_bubble" color="green" />
-                        </q-item-side>
-                    </q-item>
-                    <q-item>
-                        <q-item-side>
-                        <q-item-tile avatar>
-                            <img src="~assets/boy-avatar.png" />
-                        </q-item-tile>
-                        </q-item-side>
-                        <q-item-main label="John Doe" sublabel="Quasar enthusiast" />
-                        <q-item-side right icon="chat_bubble" />
-                    </q-item>
-                    <q-item-separator />
-                    <q-list-header>Previous chats</q-list-header>
-                    <q-item>
-                        <q-item-side avatar="/statics/guy-avatar.png" />
-                        <q-item-main label="Jack Doe" />
-                    </q-item>
-                    </q-list>
-                54. Carousel 轮播显示内容信息(轮播图)
-                    <q-carousel class="text-white">
-                    <div slot="slide" class="bg-primary">
-                        Slide 1
-                    </div>
-                    <div slot="slide" class="bg-secondary">
-                        Slide 2
-                    </div>
-                    <div slot="slide" class="bg-tertiary">
-                        Slide 3
-                    </div>
-                    </q-carousel>
-                55. Quasar Stepper  通过编号的步骤
-                    <q-stepper ref="stepper">
-                    <!-- Step: -->
-                    <q-step default title="First Step" subtitle="Here we go">
-                        ...Step content, components, ...
-                    </q-step>
-                    <!-- Step: -->
-                    <q-step title="Step 2">...</q-step>
-                    <!-- Step: -->
-                    <q-step title="Step 3" subtitle="Review and submit">...</q-step>
-                    <!--
-                        Optional.
-                        "Globally" available Stepper navigation which means
-                        that it will be visible regardless of the current step.
-                        If we'd put QStepperNavigation under a QStep then we'd
-                        be using it for that step only.
-                    -->
-                    <q-stepper-navigation>
-                        <q-btn flat @click="$refs.stepper.previous()">Back</q-btn>
-                        <q-btn @click="$refs.stepper.next()">Next</q-btn>
-                    </q-stepper-navigation>
-                    </q-stepper>
-
-                    <q-stepper color="secondary" ref="stepper" alternative-labels>
-                    <q-step default name="first" title="Ad style">
-                        <div v-for="n in 10">Step 1</div>
-                        <!-- Navigation for this step at the end of QStep-->
-                        <q-stepper-navigation>
-                        <q-btn color="secondary" @click="$refs.stepper.next()">Continue</q-btn>
-                        </q-stepper-navigation>
-                    </q-step>
-                    <q-step error name="second" title="Custom channels" subtitle="Alert message">
-                        <div v-for="n in 10">Step 2</div>
-                        <q-stepper-navigation>
-                        <q-btn color="secondary" @click="$refs.stepper.next()">Next</q-btn>
-                        <q-btn color="secondary" flat @click="$refs.stepper.previous()">Back</q-btn>
-                        </q-stepper-navigation>
-                    </q-step>
-                    <q-step name="third" title="Get code">
-                        <div v-for="n in 3">Step 3</div>
-                        <q-stepper-navigation>
-                        <q-btn color="secondary" @click="$refs.stepper.next()">Next</q-btn>
-                        <q-btn color="secondary" flat @click="$refs.stepper.previous()">Back</q-btn>
-                        </q-stepper-navigation>
-                    </q-step>
-                    <q-step name="fifth" disable title="Disabled">
-                        <div v-for="n in 3">Step 4</div>
-                        <q-stepper-navigation>
-                        <q-btn color="secondary" @click="$refs.stepper.next()">Next</q-btn>
-                        <q-btn color="secondary" flat @click="$refs.stepper.previous()">Back</q-btn>
-                        </q-stepper-navigation>
-                    </q-step>
-                    <q-step name="fourth" title="Review and Finalize">
-                        <div v-for="n in 3">Step 5</div>
-                        <q-stepper-navigation>
-                        <q-btn color="secondary" @click="$refs.stepper.goToStep('first')">Restart</q-btn>
-                        <q-btn color="secondary" flat @click="$refs.stepper.previous()">Back</q-btn>
-                        </q-stepper-navigation>
-                    </q-step>
-                    </q-stepper>
-                56. Ajax Bar  异步进度条
-                    <template>
-                    <div id="q-app">
-                        <router-view></router-view>
-                        <q-ajax-bar />
-                    </div>
-                    </template>
-                57. Loading
-                    import {
-                    Loading,
-                    // optional!, for example below
-                    // with custom spinner
-                    QSpinnerGears
-                    } from 'quasar'
-                    // default options
-                    Loading.show()
-                    // with a custom delay
-                    Loading.show({
-                    delay: 300 // milliseconds
-                    })
-                    // customizable (all props available)
-                    Loading.show({
-                    spinner: QSpinnerGears,
-                    message: 'Some message',
-                    messageColor: 'blue',
-                    spinnerSize: 250, // in pixels
-                    spinnerColor: 'white',
-                    customClass : 'bg-primary'
-                    })
-                58. Inner Loading
-                    <div class="row justify-center" style="margin-top: 40px">
-                    <q-card style="width: 288px; height: 262px;" color="grey-2" class="text-dark relative-position">
-                        <q-card-title>
-                        Lorem Ipsum
-                        </q-card-title>
-                        <q-card-main>
-                        <q-transition
-                            appear
-                            enter="fadeIn"
-                            leave="fadeOut"
-                        >
-                            <div v-show="showSimulatedReturnData">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent vel magna eu risus laoreet tristique. Nulla ut fermentum elit, nec consequat augue. Morbi et dolor nec metus tincidunt pellentesque. Nullam non semper ante. Fusce pellentesque sagittis felis quis porta. Aenean condimentum neque sed erat suscipit malesuada. Nulla eget rhoncus enim. Duis dictum interdum eros.
-                            </div>
-                        </q-transition>
-                        </q-card-main>
-                        <q-inner-loading :visible="visible">
-                        <q-spinner-gears size="50px" color="primary"></q-spinner-gears>
-                        </q-inner-loading>
-                    </q-card>
-                    </div>
-                59. Progress Bar (QProgress) 进度条
-                    <q-progress :percentage="progressModel" />
-                    <!-- with buffering; 4px height looks best -->
-                    <q-progress
-                    :percentage="progressBuffer"
-                    :buffer="buffer"
-                    style="height: 4px"
-                    />
-                60. Spinners  londing 显示 ** 过程正在发生
-                    <!-- Default platform spinner-->
-                    <q-spinner />
-                    <!-- Spinner with options -->
-                    <q-spinner color="secondary" :size="30" />
-                    <q-spinner color="teal-4" size="40px" />
-                    <!--
-                    Alternatively, you can set CSS colo prop on
-                    a container or directly with `style` attribute on spinner
-                    -->
-                    <q-spinner style="color: #e2aa6f" />
-                61. Handler Parameter  平移触摸/鼠标动作
-                    <div v-touch-pan="handler">...</div>
-                    // "handler" is a Function which receives an Object as parameter
-                62. Swipe Touch/Mouse Action  滑动触摸/鼠标动作
-                    <div v-touch-swipe="handler">...</div>
-                    // "handler" is a Function which receives an Object as parameter
-                63. Swipe Touch/Mouse Action  滑动触摸/鼠标动作
-                    <div v-touch-hold="handler">...</div>
-                    // "handler" is a Function which receives an Object as parameter
-                64. Image Gallery  图片库
-                    <img src="~assets/quasar.jpg" class="responsive">
-                65. Parallax  视差滚动
-                    <q-parallax src="assets/mountains.jpg">
-                    <!-- Dom elements to display while loading image -->
-                    <div slot="loading">Loading...</div>
-                    <!--
-                        The rest of Dom elements get displayed on
-                        top of the Parallax image after it's loaded
-                    -->
-                    <h1>Parallax</h1>
-                    </q-parallax>
-                66. Video Embedding 视频嵌入
-                    <q-video
-                    src="https://www.youtube.com/embed/k3_tw44QsZQ?rel=0"
-                    style="width: 853px; height: 480px"
-                    />
-
-                    <div class="q-video">
-                    <iframe
-                        width="853"
-                        height="480"
-                        src="https://www.youtube.com/embed/k3_tw44QsZQ?rel=0"
-                        frameborder="0"
-                        allowfullscreen
-                    ></iframe>
-                    </div>
-                67. Transition (QTransition) css3 过渡动画
-                    <q-transition
-                    appear
-                    enter="fadeIn"
-                    leave="fadeOut"
-                    >
-                    <!-- Wrapping only one DOM element, defined by QBtn -->
-                    <q-btn color="secondary" icon="mail">
-                        Email
-                    </q-btn>
-                    </q-transition>
-
-                    <q-transition
-                    appear
-                    group
-                    enter="fadeIn"
-                    leave="fadeOut"
-                    >
-                    <!-- We wrap a "p" tag and a QBtn -->
-                    <p key="text">
-                        Lorum Ipsum
-                    </p>
-                    <q-btn
-                        key="email-button"
-                        color="secondary"
-                        icon="mail"
-                    >
-                        Email
-                    </q-btn>
-                    </q-transition>
-                68. Slide Transition css3 幻灯片过渡
-                    <template>
-                    <div>
-                        <q-slide-transition>
-                        <img
-                            v-show="visible"
-                            src="~assets/quasar.jpg"
-                        >
-                        </q-slide-transition>
-                        <q-btn @click="toggleVisibility">
-                        Toggle
-                        </q-btn>
-                    </div>
-                    </template>
-                    <script>
-                    export default {
-                    ...,
-                    data: {
-                        ...,
-                        visible: true
-                    },
-                    methods: {
-                        ...,
-                        toggleVisibility () {
-                        this.visible = !this.visible
-                        }
-                    }
-                    }
-                    </script>
-
-                    <q-slide-transition appear>
-                    ...
-                    </q-slide-transition>
-                69. JS Animations js 动画
-                    import { animate } from 'quasar'
-                    let id = animate.start({
-                    name: 'unique-animation-name', // optional, if none is supplied a unique one is created and returned
-                    from: '0', // current position
-                    to: '100', // final position
-                    duration: 300, // duration of the animation
-                    done (finalPosition) {...}, // function to call when animation is done
-                    cancel (currentPosition) {...}, // function to call when animation is aborted
-                    apply (currentPosition) {...}, // function called on each step so you can apply changes
-                    easing (currentPosition) { // custom easing function, see below
-                        // ...return transformation of currentPosition...
-                    }
-                    })
-                    // Starting an animation with same name will abort the previous one
-                    // Stop an animation using its name
-                    animate.stop('unique-animation-name')
-                    // or
-                    animate.stop(id) // id returned from above
-                70. Animation CSS Helper Classes CSS动画助手类
-                    animate-spin  应用连续旋转/旋转到DOM元素
-                    animate-spin-reverse  应用连续旋转/旋转相反的方向 animate-spin DOM元素)
-                    animate-blink 闪烁效应应用于DOM元素
-                    animate-pop 突然出现的效果应用到DOM元素
-                    animate-scale 缩小的效果应用到DOM元素
-                    animate-fade  淡入效果应用到DOM元素
-                    animate-bounce  应用连续反弹效应的DOM元素
-                71. Handling JS Date 日期处理方法
-                    // we import all of `date`
-                    import { date } from 'quasar'
-                    // destructuring to keep only what is needed
-                    const { addToDate } = date
-                    let date = addToDate(new Date(), { days: 7, months: 1 })
-
-                    import { date } from 'quasar'
-                    let timeStamp = Date.now()
-                    let formattedString = date.formatDate(timeStamp, 'YYYY-MM-DDTHH:mm:ss.SSSZ')
-
-                    let formattedString = date.formatDate(timesStamp, 'MMMM - dddd', {
-                    dayNames: ['Duminica', 'Luni'],
-                    monthNames: ['Ianuarie', 'Februarie']
-                    })
-                72. DOM Utils DOM操作方法
-                    import { dom } from 'quasar'
-                    const { offset } = dom
-                    // Offset on screen
-                    console.log(offset(DomElement))
-                    // { top: 10, left: 100 }
-
-                    import { dom } from 'quasar'
-                    // Offset on screen
-                    console.log(dom.offset(DomElement))
-                    // { top: 10, left: 100 }
-                73. Formatter Utils 数据格式化方法
-                    // we import all of `date`
-                    import { format } from 'quasar'
-                    // destructuring to keep only what is needed
-                    const { capitalize, humanStorageSize } = format
-                    console.log( capitalize('some text') )
-                    // Some text
-                    console.log( humanStorageSize(13087) )
-                    // 12.78 kB
-                74. Other Utils 其他方法
-                    import { openURL } from 'quasar'
-                    openURL('http://...')
-                    // Debounce Function 防抖方法 (过去300毫秒没有执行过,才会执行)
-                    import { debounce } from 'quasar'
-                    (Debounced Function) debounce(Function fn, Number milliseconds_to_wait, Boolean immediate)
-                    // Example:
-                    window.addEventListener(
-                    'resize',
-                    debounce(function() {
-                        .... things to do ...
-                    }, 300 )
-                    )
-                    // Throttle Function 节流方法 (每隔300毫秒只能执行一次)
-                    import { throttle } from 'quasar'
-                    (Throttled Function) throttle(Function fn, Number limit_in_milliseconds)
-                    // Example: execute at most once every 0.3s
-                    window.addEventListener(
-                    'resize',
-                    throttle(function() {
-                        .... things to do ...
-                    }, 300 )
-                    )
-                75. Tree 树
-                    <q-tree
-                    :model="treeModel"
-                    contract-html="<i class='material-icons'>remove_circle</i>"
-                    expand-html="<i class='material-icons'>add_circle</i>"
-                    ></q-tree>
-
-                    treeModel: [
-                    {
-                        title: 'Item 1',
-                        expanded: true,
-                        children: [
-                        {
-                            title: 'Item 1.1',
-                            expanded: false,
-                            children: [
-                            {
-                                title: 'Item 1.1.1',
-                                expanded: false,
-                                children: [
-                                {
-                                    title: 'Item 1.1.1.1',
-                                    expanded: false,
-                                    children: []
-                                }
-                                ]
-                            },
-                            {
-                                title: 'Item 1.1.2',
-                                expanded: false,
-                                handler () { console.log('Tapped on Item 1.1.2') },
-                                children: []
-                            }
-                            ]
-                        },
-                        {
-                            title: 'Item 1.2',
-                            expanded: false,
-                            children: []
-                        }
-                        ]
-                    },
-                    {
-                        title: 'Item 2',
-                        expanded: false,
-                        children: []
-                    }
-                    ]
-                76. Chip 右上角显示数字的角标
-                    <!-- icon on left side -->
-                    <q-chip icon="alarm" color="primary">
-                    q-chip
-                    </q-chip>
-                    <!-- icon on right side -->
-                    <q-chip icon-right="alarm" color="primary">
-                    q-chip
-                    </q-chip>
-                    <!-- avatar on left side -->
-                    <q-chip avatar="/statics/some.png" color="primary">
-                    q-chip
-                    </q-chip>
-                77. Chat IM
-                    <q-chat-message
-                    label='Sunday, 19th'
-                    />
-                    <q-chat-message
-                    name="me"
-                    avatar="statics/boy-avatar.png"
-                    :text="['hunter2']"
-                    stamp="4 minutes ago"
-                    sent
-                    />
-                    <q-chat-message
-                    name="Jane"
-                    avatar="statics/linux-avatar.png"
-                    :text="['hey, if you type in your pw', 'it will show as stars']"
-                    stamp="7 minutes ago"
-                    />
-                */
             </pre>
         </div>
 
     </div>
 
     <script type="text/javascript" src="./dist/index.js"></script>
+    <textarea style="display: none;" id="pre_tpl_1" to="pre_1">
+        短期提高经营业绩、中期提高营销能力、长期打造核心竞争力
+
+        function({
+        _req,
+        Mock
+        }) {
+        return 'tName' + (_req.query.page || 1)
+        }
+        // 配置mock 服务器
+        let mockUrl = ''
+        switch (window.location.host) {
+        case 'localhost:8088':
+            mockUrl = 'http://127.0.0.1:7300/mock/5a2de729f959662bc4226e1b'
+            break
+        default:
+            break
+        }
+        // 打开 QQ
+        window.open('tencent://message/?uin=371126232&Site=www.test.com&Menu=yes')
+        console.log(mockUrl)
+        // set和Array.from
+
+        // 生成随机数 0-9
+        parseInt(Math.random()*10)
+        // promise 封装异步回调
+        let _Promise = new Promise((res, rej) => {})
+        // es6 Array.find()
+        [{name: 'n1', value: 'v1'}, {name: 'n2', value: 'v2'}, {name: 'n3', value: 'v3'}].find((value, index, arr) => {
+        return value.value === 'v3'
+        })
+        // es6 Array.findIndex()
+        [{name: 'n1', value: 'v1'}, {name: 'n2', value: 'v2'}, {name: 'n3', value: 'v3'}].findIndex((value, index, arr) => {
+        return value.value === 'v3'
+        })
+        // es6 Object.keys() 用于获取对象自身所有的可枚举的属性值
+        Object.keys({name: 'n1', id: 'i1', value: 'v1'})
+        // es6 Object.assign方法用于对象的合并 arg[1] 覆盖 arg[0]
+        Object.assign({a: 'a1', name: 'na'}, {name: 'n1', id: 'i1', value: 'v1'})
+        // ES5 IE9+ 锁定对象 不能添加新的属性,不能删除已有属性,不能修改已有属性
+        Object.freeze(data)
+        // ES5 IE9+ 对象密封 不能添加新的属性,不能删除已有属性,可以修改已有属性
+        Object.seal(data)
+        // es6 对象 数组 复制问题
+        let {...newObj} = obj // es6 对象 复制
+        let [...newArr] = arr // es6 数组 复制
+        // es6 Array.prototype.filter() 返回 age > 18 的数组
+        [{name: "张含韵", "age": "18"}, {name: "江一燕", "age": "19"}, {name: "李小璐", "age": "20"}]
+        .filter(item => item.age > 18)
+        // es6 Array.prototype.map() 返回 email 组成的 新数组
+        [{name: "张含韵", "email": "zhang@email.com"}, {name: "江一燕", "email": "jiang@email.com"}, {name: "李小璐", "email": "li@email.com"}]
+        .map(function (item) { return item.email })
+        // 获取node 命令 参数
+        _arg = process.argv[2]
+
+        this.$store.commit(this.$types.UPDATE_CURRENT_STUDENT_STATE, 1)
+        // <p style="word-wrap:break-word;width:400px">{{data}}</p>
+        // Mongodb
+        mongod --dbpath D:\Mongodb\data
+
+        // vue
+        // 路由拦截 未登录不能访问
+        router.beforeEach((to, from, next) => {
+        // 如果将要去到的路由为/login，则清空用户session
+        if (to.path === '/home') {
+            sessionStorage.removeItem('user')
+        }
+        let _arr = ['/home', '/teachingModel', '/curriculumSystem', '/classProcess', '/aboutUs']
+        let _to = _arr.find((value, index, arr) => { return value === to.path })
+        // 获取session中的用户信息
+        let user = JSON.parse(sessionStorage.getItem('user'))
+        if (!user && !_to) {
+            next({path: '/home'})
+        } else {
+            next()
+        }
+        })
+        // 强制刷新
+        this.$forceUpdate()
+        computed // 计算属性 ...mapState()
+        methods // click 事件等
+        created //组件创建 异步获取数据
+        // img 默认图片
+        item.img ? imgURI + item.img : defaultData.teacherImg
+        // 数据过滤
+        filters: {
+        filterData () {
+
+        }
+        }
+        // 数据修改后执行对应方法
+        watch: {
+        data: 'handleDataFun'
+        }
+
+        // es6 深拷贝 数组包含对象 拷贝有问题
+        // 简单对象 深拷贝
+        const deepClone = (obj) => {
+        var proto = Object.getPrototypeOf(obj);
+        return Object.assign({}, Object.create(proto), obj);
+        }
+        // 简单数组 深拷贝
+        export const deepCopy = function (arr) {
+        return arr.map((e) => {
+            if (typeof e === 'object') {
+            return Object.assign({}, e)
+            } else {
+            return e
+            }
+        })
+        }
+        // 复杂对象深拷贝
+        const deepClone = (initObj) => {
+        var obj = {}
+        for (var i in initObj) {
+        // 避免相互引用对象导致死循环，如initObj.a = initObj的情况
+            var prop = initObj[i];
+            if(prop === obj) {
+            continue;
+            }
+            if (typeof prop === 'object') {
+            obj[i] = (prop.constructor === Array) ? [] : Object.create(prop);
+            } else {
+            obj[i] = prop;
+            }
+        }
+        return obj;
+        }
+        // 数据过滤
+        getDataType2 () {
+        return this.dataArr.filter(item => item.type === '2')
+        }
+
+        css 常用class
+        flex items-center content-center justify-center
+        //横向 对齐方式
+        justify-start justify-end justify-center justify-between justify-around
+        //纵向 对齐方式
+        items-start items-end items-center items-stretch items-baseline
+        //多行内容 上下对齐方式
+        content-start content-end content-center content-stretch content-between content-around
+        // col- 栅格布局 中 小 极
+        col-xl-4 col-lg-4 col-md-4 col-sm-6 col-xs-12
+
+        .ellipsis-3-lines {
+            -webkit-line-clamp: 3;
+        }
+        .ellipsis-2-lines, .ellipsis-3-lines {
+            overflow: hidden;
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+        }
+
+        .flex {
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -ms-flex-wrap: wrap;
+            flex-wrap: wrap;
+        }
+
+        .justify-around {
+            -ms-flex-pack: distribute;
+            justify-content: space-around;
+        }
+        .justify-between {
+            -webkit-box-pack: justify;
+            -ms-flex-pack: justify;
+            justify-content: space-between;
+        }
+        .justify-center {
+            -webkit-box-pack: center;
+            -ms-flex-pack: center;
+            justify-content: center;
+        }
+        .justify-end {
+            -webkit-box-pack: end;
+            -ms-flex-pack: end;
+            justify-content: flex-end;
+        }
+        .justify-start {
+            -webkit-box-pack: start;
+            -ms-flex-pack: start;
+            justify-content: flex-start;
+        }
+
+        .items-stretch {
+            -webkit-box-align: stretch;
+            -ms-flex-align: stretch;
+            align-items: stretch;
+        }
+        .items-baseline {
+            -webkit-box-align: baseline;
+            -ms-flex-align: baseline;
+            align-items: baseline;
+        }
+        .items-center, .flex-center {
+            -webkit-box-align: center;
+            -ms-flex-align: center;
+            align-items: center;
+        }
+        .items-end {
+            -webkit-box-align: end;
+            -ms-flex-align: end;
+            align-items: flex-end;
+        }
+        .items-start {
+            -webkit-box-align: start;
+            -ms-flex-align: start;
+            align-items: flex-start;
+        }
+
+        .content-around {
+            -ms-flex-line-pack: distribute;
+            align-content: space-around;
+        }
+        .content-between {
+            -ms-flex-line-pack: justify;
+            align-content: space-between;
+        }
+        .content-center {
+            -ms-flex-line-pack: center;
+            align-content: center;
+        }
+        .content-end {
+            -ms-flex-line-pack: end;
+            align-content: flex-end;
+        }
+        .content-start {
+            -ms-flex-line-pack: start;
+            align-content: flex-start;
+        }
+
+        // js
+        // 深拷贝
+        function deepCopy(o) {
+        if (o instanceof Array) {
+            var n = [];
+            for (var i = 0; i < o.length; ++i) {
+            n[i] = deepCopy(o[i]);
+            }
+            return n;
+        } else if (o instanceof Function) {
+            var n = new Function("return " + o.toString())();
+            return n
+        } else if (o instanceof Object) {
+            var n = {}
+            for (var i in o) {
+            n[i] = deepCopy(o[i]);
+            }
+            return n;
+        } else {
+            return o;
+        }
+        }
+
+        /*
+
+        <template>
+        </template>
+
+        <script>
+        import {
+            QList
+        } from 'quasar'
+
+        export default {
+            components: {
+            QList
+            },
+            data () {
+            return {}
+            },
+            computed: {},
+            methods: {},
+            created: function () {
+            },
+            mounted () {
+            this.$nextTick(() => {
+            })
+            },
+            beforeDestroy () {
+            }
+        }
+        </script>
+
+        <style lang="less" scoped>
+        </style>
+
+        */
+
+        /*
+
+        nodemon
+        nodemon build/script.dev.js
+        // quasar vue UI框架
+
+        1. 避免直接使用< router-link >,推荐通过 QSideLink.
+            <q-side-link to="/twitter">
+            <q-icon name="rss feed" />
+            </q-side-link>
+        2. 使用slot 属性的DOM 元素必须是< q-layout >的直接子元素
+            <q-layout>
+            <div slot="footer">
+                ...Your Content...
+            </div>
+            </q-layout>
+        3. 根据使用的主题, 导航 slot将被放置在不同的地方。一般 导航 slot 将在头和在页面视图(but part of header)。 iOS的主题, 导航 slot 将被添加在页面视图和页脚前(but part of footer)。
+
+        4. QToolbar 工具栏
+            <q-layout ref="layout">
+            <q-toolbar slot="header" color="secondary">
+                <!-- toggles QLayout left side -->
+                <q-btn
+                flat
+                @click="$refs.layout.toggleLeft()"
+                >
+                <q-icon name="menu" />
+                </q-btn>
+                <q-toolbar-title>
+                Title
+                </q-toolbar-title>
+                <q-btn flat>
+                <q-icon name="mail" />
+                </q-btn>
+                <q-btn flat>
+                <q-icon name="alarm" />
+                </q-btn>
+            </q-toolbar>
+            </q-layout>
+
+        5. QTabs 选项卡
+            <q-tabs>
+            <!-- Tabs - notice slot="title" -->
+            <q-tab default count="5" slot="title" name="tab-1" icon="message" />
+            <q-tab disable slot="title" name="tab-2" icon="fingerprint" />
+            <q-tab alert slot="title" name="tab-3" icon="account_box" />
+            <q-tab slot="title" name="tab-4" icon="accessibility" />
+            <q-tab slot="title" name="tab-5" icon="build" />
+            <!-- Targets -->
+            <q-tab-pane name="tab-1">Tab One</q-tab-pane>
+            <q-tab-pane name="tab-2">Tab Two</q-tab-pane>
+            <q-tab-pane name="tab-3">Tab Three</q-tab-pane>
+            <q-tab-pane name="tab-4">Tab Four</q-tab-pane>
+            <q-tab-pane name="tab-5">Tab Five</q-tab-pane>
+            </q-tabs>
+        6. QTab 选项卡
+            <q-select
+            type="radio"
+            v-model="tabsModel"
+            :options="tabsOptions">
+            </q-select>
+            <q-tabs v-model="tabsModel">
+            <q-tab name="xtab-1" icon="message" slot="title" />
+            <q-tab name="xtab-2" icon="account_box" slot="title" />
+            <q-tab name="xtab-3" icon="mail" slot="title" />
+                <q-tab-pane name="xtab-1">Tab One</q-tab-pane>
+                <q-tab-pane name="xtab-2">Tab Two</q-tab-pane>
+                <q-tab-pane name="xtab-3">Tab Three</q-tab-pane>
+            </q-tabs>
+        7. QTabPane 选项卡窗格组件(选项卡的内容相对较小或简单)
+            <q-select
+            type="radio"
+            v-model="tabsModel"
+            :options="tabsOptions">
+            </q-select>
+            <q-tabs v-model="tabsModel">
+            <q-tab name="xtab-1" icon="message" slot="title" />
+            <q-tab name="xtab-2" icon="account_box" slot="title" />
+            <q-tab name="xtab-3" icon="mail" slot="title" />
+                <q-tab-pane name="xtab-1">Tab One</q-tab-pane>
+                <q-tab-pane name="xtab-2">Tab Two</q-tab-pane>
+                <q-tab-pane name="xtab-3">Tab Three</q-tab-pane>
+            </q-tabs>
+        8. QRouteTab 标签路由器组件(选项卡绑定路由跳转)
+            <!-- Tabs -->
+            <q-tabs>
+            <q-route-tab
+                icon="mail"
+                to="/mails"
+                exact
+                slot="title"/>
+            <q-route-tab
+                icon="alarm"
+                to="/alarms"
+                exact
+                slot="title"/>
+            </q-tabs>
+        9. 选项卡布局
+            <q-layout>
+            <q-tabs slot="navigation">
+                <q-route-tab
+                icon="mail"
+                to="/mails"
+                exact
+                slot="title"
+                />
+                <q-route-tab
+                icon="alarm"
+                to="/alarms"
+                exact
+                slot="title"
+                />
+            </q-tabs>
+            </q-layout>
+        10. 颜色配置
+            <q-tabs color="orange">...</q-tabs>
+            <q-tabs color="orange-1">...</q-tabs>
+            <q-tabs color="orange-10">...</q-tabs>
+            <q-tab slot="title" color="orange-1" />
+            <q-tab slot="title" color="orange-10" />
+        11. 对齐
+            <q-tabs align="justify">...</q-tabs>
+            <q-tabs align="center">...</q-tabs>
+            <q-tabs align="right">...</q-tabs>
+        12. 下拉刷新
+            <q-pull-to-refresh :handler="refresher">
+            <!-- Content, whatever you like -->
+            <p v-for="item in items">
+                Lorem ipsum dolor sit amet...
+            </p>
+            </q-pull-to-refresh>
+        13. QSideLink 左右侧边栏可以像链接一样使用返回按钮(QSideLink只在“左”或“右” QLayout slot)
+            <q-side-link to="/some/route">Go to Route</q-side-link>
+            <q-side-link tag="a" to="/some/route">Go to Route</q-side-link>
+            <q-side-link item to="/some/other/route" exact>
+            <q-item-main>
+                <q-item-tile label>
+                Go to some other Route
+                </q-item-tile>
+            </q-item-main>
+            </q-side-link>
+        14. Handling Back Button处理后退按钮
+            <!-- Login button -->
+            <q-btn @click="$router.push('/list')">Login</q-btn>
+            <!-- Logout button -->
+            <q-btn @click="$router.push('/login')">Logout</q-btn>
+            指令“v-go-back”
+            <q-btn class="primary" v-go-back=" '/' ">Logout</q-btn>
+            调用window.history.back(),而不是 $router.push(“/”) 。
+        15. Context Menu右键单击(或长时间点击触摸设备能力)
+            <q-context-menu ref="context">
+            <q-list link separator style="min-width: 150px; max-height: 300px;">
+                <q-item @click="showToast(), $refs.context.close()">
+                <q-item-main label="Label" sublabel="Value" />
+                </q-item>
+                <q-item @click="showOtherToast(), $refs.context.close()">
+                <q-item-main label="Other Label" sublabel="Other Value" />
+                </q-item>
+            </q-list>
+            </q-context-menu>
+        16. Breadcrumbs 面包屑
+            <ul class="breadcrumb">
+            <li>
+                <a>
+                <q-icon name="home" />
+                </a>
+            </li>
+            <li>
+                <a>
+                <q-icon name="mail" /> Quasar
+                </a>
+            </li>
+            <li>
+                <a>
+                <q-icon name="cloud" /> Breadcrumb
+                </a>
+            </li>
+            </ul>
+        17. Pagination 分页
+            <q-pagination v-model="page" :max="17" />
+        18. Scroll Observable 滚动的(当页面溢出容器 .scroll 应用CSS类)
+            <template>
+            <q-scroll-observable @scroll="userHasScrolled" />
+            </template>
+            <script>
+            export default {
+            methods: {
+                userHasScrolled (scroll) {
+                console.log(scroll)
+                // {
+                //   position: 56, // pixels from top
+                //   direction: 'down', // 'down' or 'up'
+                //   directionChanged: false, // has direction changed since this handler was called?
+                //   inflexionPosition: 56 // last scroll position where user changed scroll direction
+                // }
+                }
+            }
+            }
+            </script>
+        19. Directive "v-scroll"  指令“v-scroll”
+            <template>
+            <div v-scroll="scrolled">...</div>
+            </template>
+            <script>
+            export default {
+            methods: {
+                scrolled (position) {
+                // when this method is invoked then it means user
+                // has scrolled the page to `position`
+                //
+                // `position` is an Integer designating the current
+                // scroll position in pixels.
+                }
+            }
+            }
+            </script>
+        20. Infinite Scroll  无限滚动(必须是当前高度大于一个屏幕高度才能生效)
+            <q-infinite-scroll :handler="loadMore">
+            <!-- Content, in this case some <p> tags -->
+            <p v-for="item in items" class="caption">
+                Lorem ipsum dolor sit amet...
+            </p>
+            <!-- slot="message" for DOM element to display (in this example
+                a dots spinner) when loading additional content -->
+            <q-spinner-dots slot="message" :size="40"></q-spinner-dots>
+            </q-infinite-scroll>
+        21. Scroll Area 滚动区域(自定义了滚动条样式)
+            <q-scroll-area style="width: 400px; height: 100px;">
+            <div v-for="n in 10">
+                Lorem ipsum dolor sit amet, consectetur adipisicing
+                elit, sed do eiusmod tempor incididunt ut labore et
+                dolore magna aliqua.
+            </div>
+            </q-scroll-area>
+        22. Scroll Fire (当页面往上滚动时 在页面顶部显示的提示信息) 性能问题 最小50ms触发一次
+            <template>
+            <div v-scroll-fire="bounceImage">...</div>
+            </template>
+            <script>
+            export default {
+            methods: {
+                bounceImage (element) {
+                // in this example, when the `<div>` comes into view,
+                // we bounce it for 2 seconds
+                // we add helper `nimate-bounce` Quasar CSS class
+                element.classList.add('animate-bounce')
+                setTimeout(() => {
+                    // we make sure the node is still in DOM
+                    // (user hasn't navigated away from the Vue component
+                    // rendering our `<div>`)
+                    // so we don't generate an error
+                    if (document.body.contains(element)) {
+                    // then remove the helper class to
+                    // stop bouncing
+                    element.classList.remove('animate-bounce')
+                    }
+                }, 2000)
+                }
+            }
+            }
+            </script>
+        23. Back to Top 回到顶部
+            <q-btn
+            v-back-to-top
+            round
+            color="teal-5"
+            class="fixed-bottom-right"
+            style="margin: 0 15px 15px 0">
+            <q-icon name="keyboard_arrow_up" />
+            </q-btn>
+            <q-btn
+            v-back-to-top.animate="{offset: 500, duration: 200}"
+            round
+            color="primary"
+            class="fixed-bottom-right animate-pop"
+            style="margin: 0 15px 15px 0">
+            <q-icon name="keyboard_arrow_up" />
+            </q-btn>
+            <q-fixed-position corner="top-right" :offset="[18, 18]">
+            <q-btn
+                v-back-to-top
+                round
+                color="primary"
+                @click="alert"
+                icon="keyboard_arrow_up"/>
+            </q-fixed-position>
+        24. Scrolling Utils 滚动条工具类
+            // 获取设置 滚动条位置
+            import { scroll } from 'quasar'
+            const { getScrollPosition, setScrollPosition } = scroll
+            // Get scroll position of a element or page. Use it in conjunction with `getScrollTarget()`
+            (Number pixels) getScrollPosition(scrollTargetDomElement)
+            // Setting scroll position of an element or page:
+            setScrollPosition (scrollTargetElement, offset[, duration])
+            // 获取滚动条高度
+            import { scroll } from 'quasar'
+            const { getScrollHeight } = scroll
+            // get scrolling container inner height
+            (Number) getScrollHeight(scrollTargetDomElement)
+            console.log( getScrollHeight(el) )
+            // 824 (it's in pixels always)
+            // 获取滚动条宽度
+            import { scroll } from 'quasar'
+            const { getScrollbarWidth } = scroll
+            console.log(getScrollbarWidth()) // 16 (it's in pixels)
+        25. Button 按钮
+            // 普通图文按钮
+            <q-btn icon="create">New item</q-btn>
+            // 图标按钮
+            <q-btn>
+            <q-icon name="map" />
+            </q-btn>
+            // 圆形按钮 (一般只有一个图标)
+            <q-btn round color="secondary" icon="card_giftcard" />
+            <!-- Next is perfectly equivalent -->
+            <q-btn round color="secondary">
+            <q-icon name="card_giftcard" />
+            </q-btn>
+        26. Field 字段组件
+            <q-field
+            icon="cloud"
+            label="Your Gmail"
+            helper="Helper"
+            :error="mailHasError"
+            error-label="We need a valid email"
+            :count="10">
+            <q-input suffix="@gmail.com" v-model="model" />
+            </q-field>
+        27. Input (Textfield)
+            <!-- Single Line Input -->
+            <q-input v-model="text" />
+            <q-input v-model="text" stack-label="Stack Label" />
+            <q-input v-model="text" float-label="Float Label" placeholder="Gigi" />
+            <!-- Multiple Line Input -->
+            <q-input
+            v-model="area"
+            type="textarea"
+            float-label="Textarea"
+            :max-height="100"
+            :min-rows="7"/>
+        28. Chips Input 标签输入框
+            <q-chips-input v-model="model" />
+            <!-- Disabled -->
+            <q-chips-input v-model="model" disable />
+            <!-- With floating label -->
+            <q-chips-input v-model="model" float-label="Floating Label" />
+            <!-- With custom placeholder -->
+            <q-chips-input v-model="model" placeholder="Type some names" />
+            <!-- On error state -->
+            <q-chips-input v-model="model" error />
+        29. Autocomplete 自动完成  自动完成组件绑定到父文本框(如。 QInput QSearch)
+            <q-input color="amber" v-model="terms" placeholder="Type 'fre'">
+            <q-autocomplete
+                @search="search"
+                :min-characters="3"
+                @selected="selected"
+            />
+            </q-input>
+            <!-- Binds to parent QSearch -->
+            <q-search v-model="terms" placeholder="Start typing a country name">
+            <q-autocomplete @search="search" @selected="selected" />
+            </q-search>
+            <!-- Adds a separator between results -->
+            <q-search v-model="terms">
+            <q-autocomplete
+                separator
+                @search="search"
+                @selected="selected"
+            />
+            </q-search>
+        30. Search (Textfield) 搜索(文本框)
+            <q-search v-model="search" />
+        31. Slider 滑块
+            <q-slider v-model="selectedValue" :min="1" :max="7" />
+            <q-slider
+            v-model="selectedValue"
+            :min="0"
+            :max="10"
+            :step="2"
+            label
+            snap/>
+            <q-slider
+            v-model="selectedValue"
+            :min="0"
+            :max="10"
+            square/>
+        32. Slider Range 滑块 范围
+            <template>
+            <q-range
+                v-model="rangeValues"
+                :min="0"
+                :max="10"
+                :step="1"
+            />
+            </template>
+            <script>
+            export default {
+            data () {
+                return {
+                // our model here
+                rangeValues: {
+                    min: 2,
+                    max: 4
+                }
+                }
+            }
+            }
+            </script>
+        33. Radio 单选
+            <!-- Three choices for the user -->
+            <q-radio v-model="option" val="opt1" label="Option 1" />
+            <q-radio v-model="option" val="opt2" label="Option 2" />
+            <q-radio v-model="option" val="opt3" label="Option 3" />
+        34. Checkbox 多选
+            <!-- No label: -->
+            <q-checkbox v-model="checked" />
+            <!-- With a label -->
+            <q-checkbox v-model="checked" label="Checkbox Label" />
+            <!-- Disabled: -->
+            <q-checkbox v-model="checked" disable />
+
+            <q-checkbox v-model="selection" val="one" label="One" />
+            <br><br>
+            <q-checkbox v-model="selection" val="two" label="Two" />
+            <br><br>
+            <q-checkbox v-model="selection" val="three" label="Three" />
+        35. Toggle 开关
+            <q-toggle v-model="checked" label="Toggle Label" />
+            <!-- With no label -->
+            <q-toggle v-model="checked" />
+            <!-- With a specific color -->
+            <q-toggle v-model="checked" color="teal-8" />
+            <!-- With icon -->
+            <q-toggle v-model="checked" icon="alarm" label="Toggle Label" />
+            <!-- Disabled state -->
+            <q-toggle v-model="checked" disable label="Toggle Label" />
+        36. Option Group 选项组
+            // checkboxes
+            <template>
+            <q-option-group
+                color="secondary"
+                type="checkbox"
+                v-model="group"
+                :options="[
+                { label: 'Option 1', value: 'op1' },
+                { label: 'Option 2', value: 'op2' },
+                { label: 'Option 3', value: 'op3' }
+                ]"
+            />
+            </template>
+            <script>
+            export default {
+            data () {
+                return {
+                // `v-model` binded to `group`,
+                // which must be an array for checkboxes and toggles
+                group: ['opt1']
+                }
+            }
+            }
+            </script>
+            //radios
+            <template>
+            <q-option-group
+                color="secondary"
+                type="radio"
+                v-model="group"
+                :options="[
+                { label: 'Option 1', value: 'op1' },
+                { label: 'Option 2', value: 'op2' },
+                { label: 'Option 3', value: 'op3' }
+                ]"
+            />
+            </template>
+            <script>
+            export default {
+            data () {
+                return {
+                // `v-model` binded to `group`,
+                // which must be a String when using radios
+                group: 'opt1'
+                }
+            }
+            }
+            </script>
+        36. Datetime 时间日期
+            <!-- Only Date -->
+            <q-datetime v-model="model" type="date" />
+            <!-- Only Time -->
+            <q-datetime v-model="model" type="time" />
+            <!-- Date & Time -->
+            <q-datetime v-model="model" type="datetime" />
+        37. Inline Datetime  日历时间显示
+            <q-inline-datetime v-model="model" type="date" />
+            <!-- Only Time -->
+            <q-inline-datetime v-model="model" type="time" />
+            <!-- Date & Time -->
+            <q-inline-datetime v-model="model" type="datetime" />
+            <!-- Date - Monday as first day of week -->
+            <q-inline-datetime v-model="model" monday-first type="date" />
+            <!-- Disabled State -->
+            <q-inline-datetime disable v-model="model" type="datetime" />
+            <!-- Readonly State -->
+            <q-inline-datetime readonly v-model="model" type="datetime" />
+            <!-- Min & Max -->
+            <q-inline-datetime type="datetime" v-model="minMaxModel" :min="min" :max="max" />
+            <!-- Specific color -->
+            <q-inline-datetime color="secondary" v-model="model" type="datetime" />
+            <!-- Time 24hr Format -->
+            <q-inline-datetime v-model="model" type="time" format24h />
+        38. Datetime Range 时间范围选择
+            <!-- Date Range -->
+            <q-datetime-range
+            type="date"
+            v-model="range"
+            :min="min"
+            :max="max"
+            />
+            <!-- Time Range -->
+            <q-datetime-range
+            type="time"
+            v-model="range"
+            :min="min"
+            :max="max"
+            />
+            <!-- Datetime Range -->
+            <q-datetime-range
+            type="datetime"
+            v-model="range"
+            :min="min"
+            :max="max"
+            />
+        39. Select
+            <template>
+            <div>
+                <!-- Single Selection using Radios -->
+                <q-select
+                v-model="select"
+                float-label="Is Quasar Awesome?"
+                radio
+                :options="selectOptions"
+                />
+                <!-- Single Selection as a simple List -->
+                <q-select
+                v-model="select"
+                :options="selectOptions"
+                />
+                <!-- Multiple Selection using Checkboxes by default -->
+                <q-select
+                multiple
+                v-model="multipleSelect"
+                :options="selectOptions"
+                />
+                <!-- Multiple Selection using Toggles -->
+                <q-select
+                multiple
+                toggle
+                v-model="multipleSelect"
+                :options="selectOptions"
+                @change="inputChange"
+                />
+            </div>
+            </template>
+            <script>
+            export default {
+            data () {
+                return {
+                selectOptions: [
+                    {
+                    label: 'Google',
+                    value: 'goog'
+                    },
+                    {
+                    label: 'Facebook',
+                    value: 'fb'
+                    }
+                ]
+                }
+            }
+            }
+            </script>
+        40. Dialog Select 弹出选择框
+            <template>
+            <div>
+                <!-- With Radios -->
+                <q-dialog-select
+                v-model="select"
+                :options="selectOptions"
+                ok-label="Pick"
+                cancel-label="Neah"
+                title="Radios"
+                />
+                <!-- With Checkboxes -->
+                <q-dialog-select
+                multiple
+                v-model="multipleSelect"
+                :options="selectOptions"
+                ok-label="Pick"
+                cancel-label="Neah"
+                title="Checkboxes"
+                />
+                <!-- With Toggles -->
+                <q-dialog-select
+                multiple toggle
+                v-model="multipleSelect"
+                :options="selectOptions"
+                ok-label="Pick"
+                cancel-label="Neah"
+                title="Toggles"
+                />
+            </div>
+            </template>
+            <script>
+            export default {
+            data () {
+                return {
+                selectOptions: [
+                    {
+                    label: 'Google',
+                    value: 'goog'
+                    },
+                    {
+                    label: 'Facebook',
+                    value: 'fb'
+                    }
+                ]
+                }
+            }
+            }
+            </script>
+        41. Rating 评级
+            <q-rating v-model="ratingModel" :max="3" />
+            <!-- Disabled State -->
+            <q-rating
+            disable
+            v-model="ratingModel"
+            :max="3"
+            />
+        42. Knob 以圈的形式显示分数百分比(按钮)
+            <q-knob
+            v-model="model"
+            :min="min"
+            :max="max"
+            ></q-knob>
+            <!-- With custom placeholder -->
+            <q-knob
+            v-model="model"
+            :min="min"
+            :max="max"
+            :placeholder="'$ ' + model"
+            ></q-knob>
+            <!-- Disabled state -->
+            <q-knob
+            disable
+            v-model="model"
+            :min="min"
+            :max="max"
+            ></q-knob>
+        42. Uploader 文件上传
+            <q-uploader :url="url" />
+        43. Action Sheet  手机端底部弹出的按钮组
+            import { ActionSheet } from 'quasar'
+            ActionSheet.create({
+            title: 'Article Actions',
+            // specify ONLY IF you want gallery mode:
+            gallery: true,
+            actions: [
+                {
+                label: 'Delete',
+                // Choose one of the following two:
+                icon: 'delete', // specify ONLY IF using icon
+                avatar: 'assets/some-avatar.png', // specify ONLY IF using avatar
+                handler: function() {
+                    console.log('Deleted Article')
+                }
+                },
+                ...
+            ],
+            // optional:
+            dismiss: {
+                // label is used only for iOS theme
+                label: 'Cancel',
+                // tell what to do when Action Sheet
+                // is dismised (doesn't trigger when
+                // any of the actions above are clicked/tapped)
+                handler: function() {
+                // console.log('Cancelled...')
+                }
+            }
+            })
+        44. Alert
+            import { Alert } from 'quasar'
+            Alert.create({html: 'Warning, warning, Will Robinson!'})
+        45. Toast  手机端底部弹出的信息提示框
+            import { Toast } from 'quasar'
+            Toast.create(String or Object)
+        46. Dialog 弹出框 (对话框 选择框)
+            import { Dialog } from 'quasar'
+            Dialog.create(configObj) (Object with `close` method)
+        47. Modal 模态弹出框 (弹出一个全屏的内容页)
+            <q-modal ref="basicModal">
+            <h4>Basic Modal</h4>
+            <q-btn color="primary" @click="$refs.basicModal.close()">Close</q-btn>
+            </q-modal>
+        48. Popover  弹出一组按钮组等
+            <q-btn ref="target">
+            Email
+            <!-- Direct child of target -->
+            <q-popover ref="popover">
+                <!--
+                The DOM element(s) that make up the popup,
+                in this case a list:
+                -->
+                <q-list separator link>
+                <q-item @click="doSomething(), $refs.popover.close()">
+                    ...
+                </q-item>
+                </q-list>
+            </q-popover>
+            </q-btn>
+        49. Tooltip tip 弹出一个小的提示信息(一句话)
+            <q-btn>
+            Email
+            <!-- Direct child of target -->
+            <q-tooltip>
+                <!--
+                The DOM element(s) that make up the tooltip,
+                in this case a simple text:
+                -->
+                Some text as content of Tooltip
+            </q-tooltip>
+            </q-btn>
+        // ------------------------布局板块 ----------------------------------
+        49. Cards 卡片
+            <q-card>
+            <q-card-title>
+                Card Title
+            </q-card-title>
+            <q-card-separator />
+            <q-card-main>
+                Card Content
+            </q-card-main>
+            </q-card>
+
+            <q-card inline style="width: 500px">
+            <q-card-media>
+                <img src="~assets/donuts.png">
+            </q-card-media>
+            <q-card-title>
+                Cafe Basilico
+                <q-rating slot="subtitle" v-model="stars" :max="5" />
+                <div slot="right" class="row items-center">
+                <q-icon name="place" /> 250 ft
+                </div>
+            </q-card-title>
+            <q-card-main>
+                <p>$・Italian, Cafe</p>
+                <p class="text-faded">Small plates, salads & sandwiches in an intimate setting.</p>
+            </q-card-main>
+            <q-card-separator />
+            <q-card-actions>
+                <q-btn flat round small><q-icon name="event" /></q-btn>
+                <q-btn flat>5:30PM</q-btn>
+                <q-btn flat>7:30PM</q-btn>
+                <q-btn flat>9:00PM</q-btn>
+                <q-btn flat color="primary">Reserve</q-btn>
+            </q-card-actions>
+            </q-card>
+        50. Collapsible (+ Accordion) 可折叠(+手风琴)
+            <q-list>
+            <q-collapsible icon="explore" label="First">
+                <div>
+                Content
+                </div>
+            </q-collapsible>
+            <q-collapsible icon="perm_identity" label="Second">
+                <div>
+                Content
+                </div>
+            </q-collapsible>
+            <q-collapsible icon="shopping_cart" label="Third">
+                <div>
+                Content
+                </div>
+            </q-collapsible>
+            </q-list>
+
+            <q-list>
+            <q-collapsible group="somegroup" icon="explore" label="First">
+                <div>
+                Content
+                </div>
+            </q-collapsible>
+            <q-collapsible group="somegroup" icon="perm_identity" label="Second">
+                <div>
+                Content
+                </div>
+            </q-collapsible>
+            <q-collapsible group="somegroup" icon="shopping_cart" label="Third">
+                <div>
+                Content
+                </div>
+            </q-collapsible>
+            </q-list>
+        51. Data Table  数据表
+            <q-data-table
+            :data="table"
+            :config="config"
+            :columns="columns"
+            @refresh="refresh"
+            >
+            <!-- Custom renderer for "message" column -->
+            <template slot="col-message" scope="cell">
+                <span class="light-paragraph">{{cell.data}}</span>
+            </template>
+            <!-- Custom renderer for "source" column -->
+            <template slot="col-source" scope="cell">
+                <span v-if="cell.data === 'Audit'" class="label text-white bg-primary">
+                Audit
+                <q-tooltip>Some data</q-tooltip>
+                </span>
+                <span v-else class="label text-white bg-negative">{{cell.data}}</span>
+            </template>
+            <!-- Custom renderer for "action" column with button for custom action -->
+            <template slot='col-action' scope='cell'>
+                <q-btn color="primary" @click='doSomethingMethod(cell.row.id)'>View</q-btn>
+            </template>
+            <!-- Custom renderer when user selected one or more rows -->
+            <template slot="selection" scope="selection">
+                <q-btn color="primary" @click="changeMessage(selection)">
+                <i>edit</i>
+                </q-btn>
+                <q-btn color="primary" @click="deleteRow(selection)">
+                <i>delete</i>
+                </q-btn>
+            </template>
+            </q-data-table>
+        52. HTML Tables 表格
+            <table class="q-table">
+            <thead>
+                <tr>
+                <th class="text-left">Name</th>
+                <th class="text-right">Price</th>
+                <th class="text-right">In Stock</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                <td class="text-left">Item #1</td>
+                <td class="text-right">$10.11</td>
+                <td class="text-right">101</td>
+                </tr>
+                <tr>
+                <td class="text-left">Item #2</td>
+                <td class="text-right">$8.88</td>
+                <td class="text-right">34</td>
+                </tr>
+                <tr>
+                <td class="text-left">Item #3</td>
+                <td class="text-right">$0.15</td>
+                <td class="text-right">1670</td>
+                </tr>
+            </tbody>
+            </table>
+
+            <table class="q-table responsive">
+            <thead>
+                <tr>
+                <th>Name</th>
+                <th>Price</th>
+                <th>In Stock</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                <td data-th="Name">Item #1</td>
+                <td data-th="Price">$10.11</td>
+                <td data-th="In Stock">101</td>
+                </tr>
+                <tr>
+                <td data-th="Name">Item #2</td>
+                <td data-th="Price">$8.88</td>
+                <td class="text-right">34</td>
+                </tr>
+                <tr>
+                <td data-th="Name">Item #3</td>
+                <td data-th="Price">$0.15</td>
+                <td data-th="In Stock">1670</td>
+                </tr>
+            </tbody>
+            </table>
+        53. Lists and List Items 列表 列表项
+            <q-list highlight>
+            <q-list-header>Recent chats</q-list-header>
+            <q-item>
+                <q-item-side avatar="/statics/boy-avatar.png" />
+                <q-item-main>
+                <q-item-tile label>John Doe</q-item-tile>
+                <q-item-tile sublabel>Quasar enthusiast</q-item-tile>
+                </q-item-main>
+                <q-item-side right>
+                <q-item-tile icon="chat_bubble" color="green" />
+                </q-item-side>
+            </q-item>
+            <q-item>
+                <q-item-side>
+                <q-item-tile avatar>
+                    <img src="~assets/boy-avatar.png" />
+                </q-item-tile>
+                </q-item-side>
+                <q-item-main label="John Doe" sublabel="Quasar enthusiast" />
+                <q-item-side right icon="chat_bubble" />
+            </q-item>
+            <q-item-separator />
+            <q-list-header>Previous chats</q-list-header>
+            <q-item>
+                <q-item-side avatar="/statics/guy-avatar.png" />
+                <q-item-main label="Jack Doe" />
+            </q-item>
+            </q-list>
+        54. Carousel 轮播显示内容信息(轮播图)
+            <q-carousel class="text-white">
+            <div slot="slide" class="bg-primary">
+                Slide 1
+            </div>
+            <div slot="slide" class="bg-secondary">
+                Slide 2
+            </div>
+            <div slot="slide" class="bg-tertiary">
+                Slide 3
+            </div>
+            </q-carousel>
+        55. Quasar Stepper  通过编号的步骤
+            <q-stepper ref="stepper">
+            <!-- Step: -->
+            <q-step default title="First Step" subtitle="Here we go">
+                ...Step content, components, ...
+            </q-step>
+            <!-- Step: -->
+            <q-step title="Step 2">...</q-step>
+            <!-- Step: -->
+            <q-step title="Step 3" subtitle="Review and submit">...</q-step>
+            <!--
+                Optional.
+                "Globally" available Stepper navigation which means
+                that it will be visible regardless of the current step.
+                If we'd put QStepperNavigation under a QStep then we'd
+                be using it for that step only.
+            -->
+            <q-stepper-navigation>
+                <q-btn flat @click="$refs.stepper.previous()">Back</q-btn>
+                <q-btn @click="$refs.stepper.next()">Next</q-btn>
+            </q-stepper-navigation>
+            </q-stepper>
+
+            <q-stepper color="secondary" ref="stepper" alternative-labels>
+            <q-step default name="first" title="Ad style">
+                <div v-for="n in 10">Step 1</div>
+                <!-- Navigation for this step at the end of QStep-->
+                <q-stepper-navigation>
+                <q-btn color="secondary" @click="$refs.stepper.next()">Continue</q-btn>
+                </q-stepper-navigation>
+            </q-step>
+            <q-step error name="second" title="Custom channels" subtitle="Alert message">
+                <div v-for="n in 10">Step 2</div>
+                <q-stepper-navigation>
+                <q-btn color="secondary" @click="$refs.stepper.next()">Next</q-btn>
+                <q-btn color="secondary" flat @click="$refs.stepper.previous()">Back</q-btn>
+                </q-stepper-navigation>
+            </q-step>
+            <q-step name="third" title="Get code">
+                <div v-for="n in 3">Step 3</div>
+                <q-stepper-navigation>
+                <q-btn color="secondary" @click="$refs.stepper.next()">Next</q-btn>
+                <q-btn color="secondary" flat @click="$refs.stepper.previous()">Back</q-btn>
+                </q-stepper-navigation>
+            </q-step>
+            <q-step name="fifth" disable title="Disabled">
+                <div v-for="n in 3">Step 4</div>
+                <q-stepper-navigation>
+                <q-btn color="secondary" @click="$refs.stepper.next()">Next</q-btn>
+                <q-btn color="secondary" flat @click="$refs.stepper.previous()">Back</q-btn>
+                </q-stepper-navigation>
+            </q-step>
+            <q-step name="fourth" title="Review and Finalize">
+                <div v-for="n in 3">Step 5</div>
+                <q-stepper-navigation>
+                <q-btn color="secondary" @click="$refs.stepper.goToStep('first')">Restart</q-btn>
+                <q-btn color="secondary" flat @click="$refs.stepper.previous()">Back</q-btn>
+                </q-stepper-navigation>
+            </q-step>
+            </q-stepper>
+        56. Ajax Bar  异步进度条
+            <template>
+            <div id="q-app">
+                <router-view></router-view>
+                <q-ajax-bar />
+            </div>
+            </template>
+        57. Loading
+            import {
+            Loading,
+            // optional!, for example below
+            // with custom spinner
+            QSpinnerGears
+            } from 'quasar'
+            // default options
+            Loading.show()
+            // with a custom delay
+            Loading.show({
+            delay: 300 // milliseconds
+            })
+            // customizable (all props available)
+            Loading.show({
+            spinner: QSpinnerGears,
+            message: 'Some message',
+            messageColor: 'blue',
+            spinnerSize: 250, // in pixels
+            spinnerColor: 'white',
+            customClass : 'bg-primary'
+            })
+        58. Inner Loading
+            <div class="row justify-center" style="margin-top: 40px">
+            <q-card style="width: 288px; height: 262px;" color="grey-2" class="text-dark relative-position">
+                <q-card-title>
+                Lorem Ipsum
+                </q-card-title>
+                <q-card-main>
+                <q-transition
+                    appear
+                    enter="fadeIn"
+                    leave="fadeOut"
+                >
+                    <div v-show="showSimulatedReturnData">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent vel magna eu risus laoreet tristique. Nulla ut fermentum elit, nec consequat augue. Morbi et dolor nec metus tincidunt pellentesque. Nullam non semper ante. Fusce pellentesque sagittis felis quis porta. Aenean condimentum neque sed erat suscipit malesuada. Nulla eget rhoncus enim. Duis dictum interdum eros.
+                    </div>
+                </q-transition>
+                </q-card-main>
+                <q-inner-loading :visible="visible">
+                <q-spinner-gears size="50px" color="primary"></q-spinner-gears>
+                </q-inner-loading>
+            </q-card>
+            </div>
+        59. Progress Bar (QProgress) 进度条
+            <q-progress :percentage="progressModel" />
+            <!-- with buffering; 4px height looks best -->
+            <q-progress
+            :percentage="progressBuffer"
+            :buffer="buffer"
+            style="height: 4px"
+            />
+        60. Spinners  londing 显示 ** 过程正在发生
+            <!-- Default platform spinner-->
+            <q-spinner />
+            <!-- Spinner with options -->
+            <q-spinner color="secondary" :size="30" />
+            <q-spinner color="teal-4" size="40px" />
+            <!--
+            Alternatively, you can set CSS colo prop on
+            a container or directly with `style` attribute on spinner
+            -->
+            <q-spinner style="color: #e2aa6f" />
+        61. Handler Parameter  平移触摸/鼠标动作
+            <div v-touch-pan="handler">...</div>
+            // "handler" is a Function which receives an Object as parameter
+        62. Swipe Touch/Mouse Action  滑动触摸/鼠标动作
+            <div v-touch-swipe="handler">...</div>
+            // "handler" is a Function which receives an Object as parameter
+        63. Swipe Touch/Mouse Action  滑动触摸/鼠标动作
+            <div v-touch-hold="handler">...</div>
+            // "handler" is a Function which receives an Object as parameter
+        64. Image Gallery  图片库
+            <img src="~assets/quasar.jpg" class="responsive">
+        65. Parallax  视差滚动
+            <q-parallax src="assets/mountains.jpg">
+            <!-- Dom elements to display while loading image -->
+            <div slot="loading">Loading...</div>
+            <!--
+                The rest of Dom elements get displayed on
+                top of the Parallax image after it's loaded
+            -->
+            <h1>Parallax</h1>
+            </q-parallax>
+        66. Video Embedding 视频嵌入
+            <q-video
+            src="https://www.youtube.com/embed/k3_tw44QsZQ?rel=0"
+            style="width: 853px; height: 480px"
+            />
+
+            <div class="q-video">
+            <iframe
+                width="853"
+                height="480"
+                src="https://www.youtube.com/embed/k3_tw44QsZQ?rel=0"
+                frameborder="0"
+                allowfullscreen
+            ></iframe>
+            </div>
+        67. Transition (QTransition) css3 过渡动画
+            <q-transition
+            appear
+            enter="fadeIn"
+            leave="fadeOut"
+            >
+            <!-- Wrapping only one DOM element, defined by QBtn -->
+            <q-btn color="secondary" icon="mail">
+                Email
+            </q-btn>
+            </q-transition>
+
+            <q-transition
+            appear
+            group
+            enter="fadeIn"
+            leave="fadeOut"
+            >
+            <!-- We wrap a "p" tag and a QBtn -->
+            <p key="text">
+                Lorum Ipsum
+            </p>
+            <q-btn
+                key="email-button"
+                color="secondary"
+                icon="mail"
+            >
+                Email
+            </q-btn>
+            </q-transition>
+        68. Slide Transition css3 幻灯片过渡
+            <template>
+            <div>
+                <q-slide-transition>
+                <img
+                    v-show="visible"
+                    src="~assets/quasar.jpg"
+                >
+                </q-slide-transition>
+                <q-btn @click="toggleVisibility">
+                Toggle
+                </q-btn>
+            </div>
+            </template>
+            <script>
+            export default {
+            ...,
+            data: {
+                ...,
+                visible: true
+            },
+            methods: {
+                ...,
+                toggleVisibility () {
+                this.visible = !this.visible
+                }
+            }
+            }
+            </script>
+
+            <q-slide-transition appear>
+            ...
+            </q-slide-transition>
+        69. JS Animations js 动画
+            import { animate } from 'quasar'
+            let id = animate.start({
+            name: 'unique-animation-name', // optional, if none is supplied a unique one is created and returned
+            from: '0', // current position
+            to: '100', // final position
+            duration: 300, // duration of the animation
+            done (finalPosition) {...}, // function to call when animation is done
+            cancel (currentPosition) {...}, // function to call when animation is aborted
+            apply (currentPosition) {...}, // function called on each step so you can apply changes
+            easing (currentPosition) { // custom easing function, see below
+                // ...return transformation of currentPosition...
+            }
+            })
+            // Starting an animation with same name will abort the previous one
+            // Stop an animation using its name
+            animate.stop('unique-animation-name')
+            // or
+            animate.stop(id) // id returned from above
+        70. Animation CSS Helper Classes CSS动画助手类
+            animate-spin  应用连续旋转/旋转到DOM元素
+            animate-spin-reverse  应用连续旋转/旋转相反的方向 animate-spin DOM元素)
+            animate-blink 闪烁效应应用于DOM元素
+            animate-pop 突然出现的效果应用到DOM元素
+            animate-scale 缩小的效果应用到DOM元素
+            animate-fade  淡入效果应用到DOM元素
+            animate-bounce  应用连续反弹效应的DOM元素
+        71. Handling JS Date 日期处理方法
+            // we import all of `date`
+            import { date } from 'quasar'
+            // destructuring to keep only what is needed
+            const { addToDate } = date
+            let date = addToDate(new Date(), { days: 7, months: 1 })
+
+            import { date } from 'quasar'
+            let timeStamp = Date.now()
+            let formattedString = date.formatDate(timeStamp, 'YYYY-MM-DDTHH:mm:ss.SSSZ')
+
+            let formattedString = date.formatDate(timesStamp, 'MMMM - dddd', {
+            dayNames: ['Duminica', 'Luni'],
+            monthNames: ['Ianuarie', 'Februarie']
+            })
+        72. DOM Utils DOM操作方法
+            import { dom } from 'quasar'
+            const { offset } = dom
+            // Offset on screen
+            console.log(offset(DomElement))
+            // { top: 10, left: 100 }
+
+            import { dom } from 'quasar'
+            // Offset on screen
+            console.log(dom.offset(DomElement))
+            // { top: 10, left: 100 }
+        73. Formatter Utils 数据格式化方法
+            // we import all of `date`
+            import { format } from 'quasar'
+            // destructuring to keep only what is needed
+            const { capitalize, humanStorageSize } = format
+            console.log( capitalize('some text') )
+            // Some text
+            console.log( humanStorageSize(13087) )
+            // 12.78 kB
+        74. Other Utils 其他方法
+            import { openURL } from 'quasar'
+            openURL('http://...')
+            // Debounce Function 防抖方法 (过去300毫秒没有执行过,才会执行)
+            import { debounce } from 'quasar'
+            (Debounced Function) debounce(Function fn, Number milliseconds_to_wait, Boolean immediate)
+            // Example:
+            window.addEventListener(
+            'resize',
+            debounce(function() {
+                .... things to do ...
+            }, 300 )
+            )
+            // Throttle Function 节流方法 (每隔300毫秒只能执行一次)
+            import { throttle } from 'quasar'
+            (Throttled Function) throttle(Function fn, Number limit_in_milliseconds)
+            // Example: execute at most once every 0.3s
+            window.addEventListener(
+            'resize',
+            throttle(function() {
+                .... things to do ...
+            }, 300 )
+            )
+        75. Tree 树
+            <q-tree
+            :model="treeModel"
+            contract-html="<i class='material-icons'>remove_circle</i>"
+            expand-html="<i class='material-icons'>add_circle</i>"
+            ></q-tree>
+
+            treeModel: [
+            {
+                title: 'Item 1',
+                expanded: true,
+                children: [
+                {
+                    title: 'Item 1.1',
+                    expanded: false,
+                    children: [
+                    {
+                        title: 'Item 1.1.1',
+                        expanded: false,
+                        children: [
+                        {
+                            title: 'Item 1.1.1.1',
+                            expanded: false,
+                            children: []
+                        }
+                        ]
+                    },
+                    {
+                        title: 'Item 1.1.2',
+                        expanded: false,
+                        handler () { console.log('Tapped on Item 1.1.2') },
+                        children: []
+                    }
+                    ]
+                },
+                {
+                    title: 'Item 1.2',
+                    expanded: false,
+                    children: []
+                }
+                ]
+            },
+            {
+                title: 'Item 2',
+                expanded: false,
+                children: []
+            }
+            ]
+        76. Chip 右上角显示数字的角标
+            <!-- icon on left side -->
+            <q-chip icon="alarm" color="primary">
+            q-chip
+            </q-chip>
+            <!-- icon on right side -->
+            <q-chip icon-right="alarm" color="primary">
+            q-chip
+            </q-chip>
+            <!-- avatar on left side -->
+            <q-chip avatar="/statics/some.png" color="primary">
+            q-chip
+            </q-chip>
+        77. Chat IM
+            <q-chat-message
+            label='Sunday, 19th'
+            />
+            <q-chat-message
+            name="me"
+            avatar="statics/boy-avatar.png"
+            :text="['hunter2']"
+            stamp="4 minutes ago"
+            sent
+            />
+            <q-chat-message
+            name="Jane"
+            avatar="statics/linux-avatar.png"
+            :text="['hey, if you type in your pw', 'it will show as stars']"
+            stamp="7 minutes ago"
+            />
+        */
+    </textarea>
+    <script type="text/javascript">
+        // function HTMLEncode(html) {
+        //     var temp = document.createElement("div");
+        //     (temp.textContent != null) ? (temp.textContent = html) : (temp.innerText = html);
+        //     var output = temp.innerHTML;
+        //     temp = null;
+        //     return output;
+        // }
+        function show_html_code(el) {
+            var _el = el
+            var _to = _el.getAttribute('to')
+            var tpl = _el.innerHTML
+            document.getElementById(_to) && (document.getElementById(_to).innerHTML = tpl)
+        }
+        (function () {
+            var _textarea = document.querySelectorAll('textarea')
+            for (let i = 0; i < _textarea.length; i++) {
+                var _el = _textarea[i]
+                console.dir(_el)
+                show_html_code(_el)
+            }
+        }())
+    </script>
 </body>
 </html>

@@ -42,7 +42,7 @@
     </div>
 
     <script type="text/javascript" src="./dist/index.js"></script>
-    <textarea style="display: none;" id="pre_tpl_1" to="pre_1">
+    <noscript style="display: none;" id="pre_tpl_1" to="pre_1">
         短期提高经营业绩、中期提高营销能力、长期打造核心竞争力
 
         function({
@@ -119,6 +119,8 @@
             next()
         }
         })
+        // 获取 vue url get 参数
+        this.$route.query ( 获取所有 )
         // 强制刷新
         this.$forceUpdate()
         computed // 计算属性 ...mapState()
@@ -1658,7 +1660,7 @@
             stamp="7 minutes ago"
             />
         */
-    </textarea>
+    </noscript>
     <script type="text/javascript">
         // function HTMLEncode(html) {
         //     var temp = document.createElement("div");
@@ -1674,9 +1676,9 @@
             document.getElementById(_to) && (document.getElementById(_to).innerHTML = tpl)
         }
         (function () {
-            var _textarea = document.querySelectorAll('textarea')
-            for (let i = 0; i < _textarea.length; i++) {
-                var _el = _textarea[i]
+            var _noscript = document.querySelectorAll('noscript')
+            for (let i = 0; i < _noscript.length; i++) {
+                var _el = _noscript[i]
                 console.dir(_el)
                 show_html_code(_el)
             }

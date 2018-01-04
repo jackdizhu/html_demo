@@ -48,11 +48,12 @@ isThisHost()
 // js 获取url get 参数
 let getRequestParams = function() {
   // 获取url中"?"符后的字串
-  let url = location.search
-  let theRequest = {}
+  let loc = window.location
+  let url = (loc && loc.search) || ''
+  let theRequest = new Object()
   if (url.indexOf('?') != -1) {
     let str = url.substr(1)
-    strs = str.split('&')
+    let strs = str.split('&')
     for(let i = 0; i < strs.length; i ++) {
       theRequest[strs[i].split('=')[0]] = unescape(strs[i].split('=')[1])
     }

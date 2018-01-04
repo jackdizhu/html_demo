@@ -3,6 +3,7 @@
 let _dom = document.getElementById('domId')
 _dom.scrollIntoView(true);
 _dom.scrollIntoViewIfNeeded();
+
 // html 文件显示 html 代码
 // 普通 html标签 转译
 // function HTMLEncode(html) {
@@ -32,3 +33,14 @@ function show_html_code(el) {
       show_html_code(_el)
   }
 }())
+
+// js 判断用户来源是否是 本网站
+let isThisHost = function() {
+	let doc = window.document
+	let loc = window.location
+	let _referrer = (doc && doc.referrer) || ''
+	let host = loc && (loc.protocol + '//' + loc.host)
+	let is = _referrer.indexOf(host) === -1 ? false : true
+	return is
+}
+isThisHost()

@@ -13,7 +13,7 @@
 
     <meta http-equiv="Cache-Control" content="no-cache"/>
     <meta http-equiv="Pragma" content="no-cache"/>
-    <title>jackdizhu 主页</title>
+    <title>js 正则</title>
     <link rel="shortcut icon" href="/favicon.ico"/>
 
     <style type="text/css" id="style">
@@ -86,7 +86,7 @@
                   console.log(priceSerialization2(_t[i]));
                 }
                 // ['22.14','2,214.00','214.00','22,254,846,314.00','846,314.00','22.00','0.00']
-                
+
                 // -----------------JS原生 对象扩展写法--------------------------------------------
                 // 去左右空格
                 String.prototype._trim = function () {
@@ -143,7 +143,7 @@
                   console.log(_t[i]._trim()._priceDecimal2()._priceSerialization());
                 }
                 // ['22.14','2,214.00','214.00','22,254,846,314.00','846,314.00','22.00','0.00']
-                
+
                 // 数字高位补零 [01]
                 Number.prototype._lenWithZero = function(oCount) {
                     var strText = this.toString();
@@ -172,15 +172,15 @@
                 var d = new Date();
                 console.log(d._getCNDate());
                 // 2017年08月05日12时09分48秒|星期六
-                
+
             </pre>
         </div>
-        
+
     </div>
 
     <script type="text/javascript" src="./dist/index.js"></script>
      <script type="text/javascript">
-        
+
      </script>
 </body>
 </html>

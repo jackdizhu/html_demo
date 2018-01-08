@@ -10,20 +10,21 @@ let a = () => {
 const sleep = (time) => {
   return new Promise((resolve, reject) => {
       setTimeout(() => {
-          resolve('ok')
+        console.log('sleep ok')
+        resolve('ok')
       }, time)
   })
 }
 // async 定义异步方法 await 等待异步返回
 const getJSON = async () => {
   await sleep(3000)
-  return '11'
+  return 'getJSON'
 }
 // async 定义异步方法 await 等待异步返回
-const makeRequest = async () => {
+const request = async () => {
   console.log(await getJSON())
   return "done"
 }
-let _R = makeRequest().then(R => {
+let _R = request().then(R => {
   console.log(R)
 })

@@ -29,4 +29,4 @@ let _o7 = Object.assign({}, _o5, _o6)
 let _o8 = {a: 1, c: 4}
 let _o9 = {a: 2, b: 3}
 let _o10 = {..._o8, ..._o9}
-console.log(_o10)
+// console.log(_o10)

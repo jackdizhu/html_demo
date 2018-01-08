@@ -62,3 +62,9 @@ _a12.forEach(item => {
   item.name = '3'
 })
 // console.log(_a12)
+
+// 数组 合并
+let _a13 = [1, 2]
+let _a14 = [3, 4]
+let _a15 = [..._a13, ..._a14]
+// console.log(_a15)

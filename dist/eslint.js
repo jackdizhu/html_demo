@@ -2,6 +2,31 @@ module.exports = {
 	"root": true,
 	"extends": "standard",
 	"parser": "babel-eslint",
+	"env": {
+		"browser": true,
+		"mocha": true
+	},
+	"globals": {
+		"log": true
+	},
+	"plugins": [
+		"html"
+	],
+	"rules": {
+		"camelcase": [
+			0,
+			{
+				"properties": "never"
+			}
+		],
+	}
+}
+
+// 所有规则配置
+module.exports = {
+	"root": true,
+	"extends": "standard",
+	"parser": "babel-eslint",
 	// 环境配置
 	"env": {
 		"browser": true,

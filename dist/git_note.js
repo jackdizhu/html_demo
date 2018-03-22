@@ -5,12 +5,15 @@
     git merge br // 合并br 分支到主分支
     git branch -d br // 删除本地分支
     git push origin :br // 删除远程分支
+    git push --delete origin v0.3.0 // (存在分支同名 tags 时删除报错) error: dst refspec v0.3.0 matches more than one. 
+    git push origin :refs/heads/v0.3.0 // 指定删除分支
 
     git tag -a v1.0 -m 'version 1.0' // 创建tag
     git push origin --tags // 推送所有 tag
     git push origin v1.0 // 推送当前 tag
     git tag -d v1.0  // 删除本地 tag
     git push origin --delete tag v1.0 // 删除远程 tag
+    git push origin :refs/tags/v0.3.0 // 指定删除 tag
 </pre>
 
 <pre>

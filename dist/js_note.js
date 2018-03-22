@@ -1,3 +1,25 @@
+// apply(this, array)
+// call(this, arg1, arg2, arg3)
+function log(){
+	console.log.apply(console, arguments);
+  console.log.call(console, arguments);
+  
+	var [...arg] = arguments;
+  console.log.apply(console, arg);
+  console.log.call(console, arg);
+  
+  var args = Array.prototype.slice.call(arguments);
+  console.log.apply(console, args);
+  console.log.call(console, args);
+};
+log(1,2,3);
+// 1 2 3
+// [1, 2, 3]
+// 1 2 3
+// [1, 2, 3]
+// 1 2 3
+// [1, 2, 3]
+
 // vue filters 过滤器
 // 显示星期几
 filterDateWeek (str) {

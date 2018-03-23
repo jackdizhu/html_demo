@@ -100,6 +100,28 @@ let _a14 = [3, 4]
 let _a15 = [..._a13, ..._a14]
 // console.log(_a15)
 
+function propEq(prop, value) {
+  return (obj) => {
+     return obj && obj[prop] === value;
+  };
+}
+function prop(key) {
+  return (obj) => {
+    return obj && obj[key];
+  };
+}
+const data = [{id: 1}, {id: 2}, {id: 3}, {id: 4}];
+
+// 我想得到id = 2的数据
+data.find(propEq('id', 2));
+// find太危险?
+data.filter(propEq('id', 2));
+
+// 我想要所有的id集合
+data.map(prop('id'));
+// 我想要所有的name
+data.map(prop('name'));
+
 // Object ----------------------------------------------------------------------------
 // 对象遍历 keys
 let _o2 = {'0': {name: '1', val: 'aa'}, '1': {name: '2', val: 'bb'}}

@@ -20,6 +20,18 @@ log(1,2,3)
 // 1 2 3
 // [1, 2, 3]
 
+// Promise 理解 resolve reject 回调方法 后面代码会继续执行
+const req = () => {
+  return new Promise((resolve, reject) => {
+    resolve({res: '00'})
+    console.log('-----------')
+    // reject(res.data.data)
+  })
+}
+req().then(res => {
+  console.log(res)
+})
+
 // vue filters 过滤器
 // 显示星期几
 function filterDateWeek (str) {

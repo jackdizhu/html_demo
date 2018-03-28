@@ -129,3 +129,44 @@ const deepClone = (initObj) => {
 getDataType2 () {
   return this.dataArr.filter(item => item.type === '2')
 }
+
+// 定义全局插件 pluginsUtil.js
+// Vue.js 的插件应当有一个公开方法 install 。这个方法的第一个参数是 Vue 构造器，第二个参数是一个可选的选项对象：
+export default {
+  install (Vue, options) {
+    // 具体4种方式，写在此处
+  }
+}
+// main.js里引入并使用
+import pluginsUtil from './pluginsUtil'
+Vue.use(pluginsUtil)
+
+// Vue.mixin 方式 注册全局混合对象
+Vue.mixin({
+  data () {
+    return {
+      someValue1: 'some value1：mixin的data里的值'
+    }
+  }
+})
+
+// Vue.prototype 方式 定义 Vue 原型上的属性
+Vue.prototype.someValue2 = 'someValue2：Vue.prototype上的值'
+Vue.prototype.getDate = function () {
+  let dateNew = new Date()
+  return dateNew
+}
+
+// Vue.filter 方式 定义全局过滤器
+Vue.filter('vcntFormat', function (cnt) {
+  return cnt >= 100000 ? Math.floor(cnt / 10000) + '万' : cnt
+})
+
+// Vue.directive 方式 定义全局自定义指令
+Vue.directive('myfocus', {
+  // 当绑定元素插入到 DOM 中。
+  inserted: function (el) {
+    // 聚焦元素
+    el.focus()
+  }
+})

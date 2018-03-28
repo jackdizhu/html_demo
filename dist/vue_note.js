@@ -174,3 +174,31 @@ Vue.directive('myfocus', {
 })
 // 通过 v-focus 属性调用指令
 <input v-focus>
+ 
+// v-model="bool" 组件 v-model 应用
+<v-component v-model="bool"></v-component>
+// v-component
+<template>
+  <div>
+    <div @click="click">点击</div>
+  </div>
+</template>
+<script>
+  export default {
+    props: ['value'],
+    watch: {
+      value: (nVal, oVal) => {
+        console.log(nVal, '新值')
+        console.log(oVal, '旧值')
+      }
+    },
+    methods: {
+      click () {
+        this.$emit('input', !this.value)
+      }
+    }
+  }
+</script>
+<style scoped>
+</style>
+

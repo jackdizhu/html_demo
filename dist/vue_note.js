@@ -132,9 +132,11 @@ getDataType2 () {
 
 // 定义全局插件 pluginsUtil.js
 // Vue.js 的插件应当有一个公开方法 install 。这个方法的第一个参数是 Vue 构造器，第二个参数是一个可选的选项对象：
+import LoadingComponent from './Loading.vue'
 export default {
   install (Vue, options) {
-    // 具体4种方式，写在此处
+    // Vue.use(pluginsUtil) 引入后 自动注册组件
+    Vue.component('Loading', LoadingComponent)
   }
 }
 // main.js里引入并使用
@@ -170,3 +172,5 @@ Vue.directive('myfocus', {
     el.focus()
   }
 })
+// 通过 v-focus 属性调用指令
+<input v-focus>

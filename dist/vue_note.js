@@ -84,12 +84,15 @@ created //组件创建 异步获取数据
 item.img ? imgURI + item.img : defaultData.teacherImg
 // 数据过滤
 filters: {
-  filterData () {
+  filterData (data) {
+    return data
   }
 }
-// 数据修改后执行对应方法
+// 数据修改后执行对应方法 不能使用 => 箭头函数
 watch: {
-  data: 'handleDataFun'
+  data: function (newVal, oldVal) {
+    console.log(newVal, ' --> newVal')
+  }
 }
 
 // es6 深拷贝 数组包含对象 拷贝有问题

@@ -306,3 +306,14 @@ vue^2.0
 　　　　Vue.config.errorHandler= functiono(err, vm){}  ------指定组件的渲染和观察期间未捕获错误的处理函数。
 　　　　Vue.config.ignoredElements = ['my-custom-web-component', 'another-web-component']　　　------忽略在Vue 之外的自定义元素。
 　　　　Vue.config.keyCodes   　　　　　　　　　　　　　------给v-on自定义键位别名
+
+// webpack 配置
+new UglifyJsPlugin({
+  uglifyOptions: {
+    compress: {
+      warnings: false,
+      drop_console: true, // console
+      pure_funcs: ['console.log'] // 移除console
+    }
+  }
+})

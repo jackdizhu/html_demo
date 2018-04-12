@@ -317,3 +317,14 @@ new UglifyJsPlugin({
     }
   }
 })
+
+// ------------开发问题整理-------------------
+// 引入css 使用别名 路径 ~@
+@import '~@/them/com.less';
+
+// data 定义 es6 箭头函数 会导致 读取 this 为 undefined 问题
+data () {}
+data: () => {}
+
+// data 数据不能以 _ 下划线开头 
+[Vue warn]: Property or method "_itemList" is not defined on the instance but referenced during render. Make sure that this property is reactive, either in the data option, or for class-based components, by initializing the property

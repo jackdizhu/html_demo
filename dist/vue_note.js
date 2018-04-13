@@ -328,3 +328,16 @@ data: () => {}
 
 // data 数据不能以 _ 下划线开头 
 [Vue warn]: Property or method "_itemList" is not defined on the instance but referenced during render. Make sure that this property is reactive, either in the data option, or for class-based components, by initializing the property
+
+// store 开启 namespaced 命名空间 'itemList' 第一个字符串参数 是命名空间
+computed: {
+  ...mapGetters('itemList', [
+    'getItemId'
+  ]),
+  ...mapState([
+    'itemList'
+  ]),
+  itemListfn () {
+    return this.$store.state.itemList
+  }
+}

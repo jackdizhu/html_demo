@@ -57,3 +57,4 @@ let async1 = fn_async1();
 let async2 = fn_async2();
 let _async1 = await async1;
 let _async2 = await async2;
+

@@ -101,3 +101,14 @@ setTimeout(function () {
   }
   document.body.appendChild(iframe)
 }, 0)
+
+if (ios) {
+  window.webkit.messageHandlers.appFunctionName.postMessage({url: 'http://baidu.com'})
+} else {
+  window.WebViewJavascriptBridge.callHandler(
+    'appFunctionName',
+    {'url': 'http://baidu.com'},
+    null
+  )
+}
+

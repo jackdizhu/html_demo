@@ -1,3 +1,14 @@
+# 常用方法
+
+* log 方法
+
+``` js
+// 常用 log 方法
+let log = (obj) => {
+  let str = typeof obj === 'object' ? JSON.stringify(obj, null, 2) : obj
+  console.log(str)
+}
+```
 
 前端笔记 vue + vuex + vue-router + axios + easy-mock
 

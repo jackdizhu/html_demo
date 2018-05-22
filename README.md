@@ -18,6 +18,12 @@ function clickAll () {
 clickAll()
 ```
 
+* 正则
+``` js
+// 匹配 html 标签
+/</?[a-z]+( [ 0-9a-z="-]+)?>/g
+```
+
 前端笔记 vue + vuex + vue-router + axios + easy-mock
 
 gulp + webpack 完成 less 编译 js css 打包

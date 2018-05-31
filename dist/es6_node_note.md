@@ -289,3 +289,4 @@ for (let i = 0; i < 10; i++) {
   random_arr_fn([1,2,3,4,5,6,7,8,9,10])
 }
 ```
+![排序 - sort 快速排序](random_arr_sort.png)

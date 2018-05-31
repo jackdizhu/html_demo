@@ -266,3 +266,27 @@ log(_arr)
 const arr = [11, [22, 33], [44, 55], 66];
 const _arr = [].concat(...arr)
 log(_arr)
+
+// 生成随机数
+let r_fn = (min, max) => {
+  let R = Math.floor(Math.random() * (max - min)) + min
+  return R
+}
+// 将数组随机 排序
+let _arr = [1,2,3,4,5,6,7,8,9,10]
+let random_arr_fn = (_arr) => {
+  let _arr2 = []
+  // 生成随机数
+  let r_fn = (min, max) => {
+    let R = Math.floor(Math.random() * (max - min)) + min
+    return R
+  }
+  let L = _arr.length
+  for (let i = 0; i < L; i++) {
+    let k = r_fn(0, L - i)
+    _arr2.push(_arr.splice(k, 1)[0])
+  }
+  log(_arr2)
+  return _arr2
+}
+random_arr_fn(_arr)

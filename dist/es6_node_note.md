@@ -61,32 +61,6 @@ let _async1 = await async1;
 let _async2 = await async2;
 ```
 
-* mongodb
-
-``` js
-// mongodb 原生方法
-// 插入数据 一条 多条
-db.collection("table").insertOne({})
-db.collection("table").insertMany([{}, {}])
-// 查询多条数据 where 查询条件
-db.collection("table").find(where)
-// 更新数据 一条 多条 where 查询条件 update 更新数据
-db.collection("table").updateOne(where, update)
-db.collection("table").updateMany(where, update)
-// 删除数据 一条 多条
-db.collection("table").deleteOne(where)
-db.collection("table").deleteMany(where)
-// 排序
-sort({ type: 1 }) // 按 type 字段升序
-sort({ type: -1 }) // 按 type 字段降序
-// 查询分页
-limit(2) // 读取两条数据
-// 跳过指定条数
-skip(2) // 跳过前面两条数据
-// 删除集合
-db.collection("table").drop()
-```
-
 * js 笔记
 
 ``` js

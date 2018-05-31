@@ -258,7 +258,6 @@ let r_fn = (min, max) => {
   return R
 }
 // 将数组随机 排序
-let _arr = [1,2,3,4,5,6,7,8,9,10]
 let random_arr_fn = (_arr) => {
   let _arr2 = []
   // 生成随机数
@@ -271,12 +270,13 @@ let random_arr_fn = (_arr) => {
     let k = r_fn(0, L - i)
     _arr2.push(_arr.splice(k, 1)[0])
   }
-  log(_arr2)
+  log(_arr2.toString())
   return _arr2
 }
-random_arr_fn(_arr)
-// 将数组随机 sort 快速排序
-let _arr = [1,2,3,4,5,6,7,8,9,10]
+for (let i = 0; i < 10; i++) {
+  random_arr_fn([1,2,3,4,5,6,7,8,9,10])
+}
+// 将数组随机 sort 快速排序 (最后一位 出现重复位置[最后一位 或 第一位] 概率较大)
 let random_arr_fn = (_arr) => {
   let _arr2 = []
   _arr2 = _arr.sort(() => {
@@ -285,5 +285,7 @@ let random_arr_fn = (_arr) => {
   log(_arr2.toString())
   return _arr2
 }
-random_arr_fn(_arr)
+for (let i = 0; i < 10; i++) {
+  random_arr_fn([1,2,3,4,5,6,7,8,9,10])
+}
 ```

@@ -117,12 +117,12 @@ funcs.forEach(function (func) {
   func()
 })
 
-const tpl = \`
+const tpl = `
   <p>
     <span>hello world</span>
   </p>
-\`
-log(\`<div>${tpl}</div>\`)
+`
+log(`<div>${tpl}</div>`)
 
 //- ES6为参数提供了默认值
 

@@ -1,4 +1,6 @@
+* Promise async await
 
+``` js
 // node 命令执行文件 获取 命令参数
 let a = () => {
   var arguments = process.argv.splice(2);
@@ -57,7 +59,11 @@ let async1 = fn_async1();
 let async2 = fn_async2();
 let _async1 = await async1;
 let _async2 = await async2;
+```
 
+* mongodb
+
+``` js
 // mongodb 原生方法
 // 插入数据 一条 多条
 db.collection("table").insertOne({})
@@ -79,7 +85,12 @@ limit(2) // 读取两条数据
 skip(2) // 跳过前面两条数据
 // 删除集合
 db.collection("table").drop()
+```
 
+* js 笔记
+
+``` js
+// 常用 log 方法
 let log = (obj) => {
   let str = typeof obj === 'object' ? JSON.stringify(obj, null, 2) : obj
   console.log(str)
@@ -106,12 +117,12 @@ funcs.forEach(function (func) {
   func()
 })
 
-const tpl = `
+const tpl = \`
   <p>
     <span>hello world</span>
   </p>
-`
-log(`<div>${tpl}</div>`)
+\`
+log(\`<div>${tpl}</div>\`)
 
 //- ES6为参数提供了默认值
 
@@ -290,3 +301,4 @@ let random_arr_fn = (_arr) => {
   return _arr2
 }
 random_arr_fn(_arr)
+```

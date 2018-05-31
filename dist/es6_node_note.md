@@ -275,4 +275,15 @@ let random_arr_fn = (_arr) => {
   return _arr2
 }
 random_arr_fn(_arr)
+// 将数组随机 sort 快速排序
+let _arr = [1,2,3,4,5,6,7,8,9,10]
+let random_arr_fn = (_arr) => {
+  let _arr2 = []
+  _arr2 = _arr.sort(() => {
+    return Math.random() > 0.5 ? -1 : 1
+  })
+  log(_arr2.toString())
+  return _arr2
+}
+random_arr_fn(_arr)
 ```

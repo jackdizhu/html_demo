@@ -1,10 +1,12 @@
 module.exports = {
+  // 验证是否是 Array 或 Object
   isObjFunc: function(name) {
     var toString = Object.prototype.toString
     return function() {
         return toString.call(arguments[0]) === '[object ' + name + ']'
     }
   },
+  // 获取数据类型
   getTypeof(input) {
     let _str = Object.prototype.toString.call(input)
     let _r = null
@@ -41,6 +43,7 @@ module.exports = {
     }
     return _r
   },
+  // 验证两个数据类型是否全等
   isTypeof(v1, v2) {
     return Object.prototype.toString.call(v1) === Object.prototype.toString.call(v2)
   },
@@ -65,6 +68,7 @@ module.exports = {
   isFunction(input) {
     return this.getTypeof(input) === 'Function';
   },
+  // 数据类型强制转换
   TypeConversion(to, from) {
     let _r = null
     let _str = this.getTypeof(to)

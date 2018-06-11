@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>vue 原理实现</title>
+</head>
+<body>
+
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <script src="./src/index.js"></script>
+  <div id="app">
+
+  </div>
+  <script>
+    axios.defaults.baseURL = 'https://www.easy-mock.com/mock/5ab8beedca39d01d844c0be5/debug_app'
+    let __ = {
+      data: {
+          b: {
+            c: 1
+          },
+          d: 2
+      },
+      dom: document.querySelector('#app'),
+      tpl: `
+        <p><input type="text" value="{{d}}" onchange="__.fn._onchange(this.value, __.data)"/></p>
+        <p>d value: {{d}}</p>
+        <p><button onclick="__.fn._get(__.data)">get 确定</button></p>
+        <p><button onclick="__.fn._post(__.data)">post 确定</button></p>
+      `,
+      fn: {
+        // input 双向绑定
+        _onchange: function (data, _data) {
+          _data.d = data
+          console.log(JSON.stringify(_data))
+        },
+        // get 测试
+        _get: function (_data) {
+          axios.get('/test_get', {
+            params: _data
+          })
+          .then(function ({data}) {
+            _data.d = 'get: ' + data.msg
+            console.log(data)
+          })
+        },
+        // post 测试
+        _post: function (_data) {
+          axios.post('/test_post', _data)
+          .then(function ({data}) {
+            _data.d = 'post: ' + data.msg
+            console.log(data)
+          })
+        }
+      }
+    }
+
+    Vue(__)
+    __.data.d = 3
+    // console.log(data)
+
+  </script>
+
+</body>
+</html>

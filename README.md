@@ -24,6 +24,11 @@ clickAll()
 /</?[a-z]+( [ 0-9a-z="-]+)?>/g
 ```
 
+# vue_原理实现
+
+* 简单通过 Object.defineProperty 定义 get set 方法数据劫持
+* 通过 render 渲染数据
+
 前端笔记 vue + vuex + vue-router + axios + easy-mock
 
 gulp + webpack 完成 less 编译 js css 打包

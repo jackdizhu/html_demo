@@ -67,7 +67,13 @@
     }
 
     Vue(__)
-    __.data.d = 3
+    // render 测试 优化后 减少 render 调用次数
+    setTimeout(() => {
+      __.data.d = 3
+      for (let i = 0; i < 50000; i++) {
+        __.data.d = 5
+      }
+    }, 60)
     // console.log(data)
 
   </script>

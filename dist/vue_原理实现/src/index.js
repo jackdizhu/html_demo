@@ -17,9 +17,11 @@ function VUE ({data, dom, html}) {
   this.abduction(data, dom, html)
   // 等待 abduction 数据劫持方法执行完成
   setTimeout(() => {
-    render (data, dom, html)
+    render(data, dom, html)
   }, 0)
 }
+// render 优化
+let _time = null
 // 原型方法
 VUE.prototype.abduction = function (data, dom, html) {
   for (let key in data) {
@@ -41,8 +43,13 @@ VUE.prototype.abduction = function (data, dom, html) {
         // data[key]=newVal set中又会调用set函数，就会递归调用，死循环
         // 利用闭包的特性,修改value,get取值时也会变化
         value = newVal
-        // 修改数据后 重新渲染数据
-        render (data, dom, html)
+
+        // 优化处理 等待所有数据修改完成执行 render
+        clearTimeout(_time)
+        setTimeout(() => {
+          // 修改数据后 重新渲染数据
+          render(data, dom, html)
+        }, 0)
       }
     })
     //递归处理

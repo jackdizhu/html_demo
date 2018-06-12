@@ -30,6 +30,7 @@ clickAll()
 * 通过 render 渲染数据
 * 增加 render innerHTML 赋值缓存
 * http.js 增加 ajax 缓存
+* 优化减少 render 调用次数
 
 前端笔记 vue + vuex + vue-router + axios + easy-mock
 

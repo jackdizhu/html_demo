@@ -7,21 +7,21 @@ function isObject (obj) {
 // 对外暴露 方法
 function Vue (data) {
   if (!isObject(data)) {
-      return
+    return
   }
   return new VUE(data)
 }
 // 构造函数
-function VUE ({data, dom, tpl}) {
+function VUE ({data, dom, html}) {
   this.data = data
-  this.abduction(data, dom, tpl)
+  this.abduction(data, dom, html)
   // 等待 abduction 数据劫持方法执行完成
   setTimeout(() => {
-    render (data, dom, tpl)
+    render (data, dom, html)
   }, 0)
 }
 // 原型方法
-VUE.prototype.abduction = function (data, dom, tpl) {
+VUE.prototype.abduction = function (data, dom, html) {
   for (let key in data) {
     let value = data[key]
     Object.defineProperty(data, key, {
@@ -42,7 +42,7 @@ VUE.prototype.abduction = function (data, dom, tpl) {
         // 利用闭包的特性,修改value,get取值时也会变化
         value = newVal
         // 修改数据后 重新渲染数据
-        render (data, dom, tpl)
+        render (data, dom, html)
       }
     })
     //递归处理
@@ -51,18 +51,21 @@ VUE.prototype.abduction = function (data, dom, tpl) {
 }
 
 // 数据渲染 事件绑定
-function render (data, dom, tpl) {
-  console.log(tpl)
+function render (data, dom, html) {
+  let _renderTpl = html.renderTpl
 
   let _obj = {}
-  let _arr = tpl.match(/{{[a-zA-Z_-]+}}/g)
+  let _arr = html.tpl.match(/{{[a-zA-Z_-]+}}/g)
   for (let i = 0; i < _arr.length; i++) {
     _arr[i] = _arr[i].replace(/{{|}}/g, '')
     _obj[_arr[i]] = data[_arr[i]]
 
     let R = new RegExp(`{{${_arr[i]}}}`, 'g')
-    tpl = tpl.replace(R, _obj[_arr[i]])
+    html.renderTpl = html.tpl.replace(R, _obj[_arr[i]])
   }
-
-  dom.innerHTML = tpl
+  // 缓存处理 dom 没有变化不赋值
+  if (_renderTpl !== html.renderTpl) {
+    dom.innerHTML = html.renderTpl
+    console.log(html, 'dom.innerHTML')
+  }
 }

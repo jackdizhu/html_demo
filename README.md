@@ -28,6 +28,7 @@ clickAll()
 
 * 简单通过 Object.defineProperty 定义 get set 方法数据劫持
 * 通过 render 渲染数据
+* http.js 增加 ajax 缓存
 
 前端笔记 vue + vuex + vue-router + axios + easy-mock
 

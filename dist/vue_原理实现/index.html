@@ -17,6 +17,7 @@
   <script>
     axios.defaults.baseURL = 'https://www.easy-mock.com/mock/5ab8beedca39d01d844c0be5/debug_app'
     let __ = {
+      el: '#app',
       data: {
           b: {
             c: 1
@@ -26,10 +27,12 @@
       dom: document.querySelector('#app'),
       html: {
         tpl: `
-          <p><input type="text" value="{{d}}" onchange="__.fn._onchange(this.value, __.data)"/></p>
-          <p>d value: {{d}}</p>
-          <p><button onclick="__.fn._get(__.data)">get 确定</button></p>
-          <p><button onclick="__.fn._post(__.data)">post 确定</button></p>
+          <div>
+            <p><input type="text" value="{{d}}" onchange="__.fn._onchange(this.value, __.data)"/></p>
+            <p>d value: {{d}}</p>
+            <p><button onclick="__.fn._get(__.data)">get 确定</button></p>
+            <p><button onclick="__.fn._post(__.data)">post 确定</button></p>
+          </div>
         `,
         renderTpl: ``
       },

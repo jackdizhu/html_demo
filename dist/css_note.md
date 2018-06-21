@@ -1,14 +1,14 @@
 
-css 常用class
-flex items-center content-center justify-center
-// 横向 对齐方式
-justify-start justify-end justify-center justify-between justify-around
-// 纵向 对齐方式
-items-start items-end items-center items-stretch items-baseline
-// 多行内容 上下对齐方式
-content-start content-end content-center content-stretch content-between content-around
-// col- 栅格布局 中 小 极
-col-xl-4 col-lg-4 col-md-4 col-sm-6 col-xs-12
+* css 常用class
+* flex items-center content-center justify-center
+* // 横向 对齐方式
+* justify-start justify-end justify-center justify-between justify-around
+* // 纵向 对齐方式
+* items-start items-end items-center items-stretch items-baseline
+* // 多行内容 上下对齐方式
+* content-start content-end content-center content-stretch content-between content-around
+* // col- 栅格布局 中 小 极
+* col-xl-4 col-lg-4 col-md-4 col-sm-6 col-xs-12
 
 ``` css
 

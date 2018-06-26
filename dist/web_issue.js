@@ -62,7 +62,10 @@ let getRequestParams = function() {
 }
 getRequestParams()
 
-// window.open chome 会被拦截
+// window.open 打开新页面被拦截 问题处理
+// chome 处理 先执行 let _window = window.open() 
+// 再执行异步方法 回调 执行 _window.location = url  
+// Firefox 打开 pdf 提示下载保存弹窗 同样处理
 export const fnWindowOpen = function (url) {
   if (url) {
     let _window = window.open()

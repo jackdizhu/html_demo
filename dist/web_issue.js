@@ -61,3 +61,29 @@ let getRequestParams = function() {
   return theRequest
 }
 getRequestParams()
+
+// window.open chome 会被拦截
+export const fnWindowOpen = function (url) {
+  if (url) {
+    let _window = window.open()
+    setTimeout(function () {
+      _window.location = url
+    }, 100)
+
+    let elA = document.createElement('a')
+    let id = 'fnWindowOpen' + new Date().getTime()
+    elA.setAttribute('target', '_blank')
+    elA.setAttribute('href', url)
+    elA.setAttribute('id', id)
+    document.body.appendChild(elA)
+    let a = document.querySelector(`#${id}`)
+    a.click()
+
+    let form = document.createElement('form')
+    form.action = url
+    form.target = '_blank'
+    form.method = 'POST'
+    document.body.appendChild(form)
+    form.submit()
+  }
+}

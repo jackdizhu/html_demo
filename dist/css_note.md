@@ -124,4 +124,22 @@
     -webkit-box-orient: vertical;
 }
 
+// 表格样式处理
+table
+  width 100%
+  th,td
+    padding 4px 3px
+    height 32px
+  th
+    border-left 1px solid #eee
+    border-bottom 1px solid #eee
+    border-top 1px solid #eee
+  th:last-child
+    border-right 1px solid #eee
+  td
+    text-align center
+    border-left 1px solid #eee
+    border-bottom 1px solid #eee
+  td:last-child
+    border-right 1px solid #eee
 ```

@@ -167,3 +167,66 @@ let _o8 = {a: 1, c: 4}
 let _o9 = {a: 2, b: 3}
 let _o10 = {..._o8, ..._o9}
 // console.log(_o10)
+
+// vue 中生成日历表数据
+getDateArr (date) {
+  date = date || '2017-12-01'
+
+  // let _week = [7, 1, 2, 3, 4, 5, 6] // 星期一 开头
+  let _week = [1, 2, 3, 4, 5, 6, 7] // 星期天 开头
+  let _maxDate = this.$moment(date).endOf('month')
+  let _minDate = this.$moment(date).startOf('month')
+  let _Date = this.$moment(date).format('YYYY-MM')
+  let _Date2 = this.$moment(date).add(1, 'month').format('YYYY-MM')
+  let _Date3 = this.$moment(date).subtract(1, 'month').format('YYYY-MM')
+  let _prenDays = this.$moment(_Date3).endOf('month').format('DD')
+
+  this.week_1 = _week[_minDate.format('d')] - 1
+  this.daymax = Number(_maxDate.format('DD'))
+  // 上一月 数据
+  let _arr1 = Array(this.week_1)
+  for (let i = 0; i < _arr1.length; i++) {
+    let _d = _prenDays - _arr1.length + i + 1
+    _arr1[i] = {
+      day: _d,
+      date: _Date3 + '-' + _d,
+      wk: _week[this.$moment(_Date3 + '-' + _d).format('d')]
+    }
+  }
+
+  let _arr2 = Array(this.daymax)
+  for (let i = 0; i < _arr2.length; i++) {
+    let _d = (i + 1) > 9 ? (i + 1) : '0' + (i + 1)
+    _arr2[i] = {
+      day: _d,
+      date: _Date + '-' + _d,
+      wk: _week[this.$moment(_Date + '-' + _d).format('d')]
+    }
+  }
+  this.monthArr = [..._arr1, ..._arr2]
+  if ((this.monthArr.length !== 35) && (this.monthArr.length !== 42)) {
+    if (this.monthArr.length < 35) {
+      let _n = 35 - this.monthArr.length
+      // this.monthArr.push(...Array(_n))
+      for (let i = 0; i < _n; i++) {
+        this.monthArr.push({
+          day: '0' + (i + 1),
+          date: _Date2 + '-0' + (i + 1),
+          wk: _week[this.$moment(_Date2 + '-0' + (i + 1)).format('d')]
+        })
+      }
+    } else if (this.monthArr.length < 42) {
+      let _n = 42 - this.monthArr.length
+      // this.monthArr.push(...Array(_n))
+      for (let i = 0; i < _n; i++) {
+        this.monthArr.push({
+          day: '0' + (i + 1),
+          date: _Date2 + '-0' + (i + 1),
+          wk: _week[this.$moment(_Date2 + '-0' + (i + 1)).format('d')]
+        })
+      }
+    }
+  }
+
+  console.log(this.monthArr, 'getDateArr ----------- childrenSchedule index.vue')
+}

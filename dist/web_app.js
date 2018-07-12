@@ -112,7 +112,7 @@ if (ios) {
   )
 }
 
-// web 打开AppStore
+// web 打开AppStore 兼容处理
 let _url = 'AppStore_Url'
 let ifr = document.createElement('iframe')
 ifr.src = _url
@@ -120,5 +120,6 @@ ifr.style.display = 'none';
 document.body.appendChild(ifr)
 // 点击后延时触发清除iframe，并跳转页面
 setTimeout(function () {
-document.body.removeChild(ifr)
+ document.body.removeChild(ifr)
 }, 200)
+

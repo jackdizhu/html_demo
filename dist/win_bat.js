@@ -22,3 +22,8 @@ ren mock.ini mock.bat
 dir E:\jackdizhu\web\node_modules\*.*  /b >list.txt
 // bat 取文件夹下 所有文件 树
 tree E:\jackdizhu\web\node_modules  /f >list.txt
+// for 参数 %变量 in (起始值，每次增值，结束时的比较值) do 命令
+::在D盘建立aa1~ aa5五个文件夹
+for /L %%i in (1,1,5) do (
+  md d:\aa%%i
+)

@@ -90,3 +90,24 @@ export const fnWindowOpen = function (url) {
     form.submit()
   }
 }
+
+// webpack 开发 dev css 样式正常 build 部分样式丢失
+// extract-text-webpack-plugin 插件关闭
+// 它将*.css条目块中的所有必需模块移动到单独的CSS文件中。
+// 因此，您的样式不再内联到JS包中，而是在单独的CSS文件（styles.css）中。
+// 如果你的样式表总量很大，那么它会更快，因为CSS包是与JS包并行加载的
+module: {
+  rules: cssUtils.styleRules({
+    sourceMap: config.build.productionSourceMap,
+    // extract: true, // 
+    postcss: true
+  })
+}
+// 部分css 前缀丢失问题
+// optimize-css-assets-webpack-plugin
+// 用于优化\最小化CSS资源
+new OptimizeCSSPlugin({
+  cssProcessorOptions: {
+    safe: true
+  }
+})

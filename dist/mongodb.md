@@ -35,12 +35,12 @@ mongorestore -h 127.0.0.1:27017 -d nodeKoa ./nodeKoa/
 
 | 操作	| 格式	| 范例	| SQL中的类似语句 |
 | --- | ---  | ---  | ---  |
-| 等于	| {<key>:<value>}	| db.col.find({"by":"菜鸟教程"})	| where by = '菜鸟教程' |
-| 小于	| {<key>:{$lt:<value>}}	| db.col.find({"likes":{$lt:50}})	| where likes < 50 |
-| 小于或等于	| {<key>:{$lte:<value>}}	| db.col.find({"likes":{$lte:50}})	| where likes <= 50 |
-| 大于	| {<key>:{$gt:<value>}}	| db.col.find({"likes":{$gt:50}})	| where likes > 50 |
-| 大于或等于	| {<key>:{$gte:<value>}}	| db.col.find({"likes":{$gte:50}})	| where likes >= 50 |
-| 不等于	| {<key>:{$ne:<value>}}	| db.col.find({"likes":{$ne:50}})	| where likes != 50 |
+| 等于	| {&gt;key>:<value>}	| db.col.find({"by":"菜鸟教程"})	| where by = '菜鸟教程' |
+| 小于	| {&gt;key>:{$lt:<value>}}	| db.col.find({"likes":{$lt:50}})	| where likes < 50 |
+| 小于或等于	| {&gt;key>:{$lte:<value>}}	| db.col.find({"likes":{$lte:50}})	| where likes <= 50 |
+| 大于	| {&gt;key>:{$gt:<value>}}	| db.col.find({"likes":{$gt:50}})	| where likes > 50 |
+| 大于或等于	| {&gt;key>:{$gte:<value>}}	| db.col.find({"likes":{$gte:50}})	| where likes >= 50 |
+| 不等于	| {&gt;key>:{$ne:<value>}}	| db.col.find({"likes":{$ne:50}})	| where likes != 50 |
 
 # mongodb 表关联 $lookup
 

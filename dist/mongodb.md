@@ -34,6 +34,7 @@ mongorestore -h 127.0.0.1:27017 -d nodeKoa ./nodeKoa/
 # 查询条件示例
 
 | 操作	| 格式	| 范例	| SQL中的类似语句 |
+| --- | ---  | ---  | ---  |
 | 等于	| {<key>:<value>}	| db.col.find({"by":"菜鸟教程"}).pretty()	| where by = '菜鸟教程' |
 | 小于	| {<key>:{$lt:<value>}}	| db.col.find({"likes":{$lt:50}}).pretty()	| where likes < 50 |
 | 小于或等于	| {<key>:{$lte:<value>}}	| db.col.find({"likes":{$lte:50}}).pretty()	| where likes <= 50 |

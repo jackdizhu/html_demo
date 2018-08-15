@@ -23,10 +23,12 @@ skip(2) // 跳过前面两条数据
 // 删除集合
 db.collection("table").drop()
 
-// 数据库 导出 
-mongodump -h 127.0.0.1 -o ./
+// 数据库 nodeKoa 导出 
+mongodump -h dbhost -d dbname -o dbdirectory
+mongodump -h 127.0.0.1:27017 -d nodeKoa -o ./
 // 还原 nodeKoa 数据库 
-mongorestore -d nodeKoa ./nodeKoa/
+mongorestore -h dbhost -d dbname --directoryperdb dbdirectory
+mongorestore -h 127.0.0.1:27017 -d nodeKoa ./nodeKoa/
 ```
 
 # mongodb 表关联 $lookup

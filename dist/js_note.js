@@ -20,6 +20,39 @@ log(1,2,3)
 // 1 2 3
 // [1, 2, 3]
 
+// js 判断数据类型 取数据类型
+// name: String (类型首字母大写)
+function getIsTypeofFun (name) {
+  var toString = Object.prototype.toString
+  return function(object) {
+    return toString.call(object) === '[object ' + name + ']'
+  }
+}
+function isTypeof (object, name) {
+  var toString = Object.prototype.toString
+  return toString.call(object) === '[object ' + name + ']'
+}
+function getTypeofString (object) {
+  var toString = Object.prototype.toString
+  return toString.call(object).replace(/^\[object ([A-Za-z]+)\]$/, '$1')
+}
+
+console.log(getTypeofString('111'));	// String
+console.log(getTypeofString(111));	// Number
+console.log(getTypeofString(false));	// Boolean
+console.log(getTypeofString(new Date()));	// Date
+console.log(getTypeofString(undefined));	// Undefined
+console.log(getTypeofString(null));	// Null
+console.log(getTypeofString({}));	// Object
+console.log(getTypeofString([]));	// Array
+console.log(getTypeofString(() => {}));	// Function
+console.log(getTypeofString(new RegExp("\\w+")));	// RegExp
+console.log(getTypeofString(window.document));	// HTMLDocument
+
+console.log(isTypeof('111', 'String'));
+let isString = getIsTypeofFun('String');
+console.log(isString('111'));
+
 // Promise 理解 resolve reject 回调方法 后面代码会继续执行
 const req = () => {
   return new Promise((resolve, reject) => {

@@ -1,3 +1,10 @@
+
+// 生成随机数据
+let random = (min, max) => {
+  let R = Math.floor(Math.random() * (max - min)) + min
+  return R
+}
+
 // apply(this, array)
 // call(this, arg1, arg2, arg3)
 function log () {

@@ -1,5 +1,5 @@
 
-// 生成随机数据
+// 生成随机数据 R >= min && R < max
 let random = (min, max) => {
   let R = Math.floor(Math.random() * (max - min)) + min
   return R

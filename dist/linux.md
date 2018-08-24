@@ -51,6 +51,30 @@ cd /usr/local/mongodb/bin
 mkdir -p /data
 mkdir -p /data/db
 
+// nginx
+yum -y install gcc zlib zlib-devel pcre-devel openssl openssl-devel
+wget http://nginx.org/download/nginx-1.13.7.tar.gz
+tar -xvf nginx-1.13.7.tar.gz
+mv nginx-1.13.7/ /usr/local
+cd /usr/local/nginx-1.13.7
+./configure
+make
+make install
+cd /usr/local/nginx
+./sbin/nginx
+ps -ef | grep nginx
+# ./sbin/nginx -s stop
+# ./sbin/nginx -s reload
+vi /usr/local/nginx/conf/nginx.conf
+
+  location / {
+    proxy_pass 127.0.0.1:8081;
+    proxy_set_header Host $host;
+    proxy_set_header S-Forwarded-For $remote_addr;
+  }
+
+./sbin/nginx -s reload
+
 ```
 
 # node 部署问题

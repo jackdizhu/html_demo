@@ -52,3 +52,16 @@ mkdir -p /data
 mkdir -p /data/db
 
 ```
+
+# node 部署问题
+
+```
+npm install -g pm2
+pm2 start app.js -i max
+pm2 list
+pm2 monit
+
+pm2 dump
+pm2 kill
+pm2 resurect
+```

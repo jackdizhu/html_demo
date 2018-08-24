@@ -87,5 +87,5 @@ pm2 monit
 
 pm2 dump
 pm2 kill
-pm2 resurect
+pm2 restart
 ```

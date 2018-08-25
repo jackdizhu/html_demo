@@ -1,5 +1,7 @@
 # aliyun ECS 环境搭建
 
+* vi 编辑文件不要使用 tab 使用空格缩进
+
 ``` sh
 // 建立文件夹
 mkdir app
@@ -53,6 +55,28 @@ vi /etc/yum.repos.d/mongodb-org-3.2.repo
   gpgkey=https://www.mongodb.org/static/pgp/server-3.2.asc
 
 yum -y install mongodb-org
+service mongod start
+chkconfig mongod on
+mongo 127.0.0.1:27017
+// 添加管理员
+db.createUser({
+  user:"root",
+  pwd:"password",
+  roles:[{role:"root",db:"admin"}]
+})
+// 添加用户 db:"appdb" 分配数据库
+db.createUser({
+  user:"user",                                   
+  pwd:"password",
+  roles:[{role:"readWrite",db:"appdb"}]
+});
+vi /etc/mongod.conf
+
+  # bindIp: 127.0.0.1  # Listen to local interface only, comment to listen on all interfaces.
+  security:
+    authorization: enabled
+      
+service mongod restart
 
 // 源码安装 mongodb
 curl -O https://fastdl.mongodb.org/linux/mongodb-linux-x86_64-3.0.6.tgz

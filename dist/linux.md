@@ -53,6 +53,10 @@ mkdir -p /data/db
 
 // git 安装
 yum -y install git
+// 生成 ssh-key
+cd ~/.ssh
+ssh-keygen
+cat ~/.ssh/id_rsa.pub
 
 // nginx 
 yum install nginx

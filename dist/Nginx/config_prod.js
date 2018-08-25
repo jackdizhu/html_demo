@@ -1,0 +1,95 @@
+#user  nobody;
+worker_processes  1;
+
+#error_log  logs/error.log;
+#error_log  logs/error.log  notice;
+#error_log  logs/error.log  info;
+
+#pid        logs/nginx.pid;
+
+
+events {
+    worker_connections  1024;
+}
+
+
+http {
+    include       mime.types;
+    default_type  application/octet-stream;
+
+    #log_format  main  '$remote_addr - $remote_user [$time_local] "$request" '
+    #                  '$status $body_bytes_sent "$http_referer" '
+    #                  '"$http_user_agent" "$http_x_forwarded_for"';
+
+    #access_log  logs/access.log  main;
+
+    sendfile        on;
+    #tcp_nopush     on;
+
+    #keepalive_timeout  0;
+    keepalive_timeout  65;
+
+    gzip  on;
+
+    upstream app {
+        server 127.0.0.1:8081 weight=1 fail_timeout=3s;
+        server 127.0.0.1:8082 weight=1 fail_timeout=3s;
+        server 127.0.0.1:8080 backup;
+        ip_hash;
+    }
+
+    server {
+        listen       80;
+        server_name  localhost;
+        location / {
+            proxy_pass http://app;
+            proxy_set_header Host $host;
+            proxy_set_header S-Forwarded-For $remote_addr;
+        }
+        location ~ ^/api {
+            default_type application/json;
+        }
+        error_page   500 502 503 504  /50x.html;
+        location = /50x.html {
+            root   html;
+        }
+    }
+
+
+    # another virtual host using mix of IP-, name-, and port-based configuration
+    #
+    #server {
+    #    listen       8000;
+    #    listen       somename:8080;
+    #    server_name  somename  alias  another.alias;
+
+    #    location / {
+    #        root   html;
+    #        index  index.html index.htm;
+    #    }
+    #}
+
+
+    # HTTPS server
+    #
+    server {
+        listen       443;
+        ssl on;
+        server_name  hb.jionly.com;
+
+        ssl_certificate      /etc/nginx/cert/server.crt;
+        ssl_certificate_key  /etc/nginx/cert/server.key;
+
+        ssl_session_timeout  5m;
+
+        location / {
+          # root html;
+          proxy_pass http://app;
+          proxy_set_header Host $host;
+          proxy_set_header S-Forwarded-For $remote_addr;
+        }
+        location ~ ^/api {
+            default_type application/json;
+        }
+    }
+}

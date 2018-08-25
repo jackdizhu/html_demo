@@ -42,7 +42,19 @@ exit
 systemctl restart mariadb.service
 mysql -u root -p
 
-// 安装 mongodb
+// yum 安装 mongodb
+vi /etc/yum.repos.d/mongodb-org-3.2.repo 
+
+  [mongodb-org-3.2]
+  name=MongoDB Repository
+  baseurl=https://repo.mongodb.org/yum/redhat/$releasever/mongodb-org/3.2/x86_64/
+  gpgcheck=1
+  enabled=1
+  gpgkey=https://www.mongodb.org/static/pgp/server-3.2.asc
+
+yum -y install mongodb-org
+
+// 源码安装 mongodb
 curl -O https://fastdl.mongodb.org/linux/mongodb-linux-x86_64-3.0.6.tgz
 tar -zxvf mongodb-linux-x86_64-3.0.6.tgz
 mv  mongodb-linux-x86_64-3.0.6/ /usr/local/mongodb

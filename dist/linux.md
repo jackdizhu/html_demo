@@ -57,6 +57,7 @@ yum -y install git
 cd ~/.ssh
 ssh-keygen
 cat ~/.ssh/id_rsa.pub
+git config --global credential.helper store
 
 // nginx 
 yum install nginx

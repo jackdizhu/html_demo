@@ -54,35 +54,44 @@ mkdir -p /data/db
 // git 安装
 yum -y install git
 
-// nginx
-yum -y install gcc zlib zlib-devel pcre-devel openssl openssl-devel
-wget http://nginx.org/download/nginx-1.13.7.tar.gz
-tar -xvf nginx-1.13.7.tar.gz
-mv nginx-1.13.7/ /usr/local
-cd /usr/local/nginx-1.13.7
-./configure
-make
-make install
-cd /usr/local/nginx
-./sbin/nginx
-ps -ef | grep nginx
-# ./sbin/nginx -s stop
-# ./sbin/nginx -s reload
-vi /usr/local/nginx/conf/nginx.conf
+// nginx 
+yum install nginx
+service nginx start
+vi /etc/nginx/nginx.conf
 
-  location / {
-    proxy_pass 127.0.0.1:8081;
-    proxy_set_header Host $host;
-    proxy_set_header S-Forwarded-For $remote_addr;
+  upstream app {
+      server 127.0.0.1:8081 weight=1 fail_timeout=3s;
+      server 127.0.0.1:8082 weight=1 fail_timeout=3s;
+      server 127.0.0.1:8080 backup;
+      ip_hash;
+  }
+  server {
+      listen       80;
+      server_name  localhost;
+      location / {
+          proxy_pass http://app;
+          proxy_set_header Host $host;
+          proxy_set_header S-Forwarded-For $remote_addr;
+      }
+      location ~ ^/api {
+          default_type application/json;
+      }
+      error_page   500 502 503 504  /50x.html;
+      location = /50x.html {
+          root   html;
+      }
   }
 
-./sbin/nginx -s reload
+service nginx reload
+ps -ef | grep nginx
 
 ```
 
 # node 部署问题
 
 ```
+cd /var/www/cooking_app/app2/node_koa2_mysql/
+
 npm install -g pm2
 pm2 start bin/www --name app2 // pm2 start bin/www --name app2 -i max // --name 别名
 pm2 list
@@ -121,4 +130,13 @@ function onError(error) {
       throw error;
   }
 }
+```
+
+# https 部署问题
+
+```
+// 443端口 未开启
+https://csr.chinassl.net/index.html
+生成 csr key 文件
+获取 自签名免费SSL证书 crt 文件
 ```

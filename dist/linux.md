@@ -176,7 +176,8 @@ function onError(error) {
 # https 部署问题
 
 ```
-// 443端口 未开启
+netstat -ntlp // 查看端口状态
+// 443端口
 https://csr.chinassl.net/index.html
 生成 csr key 文件
 获取 自签名免费SSL证书 crt 文件

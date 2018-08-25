@@ -1,4 +1,8 @@
 <pre>
+    // 删除 已经提交的 commit
+    git reset commitId
+    git push --force
+    
     git branch br // 创建分支
     git push origin br:br // 推送当前 分支(本地:远程) [如果 : 左边的分支为空，那么将删除 : 右边的远程分支]
     git checkout master // 切换主分支

@@ -51,6 +51,9 @@ cd /usr/local/mongodb/bin
 mkdir -p /data
 mkdir -p /data/db
 
+// git 安装
+yum -y install git
+
 // nginx
 yum -y install gcc zlib zlib-devel pcre-devel openssl openssl-devel
 wget http://nginx.org/download/nginx-1.13.7.tar.gz

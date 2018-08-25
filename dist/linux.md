@@ -90,7 +90,9 @@ pm2 monit
 
 pm2 dump
 pm2 kill
-pm2 restart
+pm2 stop 0
+pm2 restart 0
+pm2 delete 0
 
 // 自动更换端口监听
 function onError(error) {

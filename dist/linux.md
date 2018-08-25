@@ -84,7 +84,7 @@ vi /usr/local/nginx/conf/nginx.conf
 
 ```
 npm install -g pm2
-pm2 start app.js -i max // pm2 start bin/www -i max
+pm2 start bin/www --name app2 // pm2 start bin/www --name app2 -i max // --name 别名
 pm2 list
 pm2 monit
 

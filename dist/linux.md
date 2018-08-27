@@ -38,7 +38,7 @@ systemctl start mariadb
 systemctl enable mariadb.service
 mysql
 use mysql
-UPDATE user SET password=password('mMm666666') WHERE user='root';
+UPDATE user SET password=password('root') WHERE user='root';
 UPDATE user SET host = '%' WHERE user = 'root';
 exit
 systemctl restart mariadb.service

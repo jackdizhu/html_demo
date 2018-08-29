@@ -3,6 +3,10 @@
 * log 方法
 
 ``` js
+// 时间处理
+// 格林威治时间与 本地 时间转换
+new Date('2018-08-29T08:25:55.000Z').toLocaleString()
+moment('2018-08-29T08:25:55.000Z').format('YYYY-MM-DD HH:mm:ss')
 // 常用 log 方法
 let log = (obj) => {
   let str = typeof obj === 'object' ? JSON.stringify(obj, null, 2) : obj

@@ -1,3 +1,61 @@
+# react_dev
+
+```
+npm install -g create-react-app
+create-react-app react_dev
+npm run eject
+npm install resolve-url-loader less-loader less --save
+webpack.config.dev.js
+webpack.config.prod.js
+
+npm install antd --save
+npm install babel-plugin-import --save
+webpack 文件
+在 rules 中的 babel 规则中的 options 中添加以下代码
+```
+plugins: [
+   ['import', { libraryName: 'antd', style: true }],
+],
+```
+npm install less@2.7.2 less-loader --save
+npm install eslint-config-airbnb --save
+.eslintrc
+```
+// .eslintignore 来对某些文件不做 eslint 校验
+{
+  "env": {
+    "browser": true,
+    "jest": true,
+    "es6": true,
+    "node": true
+  },
+  "parser": "babel-eslint",
+  "plugins": [
+    "react",
+    "import"
+  ],
+  "extends": "airbnb",
+  "rules": {}
+}
+```
+npm install lint-staged husky --save
+npm install react-router react-router-dom --save
+
+
+npm install --save-dev babel-core babel-loader babel-preset-es2015 babel-preset-react babel-preset-stage-0
+.babelrc
+```
+{
+	"presets": [
+		"es2015",
+		"react",
+		"stage-0"
+	],
+	"plugins": []
+}
+```
+```
+
 # react-redux
 
 ``` js

@@ -10,6 +10,15 @@ import store from './redux/store';
   </Router>
 </Provider>
 例:
+// 子孙组件 访问 store
+static contextTypes = {
+  store: PropTypes.object,
+};
+handleGetState = () => {
+  const storeData = this.context.store.getState();
+}
+
+// 子孙组件 访问 父组件属性方法
 // 父组件 定义
 static childContextTypes = {
   color: PropTypes.string,

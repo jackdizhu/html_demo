@@ -1,6 +1,31 @@
 # react-redux
 
 ``` js
+import {Provider} from 'react-redux';
+import store from './redux/store';
+// 通过 Provider 组件 使所有组件通过 
+<Provider store={store}>
+  <Router>
+    <RootElement/>
+  </Router>
+</Provider>
+例:
+// 父组件 定义
+static childContextTypes = {
+  color: PropTypes.string,
+}
+getChildContext() {
+  return { color: '#ec5454' };
+}
+// 子孙组件 定义
+static contextTypes = {
+  color: PropTypes.string,
+}
+// render 方法内 通过 this.context.color 访问
+render () {
+  return <span style={{ color: `${this.context.color}`}}>颜色</span>
+}
+            
 connect(mapStateToProps, mapDispatchToProps, mergeProps, options = {})
 例:
   connect(mapStateToProps, mapDispatchToProps)(Counter);

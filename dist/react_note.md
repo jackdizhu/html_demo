@@ -32,7 +32,7 @@ static contextTypes = {
 }
 // render 方法内 通过 this.context.color 访问
 render () {
-  return <span style={{ color: `${this.context.color}`}}>颜色</span>
+  return <span>{this.context.color}颜色</span>
 }
             
 connect(mapStateToProps, mapDispatchToProps, mergeProps, options = {})

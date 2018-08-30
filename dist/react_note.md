@@ -11,28 +11,15 @@ import store from './redux/store';
 </Provider>
 例:
 // 子孙组件 访问 store
-static contextTypes = {
-  store: PropTypes.object,
-};
-handleGetState = () => {
-  const storeData = this.context.store.getState();
-}
-
-// 子孙组件 访问 父组件属性方法
-// 父组件 定义
-static childContextTypes = {
-  color: PropTypes.string,
-}
-getChildContext() {
-  return { color: '#ec5454' };
-}
-// 子孙组件 定义
-static contextTypes = {
-  color: PropTypes.string,
-}
-// render 方法内 通过 this.context.color 访问
-render () {
-  return <span>{this.context.color}颜色</span>
+import {connect} from 'react-redux';
+export default connect((state) => ({userInfo: state.userInfo}))(Nav);
+render() {
+  const {userInfo} = this.props.userInfo;
+  return (
+    <div>
+      {userInfo.name}
+    </div>
+  )
 }
             
 connect(mapStateToProps, mapDispatchToProps, mergeProps, options = {})

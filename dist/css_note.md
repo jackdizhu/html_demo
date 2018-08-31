@@ -41,6 +41,10 @@
     -ms-flex-wrap: wrap;
     flex-wrap: wrap;
 }
+.flex1 {
+   -webkit-flex: 1;
+   flex: 1;
+}
 // 横向 对齐方式
 .justify-around {
     -ms-flex-pack: distribute;

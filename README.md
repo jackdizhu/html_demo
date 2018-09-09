@@ -24,9 +24,9 @@ clickAll()
 
 // 复制表单
 (() => {
-  let inArr = document.querySelectorAll('input') || []
-  let inArr2 = document.querySelectorAll('textarea') || []
-  let inArr3 = document.querySelectorAll('select') || []
+  let inArr = document.querySelectorAll('input')
+  let inArr2 = document.querySelectorAll('textarea')
+  let inArr3 = document.querySelectorAll('select')
   let data = []
   for (let i = 0; i < inArr.length; i++) {
     inArr[i].getAttribute('value')
@@ -56,13 +56,13 @@ clickAll()
 })()
 // 表单赋值
 (() => {
-  let data = [] // console.log(JSON.stringify(data))
+    let data = []
   for (let i = 0; i < data.length; i++) {
     if (data[i].type === 'input' || data[i].type === 'textarea') {
       let ele = document.querySelector(data[i].id)
       ele && ele.setAttribute('value', data[i].value)
     } else if (data[i].type === 'select') {
-      let arr = document.querySelectorAll(data[i].id + ' option' ) || []
+      let arr = document.querySelectorAll(data[i].id + ' option' )
       for (let j = 0; j < arr.length; j++) {
         if (arr[j] && arr[j].value === data[i].value) {
           arr[j].setAttribute('selected', true)

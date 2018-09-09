@@ -12,6 +12,7 @@ let log = (obj) => {
   let str = typeof obj === 'object' ? JSON.stringify(obj, null, 2) : obj
   console.log(str)
 }
+
 // 控制台批量点击
 function clickAll () {
   let _arr = document.querySelectorAll('.Button.TopstoryItem-rightButton')
@@ -20,6 +21,56 @@ function clickAll () {
   }
 }
 clickAll()
+
+// 复制表单
+(() => {
+  let inArr = document.querySelectorAll('input') || []
+  let inArr2 = document.querySelectorAll('textarea') || []
+  let inArr3 = document.querySelectorAll('select') || []
+  let data = []
+  for (let i = 0; i < inArr.length; i++) {
+    inArr[i].getAttribute('value')
+    data.push({
+      id: '#' + inArr[i].getAttribute('id'),
+      type: 'input',
+      value: inArr[i].value
+    })
+  }
+  for (let i = 0; i < inArr2.length; i++) {
+    inArr2[i].getAttribute('value')
+    data.push({
+      id: '#' + inArr2[i].getAttribute('id'),
+      type: 'textarea',
+      value: inArr2[i].value
+    })
+  }
+  for (let i = 0; i < inArr3.length; i++) {
+    inArr3[i].getAttribute('value')
+    data.push({
+      id: '#' + inArr3[i].getAttribute('id'),
+      type: 'select',
+      value: inArr3[i].value
+    })
+  }
+  console.log(JSON.stringify(data))
+})()
+// 表单赋值
+(() => {
+  let data = [] // console.log(JSON.stringify(data))
+  for (let i = 0; i < data.length; i++) {
+    if (data[i].type === 'input' || data[i].type === 'textarea') {
+      let ele = document.querySelector(data[i].id)
+      ele && ele.setAttribute('value', data[i].value)
+    } else if (data[i].type === 'select') {
+      let arr = document.querySelectorAll(data[i].id + ' option' ) || []
+      for (let j = 0; j < arr.length; j++) {
+        if (arr[j] && arr[j].value === data[i].value) {
+          arr[j].setAttribute('selected', true)
+        }
+      }
+    }
+  }
+})()
 ```
 
 * 正则

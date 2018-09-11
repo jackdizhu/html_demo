@@ -56,11 +56,14 @@ clickAll()
 })()
 // 表单赋值
 (() => {
-    let data = []
+  let data = []
   for (let i = 0; i < data.length; i++) {
-    if (data[i].type === 'input' || data[i].type === 'textarea') {
+    if (data[i].type === 'input') {
       let ele = document.querySelector(data[i].id)
       ele && ele.setAttribute('value', data[i].value)
+    } else if (data[i].type === 'textarea') {
+      let ele = document.querySelector(data[i].id)
+      ele && (ele.value = data[i].value)
     } else if (data[i].type === 'select') {
       let arr = document.querySelectorAll(data[i].id + ' option' )
       for (let j = 0; j < arr.length; j++) {

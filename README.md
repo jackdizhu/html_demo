@@ -3,6 +3,18 @@
 * log 方法
 
 ``` js
+// 判断对象实例obj中是否存在 'attr' 属性
+Object.prototype.hasOwnProperty.call(obj, 'attr');
+// isPrototypeOf: 判断一个对象象是否为一个实例的原型
+Parent.prototype.isPrototypeOf(child);
+// js 判断数据类型 取数据类型
+// name: String (类型首字母大写)
+function getIsTypeofFun (name) {
+  var toString = Object.prototype.toString
+  return function(object) {
+    return toString.call(object) === '[object ' + name + ']'
+  }
+}
 // 时间处理
 // 格林威治时间与 本地 时间转换
 new Date('2018-08-29T08:25:55.000Z').toLocaleString()

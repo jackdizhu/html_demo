@@ -1,0 +1,25 @@
+{
+  "name": "mockApi",
+  "version": "1.0.0",
+  "description": "简单mock服务器",
+  "main": "koa.js",
+  "dependencies": {
+    "axios": "^0.18.0",
+    "cheerio": "^1.0.0-rc.2",
+    "koa": "^2.5.3",
+    "koa-bodyparser": "^4.2.1",
+    "koa-router": "^7.4.0",
+    "koa-static": "^5.0.0",
+    "nodemon": "^1.18.5",
+    "request": "^2.88.0",
+    "request-promise": "^4.2.2",
+    "source-map": "^0.5.3"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "dev": "nodemon ./koa.js",
+    "start": "node ./koa.js"
+  },
+  "author": "",
+  "license": "ISC"
+}

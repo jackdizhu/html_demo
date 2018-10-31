@@ -5,7 +5,7 @@
 * http://127.0.0.1:3000/apiDoc/ 查看mock接口信息
 
 ```js
-    module.exports =  {
+  module.exports =  {
     type: 'GET', // 接口类型
     name: '/a', // 接口名称
     desc: '测试接口 /a get', // 接口描述

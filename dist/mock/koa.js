@@ -31,6 +31,41 @@ app.use(async (ctx, next) => {
   }
 })
 
+// 查看 /api 目录信息
+const apiDoc = require('./apiDocJson').init()
+koaRouter.get('/apiDocJson', async (ctx, next) => {
+  ctx.body = apiDoc
+})
+// 查看 api 文件信息
+koaRouter.get('/apiDoc/*', async (ctx, next) => {
+  const file = ctx.path.replace(/\/apiDoc\//, '')
+  const fs = require('fs')
+  const path = require('path')
+  let dirName = path.resolve('./api')
+  let files = null
+  if (/^[a-zA-Z-/]{1,}\.js$/.test(file)) {
+    // 文件
+    files = file
+    ctx.body = require(path.resolve(dirName, file))
+  } else if (/^[a-zA-Z-]+$/.test(file)) {
+    // 文件夹
+    dirName = path.resolve('./api', file)
+    const isDirName = fs.existsSync(dirName)
+    files = isDirName && fs.readdirSync(dirName)
+    for (let i = 0; i < files.length; i++) {
+      files[i] = `http://${host}:${port}/apiDoc/${file}/` + files[i]
+    }
+    ctx.body = files
+  } else {
+    const isDirName = fs.existsSync(dirName)
+    files = isDirName && fs.readdirSync(dirName)
+    for (let i = 0; i < files.length; i++) {
+      files[i] = `http://${host}:${port}/apiDoc/` + files[i]
+    }
+    ctx.body = files
+  }
+})
+
 koaRouter.get('/api', async (ctx, next) => {
   ctx.body = {
     path: '/api'

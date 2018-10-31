@@ -1,3 +1,8 @@
+// 文件夹正则
+const dirReg = /^[a-zA-Z0-9-]+$/
+// 文件名称路径正则
+const fileNameReg = /^[a-zA-Z0-9-/]+\.js$/
+
 module.exports = {
   init: function () {
     const fs = require('fs')
@@ -12,7 +17,7 @@ module.exports = {
       if (files && files.length) {
         for (let i = 0; i < files.length; i++) {
           const file = files[i];
-          if (/^[a-zA-Z-]+\.js$/.test(file)) {
+          if (fileNameReg.test(file)) {
             // js 文件
             const item = require(path.resolve(dirName, file))
             // if (!item.name || !item.res) {
@@ -23,7 +28,7 @@ module.exports = {
               type: 'file',
               content: item
             })
-          } else if (/^[a-zA-Z-]+$/.test(file)) {
+          } else if (dirReg.test(file)) {
             root.push({
               name: file,
               type: 'dir',

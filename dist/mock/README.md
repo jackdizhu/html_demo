@@ -1,6 +1,7 @@
 # apiMock 简单mock服务器
 
-* 遍历/api文件夹 映射/api路由实现mock接口
+* 遍历/api文件夹 映射/api路由实现mock接口 
+* 通过在/api文件夹中建立子文件夹方式分组
 * http://127.0.0.1:3000/api/a 调用 /api 文件夹中api接口
 * http://127.0.0.1:3000/apiDoc/ 查看mock接口信息
 

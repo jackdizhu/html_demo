@@ -80,6 +80,7 @@ koaRouter.post('/api', async (ctx, next) => {
 const fs = require('fs')
 const path = require('path')
 const dirName = path.resolve('./api')
+// 遍历 /api 文件夹 映射路由
 function forReqJson(dirName) {
   const isDirName = fs.existsSync(dirName)
   const files = isDirName && fs.readdirSync(dirName)

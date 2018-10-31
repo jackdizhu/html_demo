@@ -7,6 +7,12 @@ const app = new koa()
 const koaRouter = require('koa-router')()
 const koaStatic = require('koa-static')
 const koaBodyparser = require('koa-bodyparser')
+
+// 文件夹正则
+const dirReg = /^[a-zA-Z0-9-]+$/
+// 文件名称路径正则
+const fileNameReg = /^[a-zA-Z0-9-/]+\.js$/
+
 app.use(koaRouter.routes())
 app.use(koaStatic(__dirname + '/www', {
   extensions: ['html', 'js', 'css', 'jpg', 'gif', 'png'],
@@ -43,27 +49,58 @@ koaRouter.get('/apiDoc/*', async (ctx, next) => {
   const path = require('path')
   let dirName = path.resolve('./api')
   let files = null
-  if (/^[a-zA-Z-/]{1,}\.js$/.test(file)) {
+  if (fileNameReg.test(file)) {
     // 文件
     files = file
     ctx.body = require(path.resolve(dirName, file))
-  } else if (/^[a-zA-Z-]+$/.test(file)) {
-    // 文件夹
-    dirName = path.resolve('./api', file)
-    const isDirName = fs.existsSync(dirName)
-    files = isDirName && fs.readdirSync(dirName)
-    for (let i = 0; i < files.length; i++) {
-      files[i] = `http://${host}:${port}/apiDoc/${file}/` + files[i]
-    }
-    ctx.body = files
   } else {
-    const isDirName = fs.existsSync(dirName)
-    files = isDirName && fs.readdirSync(dirName)
-    for (let i = 0; i < files.length; i++) {
-      files[i] = `http://${host}:${port}/apiDoc/` + files[i]
+    let filesInfo = []
+    if (dirReg.test(file)) {
+      // 下级文件夹
+      dirName = path.resolve('./api', file)
+      const isDirName = fs.existsSync(dirName)
+      files = isDirName && fs.readdirSync(dirName)
+      for (let i = 0; i < files.length; i++) {
+        const type = dirReg.test(files[i]) ? 'dir' : 'file'
+        const filePath = path.resolve(dirName, files[i])
+        const content = type === 'file' ? require(filePath) : {}
+        if (type === 'file' && (!content.name || !content.type || !content.desc)) {
+          continue;
+        }
+        filesInfo.push({
+          // type: type,
+          // files: filePath,
+          url: `http://${host}:${port}/apiDoc/${file}/` + files[i],
+          // content: content,
+          name: content.name,
+          type: content.type,
+          desc: content.desc
+        })
+      }
+    } else {
+      // 默认显示/api文件夹
+      const isDirName = fs.existsSync(dirName)
+      files = isDirName && fs.readdirSync(dirName)
+      for (let i = 0; i < files.length; i++) {
+        const type = dirReg.test(files[i]) ? 'dir' : 'file'
+        const filePath = path.resolve(dirName, files[i])
+        const content = type === 'file' ? require(filePath) : {}
+        if (type === 'file' && (!content.name || !content.type || !content.desc)) {
+          continue;
+        }
+        filesInfo.push({
+          // type: type,
+          // files: filePath,
+          url: `http://${host}:${port}/apiDoc/` + files[i],
+          // content: content,
+          name: content.name,
+          type: content.type,
+          desc: content.desc
+        })
+      }
     }
-    ctx.body = files
-  }
+    ctx.body = filesInfo
+  } 
 })
 
 koaRouter.get('/api', async (ctx, next) => {
@@ -77,6 +114,19 @@ koaRouter.post('/api', async (ctx, next) => {
   }
 })
 
+/*
+  module.exports =  {
+    type: 'GET', // 接口类型
+    name: '/a', // 接口名称
+    desc: '测试接口 /a get', // 接口描述
+    req: { // 接口参数
+      id: 1
+    },
+    res: { // 接口返回数据
+      a: 111
+    }
+  }
+*/
 const fs = require('fs')
 const path = require('path')
 const dirName = path.resolve('./api')
@@ -84,19 +134,10 @@ const dirName = path.resolve('./api')
 function forReqJson(dirName) {
   const isDirName = fs.existsSync(dirName)
   const files = isDirName && fs.readdirSync(dirName)
-  /*
-  module.exports =  {
-    type: 'GET',
-    name: '/a',
-    res: {
-      a: 111
-    }
-  }
-  */
   if (files && files.length) {
     for (let i = 0; i < files.length; i++) {
       const file = files[i];
-      if (/^[a-zA-Z-]+\.js$/.test(file)) {
+      if (fileNameReg.test(file)) {
         // js 文件
         const item = require(path.resolve(dirName, file))
         if (!item.name || !item.res) {
@@ -111,7 +152,7 @@ function forReqJson(dirName) {
             ctx.body = item.res
           })
         }
-      } else if (/^[a-zA-Z-]+$/.test(file)) {
+      } else if (dirReg.test(file)) {
         // 文件夹递归
         const dirName2 = path.resolve(dirName, file)
         forReqJson(dirName2)

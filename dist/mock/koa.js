@@ -51,7 +51,7 @@ koaRouter.get('/apiDoc/*', async (ctx, next) => {
   const file = ctx.path.replace(/\/apiDoc\//, '')
   let dirName = path.resolve('./api')
   let files = null
-  if (fileNameReg.test(file)) {
+  if (fileNameReg.test(file) || imageNameReg.test(file)) {
     // 文件
     files = file
     // ctx.body = require(path.resolve(dirName, file))
@@ -131,8 +131,6 @@ koaRouter.post('/api', async (ctx, next) => {
     }
   }
 */
-const fs = require('fs')
-const path = require('path')
 const dirName = path.resolve('./api')
 // 遍历 /api 文件夹 映射路由
 function forReqJson(dirName) {

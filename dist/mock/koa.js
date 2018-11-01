@@ -55,7 +55,7 @@ koaRouter.get('/apiDoc/*', async (ctx, next) => {
     // 文件
     files = file
     // ctx.body = require(path.resolve(dirName, file))
-    ctx.type = imageNameReg.test(file) ? 'image/jpg;image/png;image/gif;' : 'html'
+    ctx.type = imageNameReg.test(file) ? 'image/jpg;image/png;image/gif;' : 'application/json;'
     ctx.body = fileNameReg.test(file) ? require(path.resolve(dirName, file)) : fs.readFileSync(path.resolve(dirName, file))
   } else {
     let filesInfo = []

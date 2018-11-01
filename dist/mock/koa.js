@@ -2,6 +2,8 @@
 const host = '127.0.0.1'
 const port = 3000
 
+const fs = require('fs')
+const path = require('path')
 const koa = require('koa')
 const app = new koa()
 const koaRouter = require('koa-router')()
@@ -12,6 +14,8 @@ const koaBodyparser = require('koa-bodyparser')
 const dirReg = /^[a-zA-Z0-9-]+$/
 // 文件名称路径正则
 const fileNameReg = /^[a-zA-Z0-9-/]+\.js$/
+// 图片类型文件正则
+const imageNameReg = /^[a-zA-Z0-9-/]+\.[jpg|png|gif]+$/
 
 app.use(koaRouter.routes())
 app.use(koaStatic(__dirname + '/www', {
@@ -45,14 +49,14 @@ koaRouter.get('/apiDocJson', async (ctx, next) => {
 // 查看 api 文件信息
 koaRouter.get('/apiDoc/*', async (ctx, next) => {
   const file = ctx.path.replace(/\/apiDoc\//, '')
-  const fs = require('fs')
-  const path = require('path')
   let dirName = path.resolve('./api')
   let files = null
   if (fileNameReg.test(file)) {
     // 文件
     files = file
-    ctx.body = require(path.resolve(dirName, file))
+    // ctx.body = require(path.resolve(dirName, file))
+    ctx.type = imageNameReg.test(file) ? 'image/jpg;image/png;image/gif;' : 'html'
+    ctx.body = fileNameReg.test(file) ? require(path.resolve(dirName, file)) : fs.readFileSync(path.resolve(dirName, file))
   } else {
     let filesInfo = []
     if (dirReg.test(file)) {
@@ -61,7 +65,7 @@ koaRouter.get('/apiDoc/*', async (ctx, next) => {
       const isDirName = fs.existsSync(dirName)
       files = isDirName && fs.readdirSync(dirName)
       for (let i = 0; i < files.length; i++) {
-        const type = dirReg.test(files[i]) ? 'dir' : 'file'
+        const type = fileNameReg.test(files[i]) ? 'file' : 'dir'
         const filePath = path.resolve(dirName, files[i])
         const content = type === 'file' ? require(filePath) : {}
         if (type === 'file' && (!content.name || !content.type || !content.desc)) {
@@ -82,7 +86,7 @@ koaRouter.get('/apiDoc/*', async (ctx, next) => {
       const isDirName = fs.existsSync(dirName)
       files = isDirName && fs.readdirSync(dirName)
       for (let i = 0; i < files.length; i++) {
-        const type = dirReg.test(files[i]) ? 'dir' : 'file'
+        const type = fileNameReg.test(files[i]) ? 'file' : 'dir'
         const filePath = path.resolve(dirName, files[i])
         const content = type === 'file' ? require(filePath) : {}
         if (type === 'file' && (!content.name || !content.type || !content.desc)) {

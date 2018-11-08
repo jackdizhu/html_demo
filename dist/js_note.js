@@ -1,88 +1,73 @@
 
-笔记
-
-let str = ' a  a          '
-      let str2 = str.replace(/^\s+|\s+$/g, '')
-      console.log(str2, str2.length)
-      let obj = {
-        a: 'aa'
-      }
-
-      let re = Object.prototype.hasOwnProperty.call(obj, 'a')
-      console.log(re)
-
-window.addEventListener('storage', function (e) {
-      // 同一浏览器的 不同标签页之间 操作 storage 生效
-      console.log('oldValue:--' + e.oldValue + '\n' + 'newValue:--' + e.newValue, 111);
-    })
-
+// 自定义手势 ↗↙
 ;((window) => {
-      // 手势识别 ↗↙
-      let body = document.body
-      let height = body.clientHeight
-      let width = body.clientWidth
-      let touches = [] // 触摸的3个点位置
-      let touchArr = [null, null, null] // 触摸的3个点
-      let num = 30 // 偏移量
-      touchTouchArr0 = function (pageX, pageY) {
-        // 重新初始化
-        touches = []
-        touchArr = [null, null, null]
-        // 第1个点
-        if (pageX < num && (height - pageY) < num) {
-          touches.push({ pageX, pageY })
-          touchArr[0] = true
-        } else {
-          touchArr[0] = null
-        }
+  // 手势识别 ↗↙
+  let body = document.body
+  let height = body.clientHeight
+  let width = body.clientWidth
+  let touches = [] // 触摸的3个点位置
+  let touchArr = [null, null, null] // 触摸的3个点
+  let num = 30 // 偏移量
+  touchTouchArr0 = function (pageX, pageY) {
+    // 重新初始化
+    touches = []
+    touchArr = [null, null, null]
+    // 第1个点
+    if (pageX < num && (height - pageY) < num) {
+      touches.push({ pageX, pageY })
+      touchArr[0] = true
+    } else {
+      touchArr[0] = null
+    }
+  }
+  touchTouchArr1 = function (pageX, pageY) {
+    // 第2个点
+    if (touchArr[0] && !touchArr[1]) {
+      if (pageY < num && (width - pageX) < num) {
+        touchArr[1] = true
+        touches.push({ pageX, pageY })
+      } else {
+        touchArr[1] = null
       }
-      touchTouchArr1 = function (pageX, pageY) {
-        // 第2个点
-        if (touchArr[0] && !touchArr[1]) {
-          if (pageY < num && (width - pageX) < num) {
-            touchArr[1] = true
-            touches.push({ pageX, pageY })
-          } else {
-            touchArr[1] = null
-          }
-        }
-        // 第3个点
-        if (touchArr[0] && touchArr[1] && !touchArr[2]) {
-          if (pageX < num && (height - pageY) < num) {
-            touchArr[2] = true
-            touches.push({ pageX, pageY })
-          } else {
-            touchArr[2] = null
-          }
-        }
+    }
+    // 第3个点
+    if (touchArr[0] && touchArr[1] && !touchArr[2]) {
+      if (pageX < num && (height - pageY) < num) {
+        touchArr[2] = true
+        touches.push({ pageX, pageY })
+      } else {
+        touchArr[2] = null
       }
-      body.addEventListener('touchstart', e => {
-        let touch = e.targetTouches[0]
-        // touches.push({ pageX: touch.pageX, pageY: touch.pageY })
-        touchTouchArr0(touch.pageX, touch.pageY)
-      })
-      body.addEventListener('touchmove', e => {
-        let touch = e.targetTouches[0]
-        // touches.push({ pageX: touch.pageX, pageY: touch.pageY})
-        touchTouchArr1(touch.pageX, touch.pageY)
-      })
-      body.addEventListener('touchend', e => {
-        console.log({ width, height })
-        console.log(touches)
-        console.log(touchArr)
-      })
-    })(window)
+    }
+  }
+  body.addEventListener('touchstart', e => {
+    let touch = e.targetTouches[0]
+    // touches.push({ pageX: touch.pageX, pageY: touch.pageY })
+    touchTouchArr0(touch.pageX, touch.pageY)
+  })
+  body.addEventListener('touchmove', e => {
+    let touch = e.targetTouches[0]
+    // touches.push({ pageX: touch.pageX, pageY: touch.pageY})
+    touchTouchArr1(touch.pageX, touch.pageY)
+  })
+  body.addEventListener('touchend', e => {
+    console.log({ width, height })
+    console.log(touches)
+    console.log(touchArr)
+  })
+})(window)
 
-(() => {
+// 下拉刷新 加载更多
+;(() => {
   const loadMoreEl = document.getElementById('loadmore');
-  let startX = 0,startY = 0,endX = 0,endY = 0;
+  let startX = 0, startY = 0, endX = 0, endY = 0;
   loadMoreEl.addEventListener('touchstart', (e) => {
     const touch = e.targetTouches[0]
-    startX = touch.pageX,startY = touch.pageY,endX = 0,endY = 0;
+    startX = touch.pageX, startY = touch.pageY, endX = 0, endY = 0;
   })
   loadMoreEl.addEventListener('touchmove', (e) => {
     const touch = e.targetTouches[0]
-    endX = touch.pageX,endY = touch.pageY;
+    endX = touch.pageX, endY = touch.pageY;
   })
   loadMoreEl.addEventListener('touchend', (e) => {
     // 下滑
@@ -98,6 +83,21 @@ window.addEventListener('storage', function (e) {
     }
   })
 })()
+
+// 去左右空格
+let str = ' a  a          '
+let str2 = str.replace(/^\s+|\s+$/g, '')
+console.log(str2, str2.length)
+let obj = {
+  a: 'aa'
+}
+// 判断是否是当前对象的属性
+let re = Object.prototype.hasOwnProperty.call(obj, 'a')
+console.log(re)
+window.addEventListener('storage', function (e) {
+  // 同一浏览器的 不同标签页之间 操作 storage 生效
+  console.log('oldValue:--' + e.oldValue + '\n' + 'newValue:--' + e.newValue, 111);
+})
 
 // ios橡皮筋效果处理
 function stopEvent(cls) {
@@ -128,24 +128,11 @@ function stopEvent(cls) {
 }
 
 let scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
-         let clientHeight = document.documentElement.clientHeight;
-         let scrollHeight = document.documentElement.scrollHeight;
-         if (scrollTop + clientHeight >= scrollHeight) { // 如果滚动到接近底部，自动加载下一页
-               //事件处理
-         }
-
-gitbook
-https://legacy.gitbook.com/explore
-国际技术新闻
-https://jackgoogle.herokuapp.com/proxy/https://news.ycombinator.com/
-web安全
-https://html5sec.org/
-工具箱
-https://jackgoogle.herokuapp.com/proxy/https://github.com/phodal/toolbox
-chome扩展
-SetupVPN - Lifetime Free VPN
-https://www.crx4chrome.com/
-
+let clientHeight = document.documentElement.clientHeight;
+let scrollHeight = document.documentElement.scrollHeight;
+if (scrollTop + clientHeight >= scrollHeight) { // 如果滚动到接近底部，自动加载下一页
+  //事件处理
+}
 
 // 生成随机数据 R >= min && R < max
 let random = (min, max) => {

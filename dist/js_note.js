@@ -1,4 +1,152 @@
 
+笔记
+
+let str = ' a  a          '
+      let str2 = str.replace(/^\s+|\s+$/g, '')
+      console.log(str2, str2.length)
+      let obj = {
+        a: 'aa'
+      }
+
+      let re = Object.prototype.hasOwnProperty.call(obj, 'a')
+      console.log(re)
+
+window.addEventListener('storage', function (e) {
+      // 同一浏览器的 不同标签页之间 操作 storage 生效
+      console.log('oldValue:--' + e.oldValue + '\n' + 'newValue:--' + e.newValue, 111);
+    })
+
+;((window) => {
+      // 手势识别 ↗↙
+      let body = document.body
+      let height = body.clientHeight
+      let width = body.clientWidth
+      let touches = [] // 触摸的3个点位置
+      let touchArr = [null, null, null] // 触摸的3个点
+      let num = 30 // 偏移量
+      touchTouchArr0 = function (pageX, pageY) {
+        // 重新初始化
+        touches = []
+        touchArr = [null, null, null]
+        // 第1个点
+        if (pageX < num && (height - pageY) < num) {
+          touches.push({ pageX, pageY })
+          touchArr[0] = true
+        } else {
+          touchArr[0] = null
+        }
+      }
+      touchTouchArr1 = function (pageX, pageY) {
+        // 第2个点
+        if (touchArr[0] && !touchArr[1]) {
+          if (pageY < num && (width - pageX) < num) {
+            touchArr[1] = true
+            touches.push({ pageX, pageY })
+          } else {
+            touchArr[1] = null
+          }
+        }
+        // 第3个点
+        if (touchArr[0] && touchArr[1] && !touchArr[2]) {
+          if (pageX < num && (height - pageY) < num) {
+            touchArr[2] = true
+            touches.push({ pageX, pageY })
+          } else {
+            touchArr[2] = null
+          }
+        }
+      }
+      body.addEventListener('touchstart', e => {
+        let touch = e.targetTouches[0]
+        // touches.push({ pageX: touch.pageX, pageY: touch.pageY })
+        touchTouchArr0(touch.pageX, touch.pageY)
+      })
+      body.addEventListener('touchmove', e => {
+        let touch = e.targetTouches[0]
+        // touches.push({ pageX: touch.pageX, pageY: touch.pageY})
+        touchTouchArr1(touch.pageX, touch.pageY)
+      })
+      body.addEventListener('touchend', e => {
+        console.log({ width, height })
+        console.log(touches)
+        console.log(touchArr)
+      })
+    })(window)
+
+(() => {
+  const loadMoreEl = document.getElementById('loadmore');
+  let startX = 0,startY = 0,endX = 0,endY = 0;
+  loadMoreEl.addEventListener('touchstart', (e) => {
+    const touch = e.targetTouches[0]
+    startX = touch.pageX,startY = touch.pageY,endX = 0,endY = 0;
+  })
+  loadMoreEl.addEventListener('touchmove', (e) => {
+    const touch = e.targetTouches[0]
+    endX = touch.pageX,endY = touch.pageY;
+  })
+  loadMoreEl.addEventListener('touchend', (e) => {
+    // 下滑
+    const X = endX - startX
+    const Y = endY - startY
+    // 上滑
+    // const X = startX - endX
+    // const Y = startY - endY
+    console.log(`X: ${X},Y: ${Y}`);
+    if (Y > 50) {
+      this.topStatus = 'loading'
+      this.loadTop()
+    }
+  })
+})()
+
+// ios橡皮筋效果处理
+function stopEvent(cls) {
+  var scrollEl = _this.$el.querySelector(cls);
+  var startY;
+  scrollEl.addEventListener("touchstart", e => {
+    const touch = e.targetTouches[0];
+    startY = touch.pageY;
+    if (scrollEl.scrollTop !== 0) {
+      e.stopPropagation();
+    }
+  });
+  scrollEl.addEventListener("touchmove", e => {
+    // console.log('scrollEl.scrollTop <= 0', scrollEl.scrollTop <= 0);
+    if (scrollEl.scrollTop <= 0) {
+      const touch = e.targetTouches[0];
+      var pullDownDistance = touch.pageY - startY;
+      // console.log('pullDownDistance > 0', pullDownDistance);
+      if (pullDownDistance > 0) {
+        e.preventDefault();
+      }
+    } else {
+      e.stopPropagation();
+    }
+  });
+  scrollEl.addEventListener("touchend", e => {
+  });
+}
+
+let scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+         let clientHeight = document.documentElement.clientHeight;
+         let scrollHeight = document.documentElement.scrollHeight;
+         if (scrollTop + clientHeight >= scrollHeight) { // 如果滚动到接近底部，自动加载下一页
+               //事件处理
+         }
+
+gitbook
+https://legacy.gitbook.com/explore
+国际技术新闻
+https://jackgoogle.herokuapp.com/proxy/https://news.ycombinator.com/
+web安全
+https://html5sec.org/
+工具箱
+https://jackgoogle.herokuapp.com/proxy/https://github.com/phodal/toolbox
+chome扩展
+SetupVPN - Lifetime Free VPN
+https://www.crx4chrome.com/
+
+
 // 生成随机数据 R >= min && R < max
 let random = (min, max) => {
   let R = Math.floor(Math.random() * (max - min)) + min

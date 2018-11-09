@@ -1,4 +1,4 @@
-// 格式化 粘贴板html标签
+// 格式化 粘贴板html标签 dragenter paste
 document.getElementById('edit').addEventListener('paste', (e) => {
   let pastedText = undefined;
   if (window.clipboardData && window.clipboardData.getData) { 

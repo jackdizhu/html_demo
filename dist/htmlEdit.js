@@ -18,3 +18,14 @@ document.getElementById('edit').addEventListener('paste', (e) => {
   e.stopPropagation();
   return false;
 })
+
+// 禁止页面元素拖动
+<body 
+  draggable="false"
+  ondragstart="return false" 
+  ondragenter="event.dataTransfer.dropEffect='none'; event.stopPropagation(); event.preventDefault();"  
+  ondragover="event.dataTransfer.dropEffect='none';event.stopPropagation(); event.preventDefault();"  
+  ondrop="event.dataTransfer.dropEffect='none';event.stopPropagation(); event.preventDefault();"
+>
+// 禁止拖动内容到input
+<input ondragenter = "return false"/>

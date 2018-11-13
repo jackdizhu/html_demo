@@ -68,3 +68,6 @@ let _a13 = [1, 2]
 let _a14 = [3, 4]
 let _a15 = [..._a13, ..._a14]
 // console.log(_a15)
+
+// 数组去重
+arr = [...new Set(arr)]

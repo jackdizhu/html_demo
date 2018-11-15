@@ -39,3 +39,29 @@
   }
   document.addEventListener("scroll", time_fn);
 })();
+
+// ==UserScript==
+// @name         ad none
+// @namespace    jackdizhu_AD
+// @version      0.1
+// @description  广告屏蔽 match URL 匹配规则
+// @author       jackdizhu
+// @match        *://*.weibo.com/*
+// @match        *://weibo.com/*
+// @match        *://*.zhihu.com/*
+// @match        *://zhihu.com/*
+// @grant        none
+// ==/UserScript==
+
+(function() {
+  'use strict';
+  setInterval(() => {
+      let iframes = document.querySelectorAll('iframe')
+      if (iframes.length) {
+          for (let i = 0; i < iframes.length; i++) {
+              const element = iframes[i];
+              element.style.display = 'none'
+          }
+      }
+  }, 2000)
+})();

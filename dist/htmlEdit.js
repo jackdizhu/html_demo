@@ -30,6 +30,7 @@ document.getElementById('edit').addEventListener('paste', (e) => {
 // 禁止拖动内容到input
 <input ondragenter = "return false"/>
 
+// 输入法输入 input 事件
 // 富文本编辑器 execCommand 指令实现方式
 富文本编辑器中主要涉及到Jascript中一个原生的方法：execCommand。
 execCommand方法是一个对当前文档、当前选择或给出范围的命令。

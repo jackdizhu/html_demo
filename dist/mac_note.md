@@ -8,6 +8,7 @@ cd Users/root/Desktop/mongodb/bin/
 ```
 ```sh
 # mac 执行exe文件
+# 安装 Mono framework
 export PATH=/Library/Frameworks/Mono.framework/Versions/5.10.1/Commands:${PATH}
 mono Fiddler.exe 
 # 报错执行 

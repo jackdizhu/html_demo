@@ -6,3 +6,10 @@ open -n /Applications/Google\ Chrome.app/ --args --disable-web-security  --user-
 cd Users/root/Desktop/mongodb/bin/
 ./mongod --dbpath ./data/db
 ```
+```sh
+# mac 执行exe文件
+export PATH=/Library/Frameworks/Mono.framework/Versions/5.10.1/Commands:${PATH}
+mono Fiddler.exe 
+# 报错执行 
+mono --arch=32 Fiddler.exe
+```

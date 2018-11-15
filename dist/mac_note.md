@@ -14,3 +14,10 @@ mono Fiddler.exe
 # 报错执行 
 mono --arch=32 Fiddler.exe
 ```
+
+```sh
+# Charles 抓包设置
+# mac -> Charles -> Install Charles Root Certificate 设置信任证书
+# 手机端浏览器访问 http://www.charlesproxy.com/getssl/ 添加信任证书
+# 设置ssl代理到443端口
+```

@@ -1,3 +1,5 @@
+* 软件下载地址 https://www.waitsun.com/
+
 ```sh
 # Chrome 启动
 open -n /Applications/Google\ Chrome.app/ --args --disable-web-security  --user-data-dir=/Users/Shared/Documents/chomeData

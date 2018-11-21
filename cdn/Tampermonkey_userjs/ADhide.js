@@ -26,7 +26,9 @@
             let iframes = document.querySelectorAll('iframe')
             if (iframes.length) {
                 for (let i = 0; i < iframes.length; i++) {
-                    ADArrPush(iframes[i])
+                    if (iframes[i].parentNode.className.indexOf('VideoCard-player') === -1) {
+                        ADArrPush(iframes[i])
+                    }
                 }
             }
         }

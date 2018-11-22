@@ -137,3 +137,6 @@ Underline 切换当前选中区的下划线显示与否。
 Undo 回退操作。 
 Unlink 从当前选中区中删除全部超级链接。 
 Unselect 清除当前选中区的选中状态。
+
+// Selection对象方法属性总结
+https://www.jianshu.com/p/88be93bb277d

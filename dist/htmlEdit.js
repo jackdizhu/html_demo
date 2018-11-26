@@ -1,3 +1,27 @@
+// contenteditable="true" 节点 editBox
+// NodeChild 光标位置所在节点
+// index 光标位置从0开始
+function setCaretPosition(editBox, NodeChild, index) {
+  editBox.focus()
+  if (typeof window.getSelection != "undefined" && typeof document.createRange != "undefined") {
+    var range = document.createRange();
+    range.selectNodeContents(editBox);
+    range.collapse(true); // “起点”和“结束点”是否重合
+    range.setStart(NodeChild,index);
+    range.setEnd(NodeChild,index);
+    var sel = window.getSelection();
+    sel.removeAllRanges();
+    sel.addRange(range);
+  } else if (typeof document.body.createTextRange != "undefined") {
+    // IE
+    var textRange = document.body.createTextRange();
+    textRange.moveToElementText(NodeChild);
+    textRange.collapse(true); // “起点”和“结束点”是否重合
+    textRange.moveStart('character', index);
+    // textRange.moveEnd('character', index);
+    textRange.select();
+  }
+}
 // 格式化 粘贴板html标签 dragenter paste
 document.getElementById('edit').addEventListener('paste', (e) => {
   let pastedText = undefined;

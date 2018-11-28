@@ -1,3 +1,4 @@
+// oldNode.parentNode.replaceChild(newNode,oldNode); // 节点替换
 // contenteditable="true" 节点 editBox
 // NodeChild 光标位置所在节点
 // index 光标位置从0开始

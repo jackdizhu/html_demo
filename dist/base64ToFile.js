@@ -24,6 +24,12 @@ function fileup() {
     cache: false,
     contentType: false,
     processData: false,
+    // 上传中
+    progress: function (event) {
+      // 获取上传进度
+      let percentage = event.percent + '%'
+      percentage = parseInt(res.loaded/res.total*100) + '%'
+    },
     success: function (res) {
       console.log(res);
     },

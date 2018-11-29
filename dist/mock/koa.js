@@ -9,6 +9,13 @@ const app = new koa()
 const koaRouter = require('koa-router')()
 const koaStatic = require('koa-static')
 const koaBodyparser = require('koa-bodyparser')
+const koaBody = require('koa-body')
+app.use(koaBody({
+  multipart: true,
+  formidable: {
+    maxFileSize: 200*1024*1024    // 设置上传文件大小最大限制，默认2M
+  }
+}))
 
 // 文件夹正则
 const dirReg = /^[a-zA-Z0-9-]+$/
@@ -42,10 +49,10 @@ app.use(async (ctx, next) => {
 })
 
 // 查看 /api 目录信息
-const apiDoc = require('./apiDocJson').init()
-koaRouter.get('/apiDocJson', async (ctx, next) => {
-  ctx.body = apiDoc
-})
+// const apiDoc = require('./apiDocJson').init()
+// koaRouter.get('/apiDocJson', async (ctx, next) => {
+//   ctx.body = apiDoc
+// })
 // 查看 api 文件信息
 koaRouter.get('/apiDoc/*', async (ctx, next) => {
   const file = ctx.path.replace(/\/apiDoc\//, '')
@@ -115,6 +122,23 @@ koaRouter.get('/api', async (ctx, next) => {
 koaRouter.post('/api', async (ctx, next) => {
   ctx.body = {
     path: '/api'
+  }
+})
+
+// 文件上传测试
+koaRouter.post('/upload', async (ctx, next) => {
+  // 上传单个文件
+  const file = ctx.request.files.file // 获取上传文件
+  // 创建可读流
+  const reader = fs.createReadStream(file.path)
+  let filePath = path.join(__dirname, 'data/') + `/${file.name}`
+  // 创建可写流
+  const dataStream = fs.createWriteStream(filePath)
+  // 可读流通过管道写入可写流
+  reader.pipe(dataStream);
+  ctx.body = {
+    path: '/upload',
+    file
   }
 })
 

@@ -1,4 +1,16 @@
-
+// 手动触发 addEventListener 等绑定(可以触发自定义事件)事件 dispatchEvent(element, 'test')
+var dispatchEvent = function (element, event) {
+  if (document.createEventObject) {
+    // IE浏览器支持fireEvent方法  
+    var evt = document.createEventObject();
+    return element.fireEvent('on' + event, evt)
+  } else {
+    // 其他标准浏览器使用dispatchEvent方法  
+    var evt = document.createEvent('HTMLEvents');
+    evt.initEvent(event, true, true);
+    return !element.dispatchEvent(evt);
+  }
+};
 // 自定义手势 ↗↙
 ;((window) => {
   // 手势识别 ↗↙

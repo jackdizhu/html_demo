@@ -1,6 +1,5 @@
-作者：Falost
-来自：falost的小窝
-链接：https://www.fedte.cc/p/633.html
+// 作者：Falost
+// 链接：https://www.fedte.cc/p/633.html
 
 (function(window,document,undefined){
         var hearts = [];

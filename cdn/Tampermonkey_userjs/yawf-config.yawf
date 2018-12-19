@@ -1,7 +1,7 @@
 {
-  "ua": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.102 Safari/537.36",
+  "ua": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36",
   "yawf": "Yet Another Weibo Filter",
-  "ver": "3.7.489",
+  "ver": "3.7.491",
   "gm": "Tampermonkey4.7.44",
   "conf": {
     "weibo.tool.load_weibo_by_group.group": {},
@@ -39,7 +39,25 @@
       "将母亲",
       "英雄联盟",
       "让座",
-      "薛之谦"
+      "薛之谦",
+      "婚姻之后还AA制",
+      "黄毅清",
+      "转发微博",
+      "锤子手机",
+      "EXO",
+      "王俊凯",
+      "易烊千玺",
+      "AA制",
+      "鹿晗",
+      "钮承泽",
+      "张首晟",
+      "老布什",
+      "蒋劲夫",
+      "#男子欲起诉寻人#",
+      "日本人在南京街头",
+      "陈冠希",
+      "张柏芝",
+      "真香"
     ],
     "weibo.filters.keyword.foldlist": [],
     "weibo.filters.regexp.whitelist": [],
@@ -389,6 +407,7 @@
     "weibo.tool.color_override.transparency3": 30,
     "weibo.tool.color_override": false,
     "weibo.tool.userstyle": "",
-    "script.other.auto_complete": true
+    "script.other.auto_complete": true,
+    "weibo.tool.use_built_in_video_player": false
   }
 }

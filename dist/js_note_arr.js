@@ -1,3 +1,10 @@
+// 中文按照拼音排序
+stringObject.localeCompare(target)
+var array = ['白鸽', '麻雀', '大象', '狗', '猫', "鸡"];
+array = array.sort(function compareFunction(item1, item2) {
+  return item1.localeCompare(item2);
+});
+//["白鸽", "大象", "狗", "鸡", "麻雀", "猫"]
 // 数组分割
 let arrGroup = (arr, groupLength) => {
   let i = 0

@@ -1,3 +1,8 @@
+// IndexedDB api 及 原理
+// http://www.ruanyifeng.com/blog/2018/07/indexeddb.html
+// IndexedDB 基本使用
+// https://www.cnblogs.com/dolphinX/p/3415761.html
+
 var myDB={
     name: 'testDB',
     version: 1,

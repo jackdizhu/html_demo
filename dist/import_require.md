@@ -52,10 +52,10 @@ export * from 'fs'
 * 出现模块之间的循环引用时，会输出已经执行的模块，而未执行的模块不输出（比较复杂）
 * CommonJS模块默认export的是一个对象，即使导出的是基础数据类型
 
-<table style="height: 96px; width: 580px">
+<table style="height: 96px; width: 620px">
   <thead>
   <tr class="firstRow">
-    <th width="60">加载方式</th>
+    <th width="100">加载方式</th>
     <th width="130">规范</th>
     <th width="60">命令</th>
     <th width="330">特点</th>

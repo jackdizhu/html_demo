@@ -118,6 +118,10 @@ function getThing(): moment;
 export {xxx};  // 导出方式
 import {xxx} from 'yyy';  // 导入方式
 
+// ES6 module .d.ts 编写
+declare var yyy: number
+export { yyy }
+
 // ES module默认导出，只是导出一个名为default的变量
 export default xxx; // 默认导出是以下导出方式的语法糖
 export {xxx as default}; // 将导出的xxx变量重命名为default
@@ -128,13 +132,31 @@ import {default as xxx} from 'yyy'; // 将导入的名为default的变量重命�
 module.exports = {xxx};  // 导出方式
 const {xxx} = require('yyy'); // 导入方式
 
+// CommonJS导出一个对象 .d.ts 编写
+declare module "yyy" {
+  export let name: string
+  export let age: number
+}
+
 // CommonJS导出一个类
 module.exports = class {}; // 导出方式
 const cls = require('yyy'); // 导入方式
 
+// CommonJS导出一个类 .d.ts 编写
+declare module "yyy" {
+  export namespace yyy{
+    let name: string
+  }
+}
+
 // CommonJS导出一个函数
 module.exports = function(){ };  // 导出方式
 const fn = require('yyy');  // 导入方式
+
+// CommonJS导出一个函数 .d.ts 编写
+declare module "yyy" {
+  export function b(): number
+}
 ```
 
 # TypeScript要求针对模块库，导出不同类型的东西，需要编写不同的.d.ts文件。

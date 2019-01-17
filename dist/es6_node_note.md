@@ -1,4 +1,123 @@
 
+ES6
+
+## let const
+
+```js
+let arr = [1, 1, 2]
+for (let i = 0; i < arr.length; i++) {
+  const item = arr[i];
+  console.log(item);
+}
+```
+
+## 箭头函数
+
+```js
+let testFn = () => {
+  console.log(this);
+}
+```
+
+## 字符串
+
+```js
+let num = 1
+let str = `this num is ${num}`
+```
+
+## 解构
+
+```js
+let [item1, item2] = [2, 3]
+let {name, age} = { name: 'name 1', age: 2 }
+```
+
+## 模块
+
+```js
+function add(num1, num2) {
+  return num1 + num2
+}
+
+export { add };
+```
+
+## 参数默认值
+
+```js
+function add(num1, num2 = 2) {
+  return num1 + num2
+}
+```
+
+## 不定数目参数
+
+```js
+function add(num1, ...args) {
+  let numAll = num1
+  for (let arg of args) {
+    numAll += arg
+  }
+  return numAll
+}
+```
+
+## 展开操作
+
+```js
+let [...arr] = [2, 3]
+console.log(arr)
+```
+
+## 类
+
+```js
+class User {
+  constructor(name, age) {
+    this.name = name
+    this.age = age
+  }
+
+  addAge() {
+    this.age += 1
+  }
+}
+```
+
+## Promises
+
+```js
+const sleep = (time) => {
+  return new Promise((resolve, reject) => {
+      setTimeout(() => {
+        console.log('sleep ok')
+        resolve('ok')
+      }, time)
+  })
+}
+sleep(3000).then(() => {
+  console.log('then')
+})
+```
+
+## Generators
+
+```js
+function* testFn () {
+  let arr = [1, 3, 5]
+  for (let i = 0; i < arr.length; i++) {
+    yield arr[i]
+  }
+  console.log('testFn')
+}
+let test = testFn()
+console.log(test.next())
+console.log(test.next())
+console.log(test.next())
+console.log(test.next())
+```
+
 * js 笔记
 
 ``` js

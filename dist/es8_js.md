@@ -1,5 +1,6 @@
 * async await
 
+```js
 // Promise 封装异步 方法
 const sleep = (time) => {
   return new Promise((resolve, reject) => {

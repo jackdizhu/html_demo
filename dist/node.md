@@ -1,5 +1,16 @@
 ## node 部署问题记录
 
+### node 笔记
+
+``` js
+// node 命令执行文件 获取 命令参数
+let a = () => {
+  var arguments = process.argv.splice(2);
+  return arguments
+}
+// console.log(a())
+```
+
 ### (PM2 Cluster 模式下 Log4js 日志丢失)[https://www.jianshu.com/p/20fcb3672723]
 
 * Log4js 配置修改

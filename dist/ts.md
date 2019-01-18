@@ -264,12 +264,3 @@ import moment from 'moment'
 export {moment}
 import moment from 'moment'
 ```
-
-## vue ts 项目搭建
-
-```sh
-npm i vue-cli -g
-vue init webpack app
-npm i vue-class-component@6.3.2 vue-property-decorator@7.3.0 --save
-npm i ts-loader@3.5.0 typescript@3.2.2 tslint@5.12.1 tslint-loader@3.5.4 tslint-config-standard8.0.1 --save-dev
-```

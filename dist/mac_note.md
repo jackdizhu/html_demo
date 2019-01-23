@@ -15,7 +15,8 @@ reboot
 ### Chrome 启动
 
 ```sh
-open -n /Applications/Google\ Chrome.app/ --args --disable-web-security  --user-data-dir=/Users/Shared/Documents/chomeData
+# 1. 开启跨域访问 2. file:// 协议访问本地文件
+open -n /Applications/Google\ Chrome.app/ --args --disable-web-security --allow-file-access-from-files  --user-data-dir=/Users/Shared/Documents/chomeData
 ```
 
 ### mongodb 启动

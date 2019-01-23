@@ -405,3 +405,32 @@ export function doSomething(): void;
 // 如果全局修改模块什么也没有导出
 export { };
 ```
+
+
+* global.d.ts (global 名字随意 项目根目录下 默认是全局文件 .d.ts 结尾)
+
+```ts
+import { AxiosStatic } from "axios";
+
+// 扩展第三方 模块
+declare module 'axios/index' {
+  interface AxiosStatic {
+    $apiV: any
+  }
+}
+// ===
+// declare module 'axios' {
+//   interface AxiosStatic {
+//     $apiV: any
+//   }
+// }
+// axios.$apiV
+
+// 扩展 全局对象
+declare global {
+  interface Window {
+      axios: AxiosStatic
+  }
+}
+// window.axios
+```

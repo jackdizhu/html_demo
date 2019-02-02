@@ -1,0 +1,7 @@
+{
+    "[GET]/index": {
+        "data": {
+            "name": "name 01"
+        }
+    }
+}

@@ -63,7 +63,15 @@ koaRouter.get('/apiDoc/*', async (ctx, next) => {
     files = file
     // ctx.body = require(path.resolve(dirName, file))
     ctx.type = imageNameReg.test(file) ? 'image/jpg;image/png;image/gif;' : 'application/json;'
-    ctx.body = fileNameReg.test(file) ? require(path.resolve(dirName, file)) : fs.readFileSync(path.resolve(dirName, file))
+    if (fileNameReg.test(file)) {
+        // .js文件 返回所以信息 包含注释
+        let str = fs.readFileSync(path.resolve(dirName, file)).toString()
+        str = str.replace(/^module\.exports[ ]*=[ ]*/, '')
+        ctx.body = str
+        // ctx.body = fileNameReg.test(file) ? require(path.resolve(dirName, file)) : fs.readFileSync(path.resolve(dirName, file))
+    } else {
+        ctx.body = fs.readFileSync(path.resolve(dirName, file))
+    }
   } else {
     let filesInfo = []
     if (dirReg.test(file)) {
@@ -110,7 +118,7 @@ koaRouter.get('/apiDoc/*', async (ctx, next) => {
         })
       }
     }
-    ctx.body = filesInfo
+    ctx.body = JSON.stringify(filesInfo, null, 2)
   } 
 })
 

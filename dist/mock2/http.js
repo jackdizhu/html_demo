@@ -2,18 +2,19 @@ const fs = require('fs')
 const host = '127.0.0.1'
 const prot = 8080
 // 加载json 数据
-const str = fs.readFileSync('./api.json')
-let strObj = {}
-try {
-    strObj = JSON.parse(str)
-} catch (error) {
-    strObj = {}
-}
+const api = require('./api.js')
 
-// 匹配路由 返回数据
+// 获取 返回数据
 function getRes (path, method) {
-    console.log(`[${method}]${path}`);
-    let Obj = strObj[`[${method}]${path}`] || strObj[`[ALL]${path}`] || ''
+    let resStr = ''
+    let Obj = null
+    if (/^\/apiDoc[^ ]+/.test(path)) {
+        path = path.replace('/apiDoc', '')
+        Obj = api.getDOC(`[${method}]${path}`, `[ALL]${path}`)
+    } else {
+        Obj = api.getJSON(`[${method}]${path}`, `[ALL]${path}`)
+    }
+    // 数据处理
     if (Obj) {
         let str = ''
         if (typeof Obj === 'string' && Obj) {
@@ -25,14 +26,16 @@ function getRes (path, method) {
     } else {
         return '{}'
     }
+    return '{}'
 }
+
 // 创建 http 服务器
 let http = require('http')
 http.createServer((req, res) => {
     let path = req.url
     let method = req.method
     let reqHost = req.headers.host
-
+    // 获取返回数据
     let resStr = getRes(path, method)
     // 跨越设置
     res.setHeader('Access-Control-Allow-Origin', reqHost)

@@ -1,5 +1,5 @@
 {
-  "name": "mockApi",
+  "name": "mock-api",
   "version": "1.0.0",
   "description": "简单mock服务器",
   "main": "koa.js",
@@ -9,6 +9,8 @@
     "koa": "^2.5.3",
     "koa-body": "^4.0.4",
     "koa-bodyparser": "^4.2.1",
+    "koa-cors": "0.0.16",
+    "koa-json": "^2.0.2",
     "koa-router": "^7.4.0",
     "koa-static": "^5.0.0",
     "nodemon": "^1.18.5",

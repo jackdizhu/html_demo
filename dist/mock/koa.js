@@ -5,6 +5,8 @@ const port = 3000
 const fs = require('fs')
 const path = require('path')
 const koa = require('koa')
+const cors = require('koa-cors')
+const json = require('koa-json')
 const app = new koa()
 const koaRouter = require('koa-router')()
 const koaStatic = require('koa-static')
@@ -32,6 +34,8 @@ app.use(koaStatic(__dirname + '/www', {
 app.use(koaBodyparser({
   enableTypes: ['json', 'form', 'text', 'multipart']
 }))
+app.use(json())
+app.use(cors()) // api 服务器 允许跨域
 
 app.listen(port, host, () => {
   console.log(`listen ${host}:${port}`)

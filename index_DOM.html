@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1" />
+  <meta name="renderer" content="webkit" />
+
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  <meta name="format-detection" content="telephone=no" />
+  <meta http-equiv="Expires" content="-1" />
+
+  <meta http-equiv="Cache-Control" content="no-cache" />
+  <meta http-equiv="Pragma" content="no-cache" />
+  <title>设计模式</title>
+  <link rel="shortcut icon" href="/favicon.ico" />
+
+  <style type="text/css" id="style">
+    #scrollBox {
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      overflow: auto;
+    }
+  </style>
+
+</head>
+
+<body>
+
+  <header>
+    jackdizhu 主页
+  </header>
+  <div class="content">
+
+    <h5><span>DOM 原生常用API整理</span></h5>
+    <div class="clearfix">
+      <div id="scrollBox">
+        <!-- style="width: 1500px;height: 2000px;padding: 300px;" -->
+        <div style="padding: 30px;width: 1500px;height: 2000px;padding: 120px;">
+          <div id="app">
+            <div data-id="div1" class="box div1 on">div1</div>
+            <div data-id="div2" class="box div2">div2 addOnceEvent</div>
+            <div data-id="div3" class="box div3">div3</div>
+            <div data-id="div4" class="box div4">div4</div>
+            <div data-id="div5" class="box div5">div5</div>
+          </div>
+
+          <div id="newDiv1">
+            newDiv1 pushNode
+          </div>
+          <div id="newDiv2">
+            newDiv2 unshiftNode
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <script type="text/javascript" src="./dist/index.js"></script>
+  <script src="./dist/DomClass.js"></script>
+  <script>
+    window.onload = () => {
+      // document.body.addEventListener
+      let list = findAll('.box');
+      for (let i = 0; i < list.length; i++) {
+        let _el = new DomClass(list[i]);
+        _el.removeClass('on').addEventListener('click', (event) => {
+          let dataId = _el.getAttribute('data-id');
+          let {
+            left,
+            top
+          } = _el.offset();
+          console.log({
+            left,
+            top
+          }, dataId);
+        })
+      }
+
+      let elapp = new DomClass('#app');
+      elapp.pushNode(find('#newDiv1'));
+      elapp.unshiftNode(find('#newDiv2'));
+      // console.dir(elapp);
+
+      let eldiv2 = new DomClass('.div2');
+
+      new DomClass('.div3').setAttribute('data-a', 'data-a');
+      new DomClass('.div4').removeAttribute('data-id');
+
+      let fn = eldiv2.addEventListener('click', (event) => {
+        console.log('绑定只执行一次的事件');
+        new DomClass('.div3').hide();
+        eldiv2.removeEventListener('click', fn);
+      });
+      eldiv2.addClass('on')
+    }
+  </script>
+</body>
+
+</html>

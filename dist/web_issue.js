@@ -1,3 +1,34 @@
+// js 触发文件下载保存 <a href="test.png" download="test.png">下载</a>
+function download(href, filename = '') {
+  const a = document.createElement('a')
+  a.download = filename
+  a.href = href
+  document.body.appendChild(a)
+  a.click()
+  a.remove()
+}
+function downloadFile(url, filename = '') {
+  /* 可有可无 浏览器限制 相应体必须设置 cors
+    , {
+      headers: new Headers({
+        Origin: location.origin,
+      }),
+      mode: 'cors',
+    }
+  */
+  fetch(url, {
+    headers: new Headers({
+      Origin: location.origin,
+    }),
+    mode: 'cors',
+  })
+    .then(res => res.blob())
+    .then(blob => {
+      const blobUrl = window.URL.createObjectURL(blob)
+      download(blobUrl, filename)
+      window.URL.revokeObjectURL(blobUrl)
+    })
+}
 
 // 移动web页面，input获取焦点弹出系统虚拟键盘时，挡住input
 let _dom = document.getElementById('domId')

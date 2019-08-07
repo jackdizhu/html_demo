@@ -3,6 +3,7 @@
     git reset commitId
     git push --force
     
+    // 分支
     git branch br // 创建分支
     git push origin br:br // 推送当前 分支(本地:远程) [如果 : 左边的分支为空，那么将删除 : 右边的远程分支]
     git checkout master // 切换主分支
@@ -11,13 +12,18 @@
     git push origin :br // 删除远程分支
     git push --delete origin v0.3.0 // (存在分支同名 tags 时删除报错) error: dst refspec v0.3.0 matches more than one. 
     git push origin :refs/heads/v0.3.0 // 指定删除分支
-
+    
+    // tag
     git tag -a v1.0 -m 'version 1.0' // 创建tag
     git push origin --tags // 推送所有 tag
     git push origin v1.0 // 推送当前 tag
     git tag -d v1.0  // 删除本地 tag
     git push origin --delete tag v1.0 // 删除远程 tag
     git push origin :refs/tags/v0.3.0 // 指定删除 tag
+    
+    // 撤消操作
+    git reset --hard HEAD // 让工作目录(work tree)回到上次提交时的状态(last committed state)
+    git revert HEAD // 创建新提交来撤消最近的一个提交
 </pre>
 
 <pre>
@@ -25,8 +31,8 @@
     [credential]
       helper = store
     [user]
-      email = 376365334@qq.com
-      name = jackdizhu
+      email = ------@qq.com
+      name = ------
 </pre>
 
 <pre>

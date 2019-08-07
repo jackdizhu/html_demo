@@ -25,20 +25,54 @@ const PromiseConstructor = function (fun) {
     let fn = thenFnListFnList.shift()
     let arr = resList.shift() || {arguments: []}
     if (fn) {
-      resList.push({
-        arguments: fn.fun(arr.arguments)
-      })
-      initRes()
+      let res = fn.fun(arr.arguments)
+      if (res && res.constructor === PromiseConstructor) {
+        res
+        .then(res => {
+          resList.push({
+            arguments: res
+          })
+          initRes()
+        })
+        .catch(res => {
+          rejList.push({
+            arguments: res
+          })
+          initRej()
+        })
+      } else {
+        resList.push({
+          arguments: res
+        })
+        initRes()
+      }
     }
   }
   const initRej = function () {
     let fn = catchFnList.shift()
     let arr = rejList.shift() || {arguments: []}
     if (fn) {
-      rejList.push({
-        arguments: fn.fun(arr.arguments)
-      })
-      initRej()
+      let res = fn.fun(arr.arguments)
+      if (res && res.constructor === PromiseConstructor) {
+        res
+        .then(res => {
+          resList.push({
+            arguments: res
+          })
+          initRes()
+        })
+        .catch(res => {
+          rejList.push({
+            arguments: res
+          })
+          initRej()
+        })
+      } else {
+        rejList.push({
+          arguments: res
+        })
+        initRej()
+      }
     }
   }
   const res = function (arr) {
@@ -72,13 +106,22 @@ let test = function () {
 let res = test()
 .then(res => {
   console.log(res)
-  return 'res 2'
+  return new PromiseConstructor((res, rej) => {
+    setTimeout(() => {
+      res('res 1 1')
+    }, 500)
+  })
 })
 .then(res => {
   console.log(res)
-}).catch(err => {
+})
+.catch(err => {
   console.log(err)
-  return 'err 2'
+  return new PromiseConstructor((res, rej) => {
+    setTimeout(() => {
+      rej('err 1 1')
+    }, 500)
+  })
 })
 .catch(err => {
   console.log(err)

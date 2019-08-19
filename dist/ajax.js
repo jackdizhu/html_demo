@@ -1,3 +1,4 @@
+// 跨域没有设置 Access-Control-Allow-Origin response===undefined 没有权限读取
 // 响应体格式化
 function formatRes (xhr) {
   let header = {}

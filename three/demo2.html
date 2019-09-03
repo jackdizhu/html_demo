@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <style type="text/css">
+  html,body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+  }
+  #Box{
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    border: 1px solid #000;
+  }
+  </style>
+  <div id="Box"></div>
+
+  <script src="https://cdn.bootcss.com/three.js/r83/three.min.js"></script>
+  <script>
+    function RGBToHex (rgb) { 
+      var regexp = /[0-9]{0,3}/g;  
+      var re = rgb.match(regexp); // 利用正则表达式去掉多余的部分，将rgb中的数字提取
+      var hexColor = "0x";
+      var hex = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F'];  
+      for (var i = 0; i < re.length; i++) {
+            var r = null, c = re[i], l = c; 
+            var hexAr = [];
+            while (c > 16){  
+              r = c % 16;  
+              c = (c / 16) >> 0; 
+              hexAr.push(hex[r]);  
+            }
+            hexAr.push(hex[c]);
+            if (l < 16 && l != '') {
+              hexAr.push(0)
+            }
+          hexColor += hexAr.reverse().join('');
+        }
+      return hexColor - 0;
+    }
+    // console.log(RGBToHex('175, 146, 22'))
+    var Box = document.getElementById("Box");
+    var gObj = {
+      boxSize: 80,
+      cameraZ: 100,
+      winW: Box.clientWidth,
+      winH: Box.clientHeight
+    }
+    var scene = new THREE.Scene();
+    // 添加物体
+    function addObj (item) {
+      // 添加物体(线框)
+      var mat = new THREE.MeshBasicMaterial({
+        // 线条材质
+        color: 0xaf9216,
+        wireframe: true,
+        wireframeLinewidth: 1
+      });
+      // 几何结构
+      var gem = new THREE.BoxGeometry(item.boxSize.x, item.boxSize.y, item.boxSize.z, 1, 1, 1);
+      // 网格面材质(基于线框骨架)
+      // for(let i = 0; i < gem.faces.length; i++){
+      //   let hex = RGBToHex(`${170 + i * 5}, ${120 + i * 5}, ${i * 7}`);
+      //   gem.faces[i].color.setHex(hex);
+      // }
+      // var faceMat = new THREE.MeshBasicMaterial({
+      //   vertexColors: THREE.FaceColors
+      // })
+      // 网格面材质
+      var mats = [];
+      for(let i = 0; i < gem.faces.length; i++){
+        let hex = RGBToHex(`${170 + i * 5}, ${120 + i * 5}, ${i * 7}`);
+        mats.push(new THREE.MeshBasicMaterial({color: hex}));
+      }
+      var faceMat = new THREE.MultiMaterial(mats);
+      // 物体
+      var obj = new THREE.Mesh(gem, faceMat);
+      // 位置 缩放 旋转
+      obj.position.x = item.position.x
+      obj.position.y = item.position.y
+      obj.position.z = item.position.z
+      obj.scale.x = item.scale.x
+      obj.scale.y = item.scale.y
+      obj.scale.z = item.scale.z
+      obj.rotation.x = item.rotation.x
+      obj.rotation.y = item.rotation.y
+      obj.rotation.z = item.rotation.z
+      scene.add(obj);
+    }
+    let objArr = [
+      {
+        boxSize: {
+          x: 50,
+          y: 50,
+          z: 50
+        },
+        position: {
+          x: -30,
+          y: -30,
+          z: 0
+        },
+        scale: {
+          x: 0.35,
+          y: 0.35,
+          z: 0.35
+        },
+        rotation: {
+          x: 0.06,
+          y: 2.65,
+          z: 0
+        }
+      },
+      {
+        boxSize: {
+          x: 50,
+          y: 50,
+          z: 50
+        },
+        position: {
+          x: 20,
+          y: 20,
+          z: 0
+        },
+        scale: {
+          x: 0.35,
+          y: 0.35,
+          z: 0.35
+        },
+        rotation: {
+          x: 0.43,
+          y: 2.45,
+          z: 0
+        }
+      }
+    ]
+    for (let i = 0; i < objArr.length; i++) {
+      addObj(objArr[i]);
+    }
+    // 添加自然光源
+    var light = new THREE.AmbientLight(0xffffff);
+    scene.add(light);
+    light.position.set(0, 250, 10);
+    // 基本数据
+    var width = gObj.winW, height = gObj.winH, fov = gObj.cameraZ;
+    // 创建相机
+    var camera = new THREE.PerspectiveCamera(fov, width / height, 1, 1000);
+    // 远近
+    camera.position.set(0, 0, gObj.cameraZ);
+    // 创建渲染器
+    var renderer = new THREE.WebGLRenderer({
+      antialias: true,       // 是否开启反锯齿
+      precision: 'highp',    // 着色精度选择
+      alpha: true,           // 是否可以设置背景色透明
+      premultipliedAlpha: true,
+      stencil: true,
+      preserveDrawingBuffer: true, // 是否保存绘图缓冲
+      maxLights: 1           // maxLights:最大灯光数
+    });
+    renderer.setClearColor(0xEEEEEE, 1.0);
+    renderer.setSize( width, height );
+    // 渲染
+    Box.appendChild(renderer.domElement);
+    renderer.render(scene, camera);
+    // 旋转物体
+    // function render() {
+    //   requestAnimationFrame(render);
+    //   obj.rotation.x += 0.01;
+    //   obj.rotation.y += 0.01;
+    //   renderer.render(scene, camera);
+    // }
+    // render();
+
+    let checkObj = null
+    let mouse = {};
+    let mouse2 = {};
+    renderer.domElement.addEventListener('mousedown', function (event) {
+      mouse = {
+        x: event.clientX,
+        y: event.clientY
+      };
+      // console.log(event, 'event');
+      onDocumentMouseDown(event);
+    }, false);
+    renderer.domElement.addEventListener('mouseup', function (event) {
+      console.log(checkObj, 'checkObj')
+      mouse = {};
+      checkObj = null
+    }, false);
+    renderer.domElement.addEventListener('mousemove', function (event) {
+      mouse2 = {
+        x: event.clientX,
+        y: event.clientY
+      };
+      if (mouse.x && mouse.y && checkObj) {
+        checkObj.rotation.x += (mouse2.y - mouse.y) / 500;
+        checkObj.rotation.y += (mouse2.x - mouse.x) / 100;
+        // console.log(checkObj.rotation, 'checkObj.rotation');
+        renderer.render(scene, camera);
+        mouse = {
+          x: event.clientX,
+          y: event.clientY
+        };
+      }
+    }, false);
+
+    function onDocumentMouseDown(e) {
+      var mouse = {}
+      // e.preventDefault();
+      //将鼠标点击位置的屏幕坐标转成threejs中的标准坐标,具体解释见代码释义
+      mouse.x = event.clientX;
+      mouse.y = event.clientY;
+      mouse.x = (e.clientX / gObj.winW) * 2 - 1;
+      mouse.y = -(e.clientY / gObj.winH) * 2 + 1;
+      //新建一个三维单位向量 假设z方向就是0.5
+      //根据照相机，把这个向量转换到视点坐标系
+      var vector = new THREE.Vector3(mouse.x, mouse.y, 0.5).unproject(camera);
+      //在视点坐标系中形成射线,射线的起点向量是照相机， 射线的方向向量是照相机到点击的点，这个向量应该归一标准化。
+      var raycaster = new THREE.Raycaster(camera.position, vector.sub(camera.position).normalize());
+      //射线和模型求交，选中一系列直线
+      var intersects = raycaster.intersectObjects(scene.children);
+      // console.log('imtersrcts=' + intersects)
+      if (intersects.length > 0) {
+        //选中第一个射线相交的物体
+        // SELECTED = intersects[0].object;
+        var intersected = intersects[0].object;
+        checkObj = intersected; // 全局保存
+        console.log(intersected, 'intersected')
+        intersected.position.z += 1
+        renderer.render(scene, camera);
+        setTimeout(function () {
+          intersected.position.z -= 1
+          renderer.render(scene, camera);
+        }, 100)
+      }
+    }
+  </script>
+</body>
+</html>

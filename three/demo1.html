@@ -76,10 +76,9 @@
     var mats = [];
     for(let i = 0; i < gem.faces.length; i++){
       let hex = RGBToHex(`${170 + i * 5}, ${120 + i * 5}, ${i * 7}`);
-      console.log(hex, 'hex')
       mats.push(new THREE.MeshBasicMaterial({color: hex}));
     }
-    var faceMat = new THREE.MeshFaceMaterial(mats);
+    var faceMat = new THREE.MultiMaterial(mats);
     // 物体
     var obj = new THREE.Mesh(gem, faceMat);
     // 位置 缩放
@@ -102,7 +101,15 @@
     // 远近
     camera.position.z = gObj.cameraZ;
     // 创建渲染器
-    var renderer = new THREE.WebGLRenderer({preserveDrawingBuffer: true});
+    var renderer = new THREE.WebGLRenderer({
+      antialias: true,       // 是否开启反锯齿
+      precision: 'highp',    // 着色精度选择
+      alpha: true,           // 是否可以设置背景色透明
+      premultipliedAlpha: true,
+      stencil: true,
+      preserveDrawingBuffer: true, // 是否保存绘图缓冲
+      maxLights: 1           // maxLights:最大灯光数
+    });
     renderer.setClearColor(0xEEEEEE, 1.0);
     renderer.setSize( width, height );
     // 渲染

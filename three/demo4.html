@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <style type="text/css">
+  html,body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+  }
+  #Box{
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    border: 1px solid #000;
+  }
+  </style>
+  <div id="Box"></div>
+
+  <!-- <script src="https://cdn.bootcss.com/three.js/r83/three.min.js"></script> -->
+  <script src="./three.min.js"></script>
+  <script src="./OrbitControls.js"></script>
+  <script>
+    var Box = document.getElementById("Box");
+    var gObj = {
+      cameraZ: 50,
+      winW: Box.clientWidth,
+      winH: Box.clientHeight
+    }
+    var scene = new THREE.Scene();
+    // 自然光
+    var ambientLight = new THREE.AmbientLight(0x606060);
+    scene.add(ambientLight);
+    // 平行光源
+    var directionalLight = new THREE.DirectionalLight(0xffffff);
+    directionalLight.position.set( 1, 0.75, 0.5 ).normalize();
+    scene.add(directionalLight);
+    /********* 添加物体开始 *********/
+    addObj();
+    // 添加物体
+    function addObj () {
+      plane();
+      cube();
+      sphere();
+      cylinder();
+    }
+    // 创建一个平面
+    function plane(){
+      var planeGeo = new THREE.PlaneGeometry(100,100,10,10);
+      var planeMat = new THREE.MeshLambertMaterial({
+        color: 0xdddddd,
+        wireframe: false
+      });
+      // 创建平面网格模型
+      var planeMesh = new THREE.Mesh(planeGeo, planeMat);
+      planeMesh.position.set(0, 0, -20);
+      // 将平面绕X轴逆时针旋转90度
+      planeMesh.rotation.x = -0.5 * Math.PI;
+      scene.add(planeMesh);
+    }
+    // 创建一个立方体
+    function cube () {
+      var cubeGeo = new THREE.CubeGeometry(20, 20, 20, 5, 5, 5);
+      var cubeMat = new THREE.MeshLambertMaterial({
+        color: 0x8a6d3b,
+        wireframe: false
+      });
+      var cubeMesh = new THREE.Mesh(cubeGeo, cubeMat);
+      // 创建立方体网格模型
+      cubeMesh.position.set(20, 10, 0);
+      scene.add(cubeMesh);
+    }
+    // 创建一个球
+    function sphere () {
+      var sphereGeo = new THREE.SphereGeometry(16, 40, 40);
+      var sphereMat = new THREE.MeshLambertMaterial({
+        color:0x777777,
+        wireframe:false
+      });
+      var sphereMesh = new THREE.Mesh(sphereGeo, sphereMat);
+      // 创建球体网格模型
+      sphereMesh.position.set(-25, 16, 0);
+      scene.add(sphereMesh);
+    }
+    // 创建圆柱体
+    function cylinder () {
+      var cylinderGeo = new THREE.CylinderGeometry(15, 15 ,40 ,40 ,40);
+      var cylinderMat = new THREE.MeshLambertMaterial({
+        color: 0x0c6490,
+        wireframe: false
+      });
+      // 创建圆柱体网格模型
+      var cylinderMesh = new THREE.Mesh(cylinderGeo, cylinderMat);
+      cylinderMesh.position.set(0, 20, -40);
+      scene.add(cylinderMesh);
+    }
+    /********* 添加物体结束 *********/
+    // 基本数据
+    var width = gObj.winW, height = gObj.winH, fov = gObj.cameraZ;
+    // 创建相机
+    var camera = new THREE.PerspectiveCamera(fov, width / height, 1, 1000);
+    // 设置相机位置
+    camera.position.set(100, 300, 100);
+    // 让相机指向原点
+    camera.lookAt(new THREE.Vector3(0,0,0));
+    // 远近
+    camera.position.z = gObj.cameraZ;
+    // 创建渲染器
+    var renderer = new THREE.WebGLRenderer({
+      antialias: true,       // 是否开启反锯齿
+      precision: 'highp',    // 着色精度选择
+      alpha: true,           // 是否可以设置背景色透明
+      premultipliedAlpha: true,
+      stencil: true,
+      preserveDrawingBuffer: true, // 是否保存绘图缓冲
+      maxLights: 1           // maxLights:最大灯光数
+    });
+    renderer.setClearColor(0xffffff, 1.0);
+    renderer.setSize( width, height );
+    // 渲染
+    Box.appendChild(renderer.domElement);
+    renderer.render(scene, camera);
+    // 轨道控制器
+    controls = new THREE.OrbitControls(camera, renderer.domElement);
+    function animate() {
+      controls.update();
+      renderer.render(scene, camera);
+      requestAnimationFrame(animate);
+    }
+    animate()
+  </script>
+</body>
+</html>

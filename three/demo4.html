@@ -29,10 +29,11 @@
   <script src="./OrbitControls.js"></script>
   <script>
     var Box = document.getElementById("Box");
-    var gObj = {
+    const gObj = {
       cameraZ: 50,
       winW: Box.clientWidth,
-      winH: Box.clientHeight
+      winH: Box.clientHeight,
+      checkObjDebug: false
     }
     var scene = new THREE.Scene();
     // 自然光
@@ -40,26 +41,29 @@
     scene.add(ambientLight);
     // 平行光源
     var directionalLight = new THREE.DirectionalLight(0xffffff);
-    directionalLight.position.set( 1, 0.75, 0.5 ).normalize();
+    directionalLight.position.set(1, 1.25, 0.8 ).normalize();
     scene.add(directionalLight);
     /********* 添加物体开始 *********/
+    // 物体属性
+    const TYPE = {
+      plane: 'pingMian'
+    }
     addObj();
     // 添加物体
     function addObj () {
       plane();
       cube();
-      sphere();
-      cylinder();
     }
     // 创建一个平面
     function plane(){
-      var planeGeo = new THREE.PlaneGeometry(100,100,10,10);
+      var planeGeo = new THREE.PlaneGeometry(150,150,10,10);
       var planeMat = new THREE.MeshLambertMaterial({
         color: 0xdddddd,
         wireframe: false
       });
       // 创建平面网格模型
       var planeMesh = new THREE.Mesh(planeGeo, planeMat);
+      planeMesh.$type = TYPE.plane // 自定义属性
       planeMesh.position.set(0, 0, -20);
       // 将平面绕X轴逆时针旋转90度
       planeMesh.rotation.x = -0.5 * Math.PI;
@@ -67,39 +71,15 @@
     }
     // 创建一个立方体
     function cube () {
-      var cubeGeo = new THREE.CubeGeometry(20, 20, 20, 5, 5, 5);
+      var cubeGeo = new THREE.CubeGeometry(40, 40, 40, 5, 5, 5);
       var cubeMat = new THREE.MeshLambertMaterial({
         color: 0x8a6d3b,
         wireframe: false
       });
       var cubeMesh = new THREE.Mesh(cubeGeo, cubeMat);
       // 创建立方体网格模型
-      cubeMesh.position.set(20, 10, 0);
+      cubeMesh.position.set(12, 20, -8);
       scene.add(cubeMesh);
-    }
-    // 创建一个球
-    function sphere () {
-      var sphereGeo = new THREE.SphereGeometry(16, 40, 40);
-      var sphereMat = new THREE.MeshLambertMaterial({
-        color:0x777777,
-        wireframe:false
-      });
-      var sphereMesh = new THREE.Mesh(sphereGeo, sphereMat);
-      // 创建球体网格模型
-      sphereMesh.position.set(-25, 16, 0);
-      scene.add(sphereMesh);
-    }
-    // 创建圆柱体
-    function cylinder () {
-      var cylinderGeo = new THREE.CylinderGeometry(15, 15 ,40 ,40 ,40);
-      var cylinderMat = new THREE.MeshLambertMaterial({
-        color: 0x0c6490,
-        wireframe: false
-      });
-      // 创建圆柱体网格模型
-      var cylinderMesh = new THREE.Mesh(cylinderGeo, cylinderMat);
-      cylinderMesh.position.set(0, 20, -40);
-      scene.add(cylinderMesh);
     }
     /********* 添加物体结束 *********/
     // 基本数据
@@ -107,7 +87,7 @@
     // 创建相机
     var camera = new THREE.PerspectiveCamera(fov, width / height, 1, 1000);
     // 设置相机位置
-    camera.position.set(100, 300, 100);
+    camera.position.set(254, 143, 70);
     // 让相机指向原点
     camera.lookAt(new THREE.Vector3(0,0,0));
     // 远近
@@ -128,13 +108,80 @@
     Box.appendChild(renderer.domElement);
     renderer.render(scene, camera);
     // 轨道控制器
-    controls = new THREE.OrbitControls(camera, renderer.domElement);
-    function animate() {
-      controls.update();
-      renderer.render(scene, camera);
-      requestAnimationFrame(animate);
+    // controls = new THREE.OrbitControls(camera, renderer.domElement);
+    // function animate() {
+    //   controls.update();
+    //   renderer.render(scene, camera);
+    //   requestAnimationFrame(animate);
+    // }
+    // animate()
+    let checkObj = null
+    let mouse = {};
+    let mouse2 = {};
+    renderer.domElement.addEventListener('mousedown', function (event) {
+      mouse = {
+        x: event.clientX,
+        y: event.clientY
+      };
+      // console.log(event, 'event');
+      onDocumentMouseDown(event);
+    }, false);
+    renderer.domElement.addEventListener('mouseup', function (event) {
+      mouse = {};
+      checkObj = null
+    }, false);
+    renderer.domElement.addEventListener('mousemove', function (event) {
+      mouse2 = {
+        x: event.clientX,
+        y: event.clientY
+      };
+      if (mouse.x && mouse.y && checkObj) {
+        // checkObj.rotation.x += (mouse2.y - mouse.y) / 500;
+        checkObj.rotation.y += (mouse2.x - mouse.x) / 100;
+        // console.log(checkObj.rotation, 'checkObj.rotation');
+        renderer.render(scene, camera);
+        mouse = {
+          x: event.clientX,
+          y: event.clientY
+        };
+      }
+    }, false);
+
+    function onDocumentMouseDown(e) {
+      var mouse = {}
+      // e.preventDefault();
+      // 将鼠标点击位置的屏幕坐标转成threejs中的标准坐标,具体解释见代码释义
+      mouse.x = event.clientX;
+      mouse.y = event.clientY;
+      mouse.x = (e.clientX / gObj.winW) * 2 - 1;
+      mouse.y = -(e.clientY / gObj.winH) * 2 + 1;
+      // 新建一个三维单位向量 假设z方向就是0.5
+      // 根据照相机，把这个向量转换到视点坐标系
+      var vector = new THREE.Vector3(mouse.x, mouse.y, 0.5).unproject(camera);
+      // 在视点坐标系中形成射线,射线的起点向量是照相机， 射线的方向向量是照相机到点击的点，这个向量应该归一标准化。
+      var raycaster = new THREE.Raycaster(camera.position, vector.sub(camera.position).normalize());
+      // 射线和模型求交，选中一系列直线
+      var intersects = raycaster.intersectObjects(scene.children);
+      // console.log('imtersrcts=' + intersects)
+      if (intersects.length > 0) {
+        // 选中第一个射线相交的物体
+        // SELECTED = intersects[0].object;
+        var intersected = intersects[0].object;
+        if (intersected.$type !== TYPE.plane) {
+          checkObj = intersected; // 全局保存
+          console.log(checkObj, 'checkObj')
+          // console.log(camera, 'camera')
+          if (gObj.checkObjDebug) {
+            intersected.position.z += 1
+            renderer.render(scene, camera);
+            setTimeout(function () {
+              intersected.position.z -= 1
+              renderer.render(scene, camera);
+            }, 100)
+          }
+        }
+      }
     }
-    animate()
   </script>
 </body>
 </html>

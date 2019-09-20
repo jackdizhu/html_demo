@@ -3,12 +3,23 @@
 ### node 笔记
 
 ``` js
-// node 命令执行文件 获取 命令参数
-let a = () => {
-  var arguments = process.argv.splice(2);
-  return arguments
+/**
+ * node 命令执行文件 获取 命令参数
+ * node ./null.js -config dev -env prod
+ * { config: 'dev', env: 'prod' }
+ */
+let getNodeArgs = () => {
+  var args = process.argv.splice(2);
+  let obj = {}
+  for (let i = 0; i < args.length; i++) {
+    const key = args[i]
+    const val = args[i + 1]
+    i++
+    obj[key.replace(/^-+/, '')] = val
+  }
+  return obj
 }
-// console.log(a())
+console.log(getNodeArgs())
 ```
 
 ### (PM2 Cluster 模式下 Log4js 日志丢失)[https://www.jianshu.com/p/20fcb3672723]

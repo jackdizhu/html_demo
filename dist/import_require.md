@@ -81,11 +81,14 @@ export * from 'fs'
 
 ```js
 // es6 import 异步加载 js 执行
-import('./module.js')
-  .then(module => {
-    console.log(module, '--module--')
-  })
-  .catch(error => {
-    /* Error handling */
-  })
+if (process.env.NODE_ENV !== 'production') {
+  import(/* webpackChunkName: "vconsole" */`vconsole`)
+    .then(vconsole => {
+      new vconsole.default()
+    })
+    .catch(error => {
+      /* Error handling */
+      console.log(error, '--error--')
+    })
+}
 ```

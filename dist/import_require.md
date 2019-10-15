@@ -76,3 +76,16 @@ export * from 'fs'
   </tr>
   </tbody>
 </table>
+
+## es6 import 异步加载
+
+```js
+// es6 import 异步加载 js 执行
+import('./module.js')
+  .then(module => {
+    console.log(module, '--module--')
+  })
+  .catch(error => {
+    /* Error handling */
+  })
+```

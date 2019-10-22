@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>svg 多边形(分组)</title>
+</head>
+
+<body>
+  <svg width="580" height="400" xmlns="http://www.w3.org/2000/svg">
+    <!-- Created with Method Draw - http://github.com/duopixel/Method-Draw/ -->
+    <title>多边形(分组)</title>
+    <g id="svg_1">
+      <path d="m3.5,1.109375l183.5,-0.109375l-183,192l-0.5,-191.890625z" stroke-width="1.5" stroke="#000" fill="" />
+      <text stroke="#000" xml:space="preserve" text-anchor="start" font-family="Helvetica, Arial, sans-serif"
+        font-size="24" y="63.109375" x="31.5" stroke-width="0" fill="currentColor">text 1</text>
+    </g>
+    <g id="svg_2">
+      <path d="m188.5,3.109375l-184.5,200.890625l-1,180l185.5,-380.890625z" stroke-width="1.5" stroke="#000" fill="" />
+      <text xml:space="preserve" text-anchor="start" font-family="Helvetica, Arial, sans-serif" font-size="24"
+        y="213.109375" x="21.5" fill-opacity="null" stroke-opacity="null" stroke-width="0" stroke="#000"
+        fill="currentColor">text 2</text>
+    </g>
+    <g id="svg_3">
+      <path d="m194.5,2.109375l152.5,-1.109375l-343,397l190.5,-395.890625z" stroke-width="1.5" stroke="#000" fill="" />
+      <text xml:space="preserve" text-anchor="start" font-family="Helvetica, Arial, sans-serif" font-size="24"
+        y="154.109375" x="137.5" fill-opacity="null" stroke-opacity="null" stroke-width="0" stroke="#000"
+        fill="currentColor">text 3</text>
+    </g>
+    <g id="svg_4">
+      <path d="m152.5,233.109375l423.5,160.890625l-563,2l139.5,-162.890625z" stroke-width="1.5" stroke="#000" fill="" />
+      <text xml:space="preserve" text-anchor="start" font-family="Helvetica, Arial, sans-serif" font-size="24"
+        y="333.109375" x="137.5" fill-opacity="null" stroke-opacity="null" stroke-width="0" stroke="#000"
+        fill="currentColor">text 4</text>
+    </g>
+    <g id="svg_5">
+      <path d="m348.5,5.109375l-190.5,222.890625l216,81l-25.5,-303.890625z" stroke-width="1.5" stroke="#000" fill="" />
+      <text xml:space="preserve" text-anchor="start" font-family="Helvetica, Arial, sans-serif" font-size="24"
+        y="202.109375" x="220.5" fill-opacity="null" stroke-opacity="null" stroke-width="0" stroke="#000"
+        fill="currentColor">text 5</text>
+    </g>
+    <g id="svg_6">
+      <path d="m353.5,5.109375l218.5,137.890625l-191,153l-27.5,-290.890625z" stroke-width="1.5" stroke="#000" fill="" />
+      <text xml:space="preserve" text-anchor="start" font-family="Helvetica, Arial, sans-serif" font-size="24"
+        y="156.109375" x="400.5" fill-opacity="null" stroke-opacity="null" stroke-width="0" stroke="#000"
+        fill="currentColor">text 6</text>
+    </g>
+    <g id="svg_7">
+      <path d="m362.5,3.109375l211.5,1.890625l1,129l-212.5,-130.890625z" stroke-width="1.5" stroke="#000" fill="" />
+      <text xml:space="preserve" text-anchor="start" font-family="Helvetica, Arial, sans-serif" font-size="24"
+        y="38.109375" x="466.5" fill-opacity="null" stroke-opacity="null" stroke-width="0" stroke="#000"
+        fill="currentColor">text 7</text>
+    </g>
+    <g id="svg_8">
+      <path d="m380.5,307.109375l193.5,77.890625l2,-234l-195.5,156.109375z" stroke-width="1.5" stroke="#000" fill="" />
+      <text xml:space="preserve" text-anchor="start" font-family="Helvetica, Arial, sans-serif" font-size="24"
+        y="294.109375" x="444.5" fill-opacity="null" stroke-opacity="null" stroke-width="0" stroke="#000"
+        fill="currentColor">text 8</text>
+    </g>
+  </svg>
+  <style>
+    svg g {
+      position: relative;
+      color: brown;
+      fill: currentColor;
+    }
+
+    svg g text {
+      color: #000;
+      fill: currentColor;
+    }
+
+    svg g:hover {
+      color: aqua;
+    }
+  </style>
+</body>
+
+<script>
+  let svg = document.querySelector('svg')
+  let svgG = document.querySelectorAll('g text')
+  svg.addEventListener('click', function (event) {
+    let el = event.target
+    let parentNode = event.target.parentNode
+    let checkNode = el.nodeName.toLocaleLowerCase() === 'g' ? el : (parentNode.nodeName.toLocaleLowerCase() === 'g' ? parentNode : null)
+    if (checkNode) {
+      console.dir(checkNode)
+      for (let i = 0; i < svgG.length; i++) {
+        const ele = svgG[i]
+        ele.style.color = '#000000'
+      }
+      let text = checkNode.querySelector('text')
+      text.style.color = '#ffffff'
+    }
+  }, false)
+</script>
+
+</html>

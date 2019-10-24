@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>svg animation元素</title>
+</head>
+
+<body>
+  <p>set</p>
+  <svg width="320" height="320" xmlns="http://www.w3.org/2000/svg">
+    <g>
+      <text font-family="microsoft yahei" font-size="32" y="160" x="160">
+        3s后移动
+        <set attributeName="x" attributeType="XML" to="60" begin="3s" />
+      </text>
+    </g>
+  </svg>
+
+  <p>animate</p>
+  <svg width="320" height="320" xmlns="http://www.w3.org/2000/svg">
+    <g>
+      <text font-family="microsoft yahei" font-size="32" y="160" x="160">
+        动画过渡
+        <animate attributeName="x" from="160" to="60" begin="0s" dur="3s" repeatCount="indefinite" />
+      </text>
+    </g>
+  </svg>
+  <p>自由组合</p>
+  <svg width="320" height="200">
+    <text font-family="microsoft yahei" font-size="32" y="160" x="160">位置透明度同时变化
+      <animate attributeName="x" from="160" to="60" begin="0s" dur="3s" repeatCount="indefinite" />
+      <animate attributeName="opacity" from="1" to="0" begin="0s" dur="3s" repeatCount="indefinite" />
+    </text>
+  </svg>
+  <p>values</p>
+  <svg width="320" height="200" xmlns="http://www.w3.org/2000/svg">
+    <text font-family="microsoft yahei" font-size="32" y="150" x="160">来回跑
+      <animate attributeName="x" values="160;40;160" dur="3s" repeatCount="indefinite" />
+    </text>
+  </svg>
+  <p>begin/end</p>
+  <svg width="320" height="200" xmlns="http://www.w3.org/2000/svg">
+    <text font-family="microsoft yahei" font-size="32" y="160" x="160">id为x的动画结束了开始，无缝连接
+      <animate id="x" attributeName="x" to="60" begin="0s" dur="3s" fill="freeze" />
+      <animate attributeName="y" to="100" begin="x.end" dur="3s" fill="freeze" />
+    </text>
+  </svg>
+  <p>event-value</p>
+  <svg id="svg" width="320" height="200" xmlns="http://www.w3.org/2000/svg">
+    <circle id="circle" cx="100" cy="100" r="50"></circle>
+    <text font-family="microsoft yahei" font-size="32" y="160" x="160">点击圆圈字会跑
+      <animate attributeName="x" to="60" begin="circle.click" dur="3s" />
+    </text>
+  </svg>
+  <p>repeat-value</p>
+  <svg width="320" height="200" xmlns="http://www.w3.org/2000/svg">
+    <text font-family="microsoft yahei" font-size="32" y="160" x="160">x执行2次后再执行y
+      <animate id="x" attributeName="x" to="60" begin="0s" dur="3s" repeatCount="indefinite" />
+      <animate attributeName="y" to="100" begin="x.repeat(2)" dur="3s" fill="freeze" />
+    </text>
+  </svg>
+  <p>accessKey-value</p>
+  <svg width="320" height="200" xmlns="http://www.w3.org/2000/svg">
+    <text font-family="microsoft yahei" font-size="32" y="160" x="160">按键盘s键执行
+      <animate attributeName="x" to="60" begin="accessKey(s)" dur="3s" repeatCount="indefinite" />
+    </text>
+  </svg>
+  <p>indefinite</p>
+  <svg id="indefinite-svg" width="320" height="200" xmlns="http://www.w3.org/2000/svg">
+    <text font-family="microsoft yahei" font-size="120" y="160" x="160">触发事件后运动
+      <animate id="indefinite-animate" attributeName="x" to="60" begin="indefinite" dur="3s" />
+    </text>
+  </svg>
+  <script>
+    var animate = document.getElementById("indefinite-animate")
+    if (animate) {
+      document.getElementById("indefinite-svg").onclick = function () {
+        animate.beginElement();
+      };
+    }
+  </script>
+  <p>xlink:href</p>
+  <svg width="320" height="200" font-family="microsoft yahei" xmlns="http://www.w3.org/2000/svg"
+    xmlns:xlink="http://www.w3.org/1999/xlink">
+    <text font-size="120" y="160" x="160">点击触发
+      <animate id="animate" attributeName="x" to="60" begin="indefinite" dur="3s" repeatCount="indefinite" />
+    </text>
+    <a xlink:href="#animate">
+      <text x="10" y="20" fill="#cd0000" font-size="30">点击我</text>
+    </a>
+  </svg>
+
+  <p>animateTransform</p>
+  <svg width="320" height="320">
+    <g>
+      <text font-family="microsoft yahei" font-size="32" y="100" x="100">
+        规模从1变大到1.5
+      </text>
+      <animateTransform attributeName="transform" begin="0s" dur="3s" type="scale" from="1" to="1.5"
+        repeatCount="indefinite" />
+    </g>
+  </svg>
+
+  <p>animateMotion</p>
+  <svg width="360" height="200">
+    <text font-family="microsoft yahei" font-size="40" x="0" y="0" fill="#cd0000">沿路径运动，方向自动
+      <animateMotion path="M10,80 q100,120 120,20 q140,-50 160,0" begin="0s" dur="3s" rotate="auto"
+        repeatCount="indefinite" />
+    </text>
+  </svg>
+
+</body>
+
+</html>

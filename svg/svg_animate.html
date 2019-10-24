@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>svg animate</title>
+</head>
+
+<body>
+  <p>
+    svg animate 动画</br>
+    attributeName 需要动画的属性名称</br>
+    from 属性的初始值</br>
+    to 终止值</br>
+    dur 动画的时间</br>
+  </p>
+  <svg xmlns="http://www.w3.org/2000/svg" width="300px" height="100px">
+    <rect x="0" y="0" width="300" height="100" stroke="black" stroke-width="1" />
+    <circle cx="0" cy="50" r="15" fill="blue" stroke="black" stroke-width="1">
+      <animate attributeName="cx" from="0" to="100" dur="5s" repeatCount="indefinite" />
+    </circle>
+  </svg>
+
+  <p>
+    svg animateTransform 动画</br>
+    执行变换属性的动画
+  </p>
+  <svg xmlns="http://www.w3.org/2000/svg" width="300px" height="200px">
+    <rect x="0" y="0" width="200" height="200" fill="yellow" stroke="red" stroke-width="1" />
+    <rect x="20" y="50" width="15" height="34" fill="blue" stroke="black" stroke-width="1" transform="rotation">
+      <!-- Rotate from 0 to 360 degrees, and move from 60 to 100 in the x direction. -->
+      <!-- Keep doing this until the drawing no longer exists. -->
+      <animateTransform attributeType="XML" attributeName="transform" begin="0" dur="5s" type="rotate" from="20 60 60"
+        to="360 100 60" repeatCount="indefinite" />
+    </rect>
+  </svg>
+
+  <p>
+    svg animateMotion 动画</br>
+    根据路径执行运动动画
+  </p>
+  <svg xmlns="http://www.w3.org/2000/svg" width="300px" height="100px">
+    <rect x="0" y="0" width="300" height="100" fill="yellow" stroke-width="1" stroke="red" />
+    <g id="arc">
+      <circle cx="0" cy="50" r="15" fill="blue" stroke="black" stroke-width="1"></circle>
+    </g>
+    <!--动画路径-->
+    <path id="animation-arc" d="M 0 0 H 300 Z" stroke="transparent" fill="currentColor" />
+    <!--动画设置-->
+    <animateMotion id="arcmove" xlink:href="#arc" dur="3s" begin="0" fill="freeze" repeatCount="indefinite">
+      <mpath xlink:href="#animation-arc" />
+    </animateMotion>
+  </svg>
+</body>
+
+</html>

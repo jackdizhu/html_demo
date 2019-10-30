@@ -178,7 +178,8 @@ function onError(error) {
 ```
 netstat -ntlp // 查看端口状态
 // 443端口
-https://csr.chinassl.net/index.html
+https://www.freessl.org
+https://freessl.cn
 生成 csr key 文件
 获取 自签名免费SSL证书 crt 文件
 ```

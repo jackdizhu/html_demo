@@ -2,6 +2,22 @@
 
 ### node 笔记
 
+```js
+// 文件夹递归文件遍历
+const path = require('path')
+const fs = require('fs')
+function deepDir (dir, callback) {
+  fs.readdirSync(dir).forEach(function (file) {
+    let pathname = path.join(dir, file);
+    if (fs.statSync(pathname).isDirectory()) {
+      deepDir(pathname, callback)
+    } else {
+      callback(pathname)
+    }
+  })
+}
+```
+
 ``` js
 /**
  * node 命令执行文件 获取 命令参数

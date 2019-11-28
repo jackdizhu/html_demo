@@ -95,4 +95,4 @@ let devLog = {
   }
 }
 export default devLog
-```js
+```

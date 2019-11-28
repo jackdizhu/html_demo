@@ -1,4 +1,16 @@
+# H5 debug
 
+## spy-debugger 抓包调试
+
+```js
+npm i spy-debugger --s
+./node_modules/.bin/spy-debugger -p 8888
+// https://blog.csdn.net/weixin_40645546/article/details/97612501 安装证书代理https
+```
+
+## vconsole 查看log 参数
+
+```js
 import VConsole from 'vconsole'
 let vConsole = window.vConsole = new VConsole({
   onReady: function () {
@@ -83,3 +95,4 @@ let devLog = {
   }
 }
 export default devLog
+```js

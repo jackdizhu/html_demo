@@ -19,7 +19,7 @@
     
     // 撤消操作
     git reset --hard <commit_id> // 回退到某个版本 git push --force
-    git revert HEAD // 创建新提交来撤消某一个版本
+    git revert <commit_id> // 创建新提交来撤消某一个版本
 </pre>
 
 <pre>

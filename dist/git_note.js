@@ -1,22 +1,24 @@
 <pre>
-    // 分支
-    git branch br // 创建分支
-    git push origin br:br // 推送当前 分支(本地:远程) [如果 : 左边的分支为空，那么将删除 : 右边的远程分支]
+    // branch
+    git branch (branchname) // 创建分支
+    git push origin (branchname):(branchname) // 推送当前 分支(本地:远程) [如果 : 左边的分支为空，那么将删除 : 右边的远程分支]
     git checkout master // 切换主分支
-    git merge br // 合并br 分支到主分支
-    git branch -d br // 删除本地分支
-    git push origin :br // 删除远程分支
-    git push --delete origin v0.3.0 // (存在分支同名 tags 时删除报错) error: dst refspec v0.3.0 matches more than one. 
-    git push origin :refs/heads/v0.3.0 // 指定删除分支
-    
+    git merge (branchname) // 合并(branchname)分支到当前分支
+    git branch -d (branchname) // 删除本地分支
+    git push origin :(branchname) // 删除远程分支
+    git push --delete origin (branchname) // (存在分支同名 tags 时删除报错) error: dst refspec (branchname) matches more than one. 
+    git push origin :refs/heads/(branchname) // 指定删除分支
+
     // tag
-    git tag -a v1.0 -m 'version 1.0' // 创建tag
+    git tag -a (tagname) -m 'tag message' // 创建tag
     git push origin --tags // 推送所有 tag
-    git push origin v1.0 // 推送当前 tag
-    git tag -d v1.0  // 删除本地 tag
-    git push origin --delete tag v1.0 // 删除远程 tag
-    git push origin :refs/tags/v0.3.0 // 指定删除 tag
-    
+    git push origin (tagname) // 推送当前 tag
+    git tag -d (tagname)  // 删除本地 tag
+    git push origin --delete tag (tagname) // 删除远程 tag
+    git push origin :refs/tags/(tagname) // 指定删除 tag
+
+    // 合并commit
+    git cherry-pick <commit_id> // 合并指定<commit_id>到当前分支
     // 撤消操作
     git reset --hard <commit_id> // 回退到某个版本 git push --force
     git revert <commit_id> // 创建新提交来撤消某一个版本

@@ -1,8 +1,4 @@
 <pre>
-    // 删除 已经提交的 commit
-    git reset commitId
-    git push --force
-    
     // 分支
     git branch br // 创建分支
     git push origin br:br // 推送当前 分支(本地:远程) [如果 : 左边的分支为空，那么将删除 : 右边的远程分支]
@@ -22,8 +18,8 @@
     git push origin :refs/tags/v0.3.0 // 指定删除 tag
     
     // 撤消操作
-    git reset --hard HEAD // 让工作目录(work tree)回到上次提交时的状态(last committed state)
-    git revert HEAD // 创建新提交来撤消最近的一个提交
+    git reset --hard <commit_id> // 回退到某个版本 git push --force
+    git revert HEAD // 创建新提交来撤消某一个版本
 </pre>
 
 <pre>

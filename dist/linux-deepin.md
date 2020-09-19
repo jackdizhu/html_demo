@@ -45,9 +45,38 @@ source /etc/profile
 2. vi /etc/nginx/sites-enabled/default
 3. nginx -c /etc/nginx/nginx.conf
 
+## linux 下载器xdm
+
+1. https://sourceforge.net/projects/xdman/ 下载安装xdm
+2. xdman # 启动xdm
+3. 下载 xdm-browser-monitor chrome扩展
+
+
 ## adb
 > https://www.jianshu.com/p/60d823b3d091
 
 1. apt-get install android-tools-adb
 2. adb devices
 3. lsusb
+
+## deepin-wine
+
+1. deepin-wine *.exe
+
+## deepin 无线网卡问题
+
+1. lspci
+
+> https://github.com/lwfinger 网卡驱动下载地址
+> Qualcomm Atheros QCA9377 802.11ac Wireless Network Adapter (rev 31)
+> https://github.com/ajaybhatia/Qualcomm-Atheros-QCA9377-Wifi-Linux/
+> sh ./install.sh
+> sh ./install_for_kernel_4.4-rc2.sh
+
+## 在Linux直接运行安卓程序
+
+1. 安装 archon-integration*.deb 和 deepin-archon*.deb即可
+2. http://packages.deepin.com/deepin/pool/non-free/a/
+3. /usr/lib/node_modules/chromeos-apk/chromeos-apk --archon -t --scale --name "Android App" xxx.apk   ##xxx.apk为被解压的apk文件名
+4. /lastore/framework/myarchon/archonrun --silent-launch --load-and-launch-app=被解压apk程序的完整路径
+5. android.sh   xx.apk

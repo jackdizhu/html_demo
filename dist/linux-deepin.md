@@ -14,6 +14,8 @@ source /etc/profile
 ## git
 
 1. apt-get install git
+2. 生成ssh-key
+> ssh-keygen -t rsa -C "email"
 
 ## mysql mariadb
 

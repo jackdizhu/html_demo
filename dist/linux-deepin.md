@@ -16,6 +16,20 @@ source /etc/profile
 1. apt-get install git
 2. 生成ssh-key
 > ssh-keygen -t rsa -C "email"
+3. 修改提交协议
+```ssh
+git remote -v
+git remote set-url origin git@github.com:account/project.git
+```
+4. ~/.ssh文件夹下新建config文件
+```config
+# github
+Host github.com
+HostName github.com
+publickey publickey
+IdentityFile ~/.ssh/github_rsa
+```
+> ssh -T git@github.com 测试
 
 ## mysql mariadb
 
